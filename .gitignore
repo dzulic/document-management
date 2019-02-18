@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+.idea
+client-document-management/src/main/frontend/node/node.exe
+client-document-management/src/main/frontend/node/npm
+client-document-management/src/main/frontend/node/npm.cmd
