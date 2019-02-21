@@ -1,45 +1,81 @@
-const fs = require('fs');
+var webpack = require('webpack');
 var path = require('path');
-var webpack = require("webpack");
-const container_root = 'src/app/containers/application';
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-module.exports = require('./webpack.config.js');    // inherit from the main config file
 
-//this should override resources link paths and allow it to use in production server
-module.exports.output.publicPath = '/js';
 
-// disable the hot reload
-var fileNames = {};
-
-fileNames[path.basename('index.js', '.js')] = [
-    'babel-polyfill',
-    __dirname + '/src/app/index.js'
-];
-
-fs.readdirSync(__dirname + '/' + container_root).forEach(function (file) {
-    if(file.includes("_index")){
-        fileNames[path.basename(file, '_index.js')] = [
-            'babel-polyfill',
-            __dirname + '/' + container_root + '/' + file
-        ];
-    }
-});
-module.exports.entry = fileNames;
-
-//development env
-module.exports.plugins.push(
-    new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: JSON.stringify('development'),
+module.exports = {
+    entry: [
+        './src/app/index.js'
+    ],
+    output: {
+        publicPath: './',
+        path: path.join(__dirname, 'public'),
+        filename: 'bundle.js'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            "styles": path.resolve(__dirname, 'styles/'),
         }
-    })
-);
+    },
+    module: {
 
-// export css to a separate file
-module.exports.module.rules[1] = {
-    test: /\.scss$/,
-    loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+        rules: [
+            {test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000'},
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                include: path.resolve(__dirname, 'src'),
+                use: {
+                    loader: 'babel-loader',
+                    options: {  // << add options with presets env
+                        presets: ['env', "react"]
+                    }
+                }
+            }
+        ]
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                screw_ie8: true,
+                drop_console: true,
+                drop_debugger: true
+            }
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new ExtractTextPlugin({
+            filename: 'style.css',
+            allChunks: true
+        }),
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            files: {
+                css: ['style.css'],
+                js: ['bundle.js'],
+            }
+        })
+    ]
 };
-module.exports.plugins.push(
-    new ExtractTextPlugin('../css/main.css')
-);

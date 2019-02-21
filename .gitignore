@@ -63,3 +63,4 @@ typings/
 client-document-management/src/main/frontend/node/node.exe
 client-document-management/src/main/frontend/node/npm
 client-document-management/src/main/frontend/node/npm.cmd
+server-document-management.iml
