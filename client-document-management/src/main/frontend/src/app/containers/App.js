@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import '../styles/main.scss';
+import HeaderPanel from "../components/base/HeaderPanel";
 
 class App extends Component {
     render() {
         const {children} = this.props;
         return (
-            <div>{children}</div>);
+            <div>
+                <HeaderPanel/>
+                {children}
+            </div>);
     }
 }
 

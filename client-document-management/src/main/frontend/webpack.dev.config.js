@@ -46,6 +46,17 @@ module.exports = {
                     cacheDirectory: true,
                     presets: ["env", "react", "es2016", "es2015"]
                 }
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 2000000
+                        }
+                    }
+                ]
             }
         ]
     },

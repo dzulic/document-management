@@ -3,6 +3,7 @@
  */
 import React from "react";
 import {connect} from "react-redux";
+import MainPanel from "../components/base/MainPanel";
 
 class Home extends React.Component {
 
@@ -20,7 +21,7 @@ class Home extends React.Component {
             <div className="home-container">
                 <div className="row">
                     <div className="col-lg-12">
-                        Jul
+                        <MainPanel/>
                     </div>
                 </div>
             </div>
