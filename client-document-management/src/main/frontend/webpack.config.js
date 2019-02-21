@@ -3,12 +3,26 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+
+var container_root = 'src/app/containers/application';
+var dev_root = 'dev';
+var dist_root = '../resources/static';
+var app_root = 'src/app'; // the app root folder: src, src_users, etc
+
 
 const HOST = process.env.HOST || "localhost";
-const PORT = process.env.PORT || "8888";
+const PORT = process.env.PORT || "8082";
 
 module.exports = {
-    entry: __dirname + '/src/app/index.js',
+    entry: [
+        'whatwg-fetch',
+        'webpack-dev-server/client?http://localhost:' + PORT,
+        'webpack/hot/only-dev-server',
+        'babel-polyfill',
+        __dirname + '/src/app/index.js',
+    ],
     output:
         {
             path: path.join(__dirname, 'public'),
@@ -39,6 +53,34 @@ module.exports = {
         port: PORT,
         host: HOST
     },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                include: path.resolve(__dirname, 'src/'),
+                query: {
+                    cacheDirectory: true,
+                    presets: ["env", "react", "es2016", "es2015"]
+                }
+            },
+            {
+                // https://github.com/jtangelder/sass-loader
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }]
+    },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
@@ -55,6 +97,25 @@ module.exports = {
                 js: ["bundle.js"],
             }
         }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('nodedev'),
+            }
+        }),
+
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                container_root: container_root, // the container root folder, needed by the other webpack configs
+                app_root: app_root, // the app root folder, needed by the other webpack configs
+            }
+        }),
+        new CleanWebpackPlugin(['css/main.css', 'js/*'], {
+            root: __dirname + '/' + dist_root,
+            verbose: true,
+            dry: false, // true for simulation
+        }),
+
+
     ]
 }
 ;

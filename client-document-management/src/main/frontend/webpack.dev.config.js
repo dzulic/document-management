@@ -39,14 +39,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(js|jsx)$/,
-                exclude: /(node_modules|bower_components)/,
-                include: path.resolve(__dirname, 'src'),
-                use: {
-                    loader: 'babel-loader',
-                    options: {  // << add options with presets env
-                        presets: ['env', "react"]
-                    }
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    cacheDirectory: true,
+                    presets: ["env", "react", "es2016", "es2015"]
                 }
             }
         ]

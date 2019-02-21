@@ -5,16 +5,11 @@ import {Provider} from "react-redux";
 import {store} from "./store.js";
 import {router} from "./router.js";
 import "./styles/main.scss"
-import App from "./containers/App";
-
-//prevent forms from auto submitting
-$(document).on("keydown", function (e) {
-    if (e.which == 13) {
-        e.preventDefault();
-    }
-});
 
 // render the main component
 ReactDOM.render(
+    <Provider store={store}>
+        {router}
+    </Provider>,
     document.getElementById('app')
 );
