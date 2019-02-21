@@ -7,7 +7,7 @@ export class LoginForm extends Component {
 
     render() {
         return (
-            <div>
+            <div id="app">
                 <title>Login</title>
                 <div>
                     <input type="text"/>
