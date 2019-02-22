@@ -4,16 +4,16 @@
 
 import React from "react";
 import {history} from "./store.js";
-import {IndexRoute, Route, Router} from "react-router";
-import App from "./containers/App";
+import {Route, Router} from "react-router";
 import Home from "./containers/Home"
+import App from "./containers/App";
 
 
 const router =
     <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
-        <Route path={"/"} component={App}>
-            <IndexRoute component={Home}/>
-        </Route>
+        <App>
+            <Route exact path={"/"} component={Home}/>
+        </App>
     </Router>;
 
 // export

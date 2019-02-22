@@ -8,7 +8,7 @@ import {reducers} from "./reducers/index";
 import {sagas} from "./sagas/index";
 import thunk from 'redux-thunk';
 import {syncTranslationWithStore} from 'react-redux-i18n';
-
+import { createBrowserHistory } from 'history';
 
 // add the middlewares
 let middlewares = [];
@@ -38,7 +38,7 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
 
 // create the store
 const store = createStore(reducers, middleware);
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(createBrowserHistory(), store);
 sagaMiddleware.run(sagas);
 
 // used in i18n

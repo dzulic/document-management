@@ -4,7 +4,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import MainPanel from "../components/base/MainPanel";
-import LoginForm from "../components/login/LoginForm";
+import LoginForm from "../containers/login/LoginForm";
 
 class Home extends React.Component {
 

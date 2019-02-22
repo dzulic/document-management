@@ -20,7 +20,6 @@ module.exports = {
         'whatwg-fetch',
         'webpack-dev-server/client?http://localhost:' + PORT,
         'webpack/hot/only-dev-server',
-        'babel-polyfill',
         __dirname + '/src/app/index.js',
     ],
     output:
