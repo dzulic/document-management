@@ -8,14 +8,16 @@ export class ButtonComponent extends Component {
     }
 
     render() {
+        const {label} = this.props;
         return (
-            <div>
-                <button>this.props.label</button>
+            <div id="button-component">
+                <button>{label}</button>
             </div>
         );
     }
 
 }
+
 ButtonComponent.PropTypes = {
     label: PropTypes.string.isRequired
 }

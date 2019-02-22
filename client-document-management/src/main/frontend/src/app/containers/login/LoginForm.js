@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ButtonComponent from "../../components/integral/ButtonComponent";
 import {reduxForm} from "redux-form";
+import TextInputComponent from "../../components/integral/TextInputComponent";
 
 export class LoginForm extends Component {
 
@@ -10,15 +11,15 @@ export class LoginForm extends Component {
 
     render() {
         return (
-            <div>
-                <title>Login</title>
-                <div>
-                    <p>Username</p>
-                    <input type="text"/>
-                    <p>Password</p>
-                    <input type="text"/>
+            <div className="col-lg-12">
+                <div className="col-lg-2 offset-lg-5">
+                    <h1>Login</h1>
+                    <TextInputComponent label="username"/>
+                    <TextInputComponent label="password"/>
+                    <div className="col-lg-3 offset-4">
+                        <ButtonComponent label="login"/>
+                    </div>
                 </div>
-                <ButtonComponent label="Login"/>
             </div>
         );
     }

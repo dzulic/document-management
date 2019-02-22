@@ -1,11 +1,67 @@
-#mainPanel{
-    border: solid #394177;
-    padding: 100px;
-}
-.navbar-brand{
-    height: 80px;
+html {
+  height: 100%;
 }
 
-body{
-    padding: 20px;
+body {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 20px;
+  text-decoration: none;
+  color: #394177 !important;
+  background: #74ebd5; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ACB6E5, #74ebd5); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+#mainPanel {
+  padding: 100px;
+}
+
+// NAVIGATION
+.navbar-brand {
+  height: 80px;
+}
+
+#header-panel-logo {
+/*  display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//COMPONENTS
+#text-input-component {
+  padding: 5px 0px 5px 0px;
+  width: 100%;
+
+}
+
+#text-input-component input {
+  width: 100%;
+}
+
+
+#text-input-component label {
+  margin-bottom: 5px;
+  padding-right: 10px;
+
+}
+
+#button-component {
+  color: #394177;
+}
+
+#button-component button {
+  color: #394177;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
