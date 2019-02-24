@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import CreateDocumentForm from "../../document/create/CreateDocumentForm";
 
 export class CreateDocumentTask extends Component {
 
@@ -9,7 +10,8 @@ export class CreateDocumentTask extends Component {
 
     render() {
         return (
-            <div>
+            <div id="container">
+                <CreateDocumentForm/>
             </div>
         );
     }

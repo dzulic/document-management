@@ -8,11 +8,8 @@ export class CreateDocumentForm extends Component {
     }
 
     render() {
-        const {label} = this.props;
         return (
-            <div id="button-component">
-                <button>{label}</button>
-            </div>
+           <div></div>
         );
     }
 

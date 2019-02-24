@@ -11,12 +11,11 @@ export class TextInputComponent extends Component {
         const {label} = this.props;
         return (
             <div id="text-input-component">
-                <div className="row">
-                    <label>{label}</label>
-                </div>
-                <div className="row">
-                    <input type="text"/>
-                </div>
+                <input type="text" required="required"/>
+                <span className="highlight"></span>
+                <span className="bar"></span>
+                <label>{label}</label>
+                <div className="bar"></div>
             </div>
         );
     }

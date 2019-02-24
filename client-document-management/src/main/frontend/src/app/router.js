@@ -7,13 +7,14 @@ import CreateDocumentTask from "./containers/document/create/CreateDocumentTask"
 import SearchDocumentTask from "./containers/document/search/SearchDocumentTask";
 import UploadDocumentTask from "./containers/document/upload/UploadDocumentTask";
 import CreateUserTask from "./containers/user/CreateUserTask";
+import CreateCompanyTask from "./containers/company/CreateCompanyTask";
 
 const router =
     <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
         <App>
             <Route exact path={"/"} component={Home}/>
             <Route exact path={"/logout"} component={Home}/>
-            <Route exact path={"/createCompany"} component={CreateDocumentTask}/>
+            <Route exact path={"/createCompany"} component={CreateCompanyTask}/>
             <Route exact path={"/createUser"} component={CreateUserTask}/>
             <Route exact path={"/searchDocument"} component={SearchDocumentTask}/>
             <Route exact path={"/uploadDocument"} component={UploadDocumentTask}/>

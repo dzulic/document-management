@@ -11,7 +11,7 @@ export class ButtonComponent extends Component {
         const {label} = this.props;
         return (
             <div id="button-component">
-                <button>{label}</button>
+                <button className="btn btn-submit" type="submit">{label}</button>
             </div>
         );
     }

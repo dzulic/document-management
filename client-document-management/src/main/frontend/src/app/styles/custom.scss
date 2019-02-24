@@ -15,7 +15,6 @@ body {
   background: linear-gradient(to bottom, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-
 #mainPanel {
   padding: 100px;
 }
@@ -33,22 +32,20 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px;
 }
 
 //COMPONENTS
-#text-input-component {
-  padding: 5px 0px 5px 0px;
-max-width: 200px;
+div#text-input-component group {
+  margin-bottom: 20px !important;
+  max-width: 200px;
 }
 
 #text-input-component input {
   width: 100%;
 }
 
-
 #text-input-component label {
-  margin-bottom: 5px;
-  padding-right: 10px;
 
 }
 
@@ -61,4 +58,7 @@ max-width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: solid;
+  margin-top: 20px;
+  float:right;
 }
