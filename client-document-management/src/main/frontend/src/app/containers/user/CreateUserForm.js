@@ -36,10 +36,11 @@ export class CreateUserForm extends Component {
                     <div className="col-lg"><TextInputComponent label="position"/></div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-6"><TextInputComponent label="p"/></div>
+                    <div className="col-lg-6"><TextInputComponent label="profession"/></div>
                     <div className="col-lg-6"><TextInputComponent label="employeeID"/></div>
                 </div>
                 <div className="row">
+                    <div className="col-lg-6"></div>
                     <div className="col-lg-6"><ButtonComponent label="Submit"/></div>
                 </div>
             </div>

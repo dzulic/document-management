@@ -1,7 +1,7 @@
 
 label {
   position: absolute;
-  top: 30px;
+  top: 10px;
   color: rgba(255, 255, 255, 0.5);
   font: 400 20px Roboto;
   cursor: text;
@@ -32,7 +32,7 @@ input:focus {
 input:focus ~ label {
   top: 0;
   font: 700 22px Roboto;
-  color: #2196f3;
+  color: #394177;
 }
 
 input:focus ~ .bar:before {
@@ -46,7 +46,7 @@ input:-webkit-autofill {
 
 .bar {
   content: '';
-  height: 2px;
+  height: 1px;
   transition: .3s ease;
   position: relative;
 }
@@ -56,7 +56,7 @@ input:-webkit-autofill {
   position: absolute;
   width: 100%;
   height: 150%;
-  background: #2196f3;
+  background: #394177;
 }
 
 ::selection {

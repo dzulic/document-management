@@ -32,6 +32,7 @@ export class CreateCompanyForm extends Component {
                     <div className="col-lg"><TextInputComponent label="email"/></div>
                 </div>
                 <div className="row">
+                    <div className="col-lg-6"></div>
                     <div className="col-lg-6"><ButtonComponent label="Submit"/></div>
                 </div>
             </div>
