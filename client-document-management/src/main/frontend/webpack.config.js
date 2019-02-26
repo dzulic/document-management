@@ -61,7 +61,7 @@ module.exports = {
                 include: path.resolve(__dirname, 'src/'),
                 query: {
                     cacheDirectory: true,
-                    presets: ["env", "react", "es2016", "es2015"]
+                    presets: ["stage-0", "react", "es2016", "es2015"]
                 }
             },
             {

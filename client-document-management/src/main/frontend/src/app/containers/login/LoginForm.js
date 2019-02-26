@@ -11,7 +11,7 @@ export class LoginForm extends Component {
 
     render() {
         return (
-            <div className="col-lg-12">
+            <div className="col-lg-12 login">
                 <div className="col-lg-2 offset-lg-5">
                     <div className="row">
                         <h1>Login</h1>

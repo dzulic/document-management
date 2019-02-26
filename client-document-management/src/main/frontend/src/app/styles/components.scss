@@ -9,6 +9,12 @@ label {
 
 }
 
+.login label {
+  position: relative !important;
+  top: 0px;
+}
+
+
 input {
   display: block;
   padding-top: 40px;
@@ -63,6 +69,6 @@ input:-webkit-autofill {
   background: rgba(33, 150, 243, 0.3);
 }
 
-#group{
+#group {
   margin-top: 20px;
 }
