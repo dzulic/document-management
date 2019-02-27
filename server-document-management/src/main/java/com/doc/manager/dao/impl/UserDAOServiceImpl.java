@@ -1,11 +1,11 @@
-package com.doc.manager.daoLayer.impl;
+package com.doc.manager.dao.impl;
 
-import com.doc.manager.daoLayer.CoreDAO;
-import com.doc.manager.daoLayer.DocumentDAOService;
+import com.doc.manager.dao.CoreDAO;
+import com.doc.manager.dao.UserDAOService;
 
 import java.util.List;
 
-public class DocumentDAOServiceImpl implements DocumentDAOService, CoreDAO {
+public class UserDAOServiceImpl implements UserDAOService, CoreDAO {
     public void save(Object object) {
 
     }

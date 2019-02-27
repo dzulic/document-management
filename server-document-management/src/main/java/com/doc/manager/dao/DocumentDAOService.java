@@ -1,4 +1,4 @@
-package com.doc.manager.daoLayer;
+package com.doc.manager.dao;
 
 public interface DocumentDAOService {
 }
