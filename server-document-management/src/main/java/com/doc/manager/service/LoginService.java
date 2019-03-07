@@ -1,8 +1,10 @@
 package com.doc.manager.service;
 
-import com.doc.manager.response.RestResponse;
+import com.doc.manager.responses.RestResponse;
 
 public interface LoginService {
 
-    RestResponse loginUser(String user, String pass);
+    RestResponse loginUser(String username, String password);
+
+    RestResponse logoutUser();
 }

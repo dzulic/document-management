@@ -1,6 +1,11 @@
 package com.doc.manager.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+    @Id
     private String employeeID;
     private EUserType userType;
     private String userName;
