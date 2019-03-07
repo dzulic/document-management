@@ -1,4 +1,4 @@
-package com.doc.manager.daoLayer;
+package com.doc.manager.dao;
 
 import org.springframework.stereotype.Repository;
 
