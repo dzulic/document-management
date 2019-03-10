@@ -2,11 +2,14 @@ package com.doc.manager.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
-public class User {
+@Table(name = "User")
+public class User implements Serializable {
     @Id
-    private String employeeID;
+    private String id;
     private EUserType userType;
     private String userName;
     private String password;
@@ -19,12 +22,20 @@ public class User {
     private String team;
     private String position;
 
-    public String getEmployeeID() {
-        return employeeID;
+    public User() {
     }
 
-    public void setEmployeeID(String employeeID) {
-        this.employeeID = employeeID;
+    public User(String username, String password) {
+        this.userName = username;
+        this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public EUserType getUserType() {

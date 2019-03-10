@@ -20,7 +20,7 @@ public class DocumentFacade {
         try {
             return documentService.createDocument(documentDTO);
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 
@@ -29,7 +29,7 @@ public class DocumentFacade {
         try {
             return documentService.uploadDocument(documentDTO);
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 
@@ -38,7 +38,7 @@ public class DocumentFacade {
         try {
             return documentService.searchDocument(documentDTO);
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 }

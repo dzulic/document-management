@@ -2,23 +2,13 @@ package com.doc.manager.dao.impl;
 
 import com.doc.manager.dao.CoreDAO;
 import com.doc.manager.dao.DocumentDAOService;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public class DocumentDAOServiceImpl implements DocumentDAOService, CoreDAO {
-    public void save(Object object) {
+@Repository
+@Transactional
+public class DocumentDAOServiceImpl extends CoreDAO implements DocumentDAOService {
 
-    }
-
-    public void remove(Object object) {
-
-    }
-
-    public Object get(Object object) {
-        return null;
-    }
-
-    public List<Object> list(Object object) {
-        return null;
-    }
 }
