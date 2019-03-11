@@ -19,7 +19,7 @@ public class UserFacade {
         try {
             return userService.createUser(userDTO);
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 

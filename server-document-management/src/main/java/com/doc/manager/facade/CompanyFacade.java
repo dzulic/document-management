@@ -20,7 +20,7 @@ public class CompanyFacade {
         try {
             return companyService.createCompany(companyDTO);
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 

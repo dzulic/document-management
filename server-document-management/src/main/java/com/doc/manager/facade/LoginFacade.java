@@ -19,7 +19,7 @@ public class LoginFacade {
         try {
             return loginService.logoutUser();
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 
@@ -28,7 +28,7 @@ public class LoginFacade {
         try {
             return loginService.loginUser(user.getUserName(), user.getPassword());
         } catch (Exception ex) {
-            return new RestResponse();
+            return new RestResponse("error", null);
         }
     }
 }
