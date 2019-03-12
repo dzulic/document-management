@@ -1,4 +1,4 @@
-export const REST_ROOT_ENDPOINT = "http://localhost:10700/" + "secured/rest/";
+export const REST_ROOT_ENDPOINT = "http://localhost:10700/";
 ;
 import {DEFAULT_REST_PARAMS_GET} from "../api/applicationServerConstants";
 
