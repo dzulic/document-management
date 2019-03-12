@@ -27,7 +27,7 @@
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",
     "redux-freeze": "^0.1.7",
-    "redux-saga": "^1.0.1",
+    "redux-saga": "^0.12.1",
     "redux-thunk": "^2.3.0",
     "whatwg-fetch": "^3.0.0"
   },

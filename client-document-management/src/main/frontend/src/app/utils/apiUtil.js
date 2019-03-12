@@ -1,4 +1,5 @@
-
+export const REST_ROOT_ENDPOINT = "http://localhost:10700/" + "secured/rest/";
+;
 import {DEFAULT_REST_PARAMS_GET} from "../api/applicationServerConstants";
 
 export function createGetParam(key, value, andParam) {
@@ -15,17 +16,16 @@ export function createGetParam(key, value, andParam) {
     return '';
 }
 
-export function createGetParams(params){
-    if(params){
+export function createGetParams(params) {
+    if (params) {
         let getParams = '';
         let size = Object.keys(params).length;
         for (var i = 0; i < size; i++) {
             let key = Object.keys(params)[i];
             let paramKey = params[key];
-            if(i < size - 1){
+            if (i < size - 1) {
                 getParams = getParams + createGetParam(key, paramKey, true);
-            }
-            else{
+            } else {
                 getParams = getParams + createGetParam(key, paramKey, false);
             }
         }

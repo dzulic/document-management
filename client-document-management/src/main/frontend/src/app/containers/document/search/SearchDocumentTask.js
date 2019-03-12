@@ -16,7 +16,7 @@ export class SearchDocumentForm extends Component {
 
 }
 
-SearchDocumentForm.PropTypes = {
+SearchDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
 export default (SearchDocumentForm);

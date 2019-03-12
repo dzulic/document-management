@@ -18,7 +18,7 @@ export class CreateDocumentTask extends Component {
 
 }
 
-CreateDocumentTask.PropTypes = {
+CreateDocumentTask.propTypes = {
     label: PropTypes.string.isRequired
 }
 export default (CreateDocumentTask);

@@ -1,11 +1,14 @@
-import ApiLogin from "../api/LoginApi";
+import ApiUser from "../api/UserApi";
 import {call, put} from "redux-saga/effects";
+import ApiLogin from "../api/LoginApi";
 
-export function* loginUser(action) {
-    console.log("SAGAS");
+
+export function* createUser(action) {
 
     try {
-        const response = yield call(ApiLogin.login, action.user);
+        console.log("Create");
+        debugger;
+        const response = yield call(ApiUser.createUser, action.user);
 
 
         if (response.success === false) {
@@ -34,26 +37,6 @@ export function* loginUser(action) {
         yield put({
             type: 'SHOW_ERROR_MODAL',
             message: ""
-        });
-    }
-}
-
-export function* logoutUser(action) {
-
-    yield put(showWaitingDialog('logoutUser'));
-    try {
-        const response = yield call(ApiLogin.logout);
-
-        if (response.success === false) {
-            throw new Error(response.message);
-        }
-
-        //redirect to homepage
-        window.location = context_root_page_redirect + 'login';
-    } catch (e) {
-        yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: handleError(e)
         });
     }
 }

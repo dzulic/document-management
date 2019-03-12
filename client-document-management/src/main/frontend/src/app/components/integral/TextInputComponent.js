@@ -22,7 +22,7 @@ export class TextInputComponent extends Component {
 
 }
 
-TextInputComponent.PropTypes = {
+TextInputComponent.propTypes = {
     label: PropTypes.string.isRequired
 }
 export default (TextInputComponent);

@@ -17,7 +17,7 @@ export class UploadDocumentTask extends Component {
 
 }
 
-UploadDocumentTask.PropTypes = {
-    label: PropTypes.string.isRequired
+UploadDocumentTask.propTypes = {
+    label: PropTypes.string
 }
 export default (UploadDocumentTask);

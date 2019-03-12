@@ -49,5 +49,5 @@ export class CreateUserForm extends Component {
 
 }
 
-CreateUserForm.PropTypes = {}
+CreateUserForm.propTypes = {}
 export default (CreateUserForm);

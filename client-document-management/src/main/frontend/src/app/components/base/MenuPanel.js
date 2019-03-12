@@ -90,7 +90,6 @@ export class MenuComponent extends Component {
 
 }
 
-MenuComponent.PropTypes = {
-    label: PropTypes.string.isRequired
+MenuComponent.propTypes = {
 }
 export default (MenuComponent);

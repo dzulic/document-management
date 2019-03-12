@@ -13,7 +13,7 @@ var app_root = 'src/app'; // the app root folder: src, src_users, etc
 
 
 const HOST = process.env.HOST || "localhost";
-const PORT = process.env.PORT || "8082";
+const PORT =  8090;
 
 module.exports = {
     entry: [

@@ -1,4 +1,3 @@
-export const REST_ROOT_ENDPOINT ="/secured/rest/";
 export const DEFAULT_REST_PARAMS_POST = {
     method: 'POST',
     credentials: 'include',

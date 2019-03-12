@@ -18,7 +18,7 @@ export class ButtonComponent extends Component {
 
 }
 
-ButtonComponent.PropTypes = {
+ButtonComponent.propTypes = {
     label: PropTypes.string.isRequired
 }
 export default (ButtonComponent);

@@ -41,5 +41,5 @@ export class CreateCompanyForm extends Component {
 
 }
 
-CreateCompanyForm.PropTypes = {}
+CreateCompanyForm.propTypes = {}
 export default (CreateCompanyForm);
