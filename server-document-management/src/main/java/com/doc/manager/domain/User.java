@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     @Id
     private String id;
-    private EUserType userType;
+    private EUserRole userRole;
     private String userName;
     private String password;
     private String name;
@@ -38,12 +38,12 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public EUserType getUserType() {
-        return userType;
+    public EUserRole getUserRole() {
+        return userRole;
     }
 
-    public void setUserType(EUserType userType) {
-        this.userType = userType;
+    public void setUserRole(EUserRole userRole) {
+        this.userRole = userRole;
     }
 
     public String getUserName() {

@@ -15,12 +15,7 @@ export class CreateUserTask extends Component {
 
     onSubmit() {
         const {formValues, formValid} = this.props;
-        debugger;
-        const prop = {
-            key: constants.NEW_USER,
-            value: formValues
-        }
-        this.props.dispatch(createUser(prop));
+        this.props.dispatch(createUser(formValues));
     }
 
     render() {
@@ -36,8 +31,11 @@ export class CreateUserTask extends Component {
 }
 
 CreateUserTask.propTypes = {}
+const selector = getFormValues("UserForm");
+
 function mapStateToProps(state) {
     return {
+        formValues: selector(state)
     }
 }
 

@@ -1,6 +1,6 @@
 package com.doc.manager.domain;
 
-public enum EUserType {
+public enum EUserRole {
     Root,
     Super,
     Simple

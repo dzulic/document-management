@@ -23,5 +23,22 @@ public class UserFacade {
             return new RestResponse("error", null);
         }
     }
+    @RequestMapping("/logoutUser")
+    public RestResponse logoutUser() {
+        try {
+            return userService.logoutUser();
+        } catch (Exception ex) {
+            return new RestResponse("error", null);
+        }
+    }
+
+    @RequestMapping("/loginUser")
+    public RestResponse loginUser(@RequestBody UserDTO user) {
+        try {
+            return userService.loginUser(user.getUserName(), user.getPassword());
+        } catch (Exception ex) {
+            return new RestResponse("error", null);
+        }
+    }
 
 }
