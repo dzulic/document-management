@@ -2,7 +2,7 @@
 label {
   position: absolute;
   top: 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: gray !important;
   font: 400 20px Roboto;
   cursor: text;
   transition: .25s ease;
@@ -20,7 +20,7 @@ input {
   padding-top: 40px;
   border: none;
   border-radius: 0;
-  color: white;
+  color: black;
   background: transparent;
   transition: .3s ease;
 }

@@ -15,7 +15,6 @@ export class CreateUserTask extends Component {
 
     onSubmit() {
         const {formValues, formValid} = this.props;
-        debugger;
         const prop = {
             key: constants.NEW_USER,
             value: formValues

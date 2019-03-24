@@ -6,8 +6,6 @@ import ApiLogin from "../api/LoginApi";
 export function* createUser(action) {
 
     try {
-        console.log("Create");
-        debugger;
         const response = yield call(ApiUser.createUser, action.user);
 
 

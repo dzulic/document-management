@@ -14,30 +14,30 @@ export class CreateUserForm extends Component {
             <div className="col-lg-6 offset-lg-3">
                 <h1>Create User</h1>
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="username"/></div>
-                    <div className="col-lg"><TextInputComponent label="password"/></div>
+                    <div className="col-lg"><TextInputComponent label="username" required={true}/></div>
+                    <div className="col-lg"><TextInputComponent label="password" required={true}/></div>
                 </div>
 
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="name"/></div>
-                    <div className="col-lg"><TextInputComponent label="lastName"/></div>
+                    <div className="col-lg"><TextInputComponent label="name" required={true}/></div>
+                    <div className="col-lg"><TextInputComponent label="lastName" required={true} /></div>
                 </div>
 
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="email"/></div>
-                    <div className="col-lg"><TextInputComponent label="mobilePhone"/></div>
+                    <div className="col-lg"><TextInputComponent label="email" required={true} /></div>
+                    <div className="col-lg"><TextInputComponent label="mobilePhone" required={true} /></div>
                 </div>
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="company"/></div>
-                    <div className="col-lg"><TextInputComponent label="country"/></div>
+                    <div className="col-lg"><TextInputComponent label="company" required={true} /></div>
+                    <div className="col-lg"><TextInputComponent label="country" required={true} /></div>
                 </div>
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="team"/></div>
-                    <div className="col-lg"><TextInputComponent label="position"/></div>
+                    <div className="col-lg"><TextInputComponent label="team" required={true} /></div>
+                    <div className="col-lg"><TextInputComponent label="position" required={true} /></div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-6"><TextInputComponent label="profession"/></div>
-                    <div className="col-lg-6"><TextInputComponent label="employeeID"/></div>
+                    <div className="col-lg-6"><TextInputComponent label="profession" required={true} /></div>
+                    <div className="col-lg-6"><TextInputComponent label="employeeID" required={true} /></div>
                 </div>
                 <div className="row">
                     <div className="col-lg-6"></div>
