@@ -5,4 +5,8 @@ import com.doc.manager.transfer.UserDTO;
 
 public interface UserService {
     RestResponse createUser(UserDTO userDTO);
+
+    RestResponse logoutUser();
+
+    RestResponse loginUser(String userName, String password);
 }

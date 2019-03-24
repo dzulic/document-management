@@ -8,10 +8,10 @@ export class ButtonComponent extends Component {
     }
 
     render() {
-        const {label} = this.props;
+        const {label,click} = this.props;
         return (
             <div id="button-component">
-                <button className="btn btn-submit" type="submit">{label}</button>
+                <button className="btn btn-submit" type="submit" onClick={click}>{label}</button>
             </div>
         );
     }
@@ -19,6 +19,7 @@ export class ButtonComponent extends Component {
 }
 
 ButtonComponent.propTypes = {
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    click: PropTypes.func
 }
 export default (ButtonComponent);

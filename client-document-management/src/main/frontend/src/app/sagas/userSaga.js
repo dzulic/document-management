@@ -6,7 +6,7 @@ import ApiLogin from "../api/LoginApi";
 export function* createUser(action) {
 
     try {
-        const response = yield call(ApiUser.createUser, action.user);
+        const response = yield call(ApiUser.createUser, action.property);
 
 
         if (response.success === false) {

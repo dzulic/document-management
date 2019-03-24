@@ -1,10 +1,10 @@
 package com.doc.manager.transfer;
 
-import com.doc.manager.domain.EUserType;
+import com.doc.manager.domain.EUserRole;
 
 public class UserDTO {
     private String employeeID;
-    private EUserType userType;
+    private EUserRole userType;
     private String userName;
     private String password;
     private String name;
@@ -25,11 +25,11 @@ public class UserDTO {
         this.employeeID = employeeID;
     }
 
-    public EUserType getUserType() {
+    public EUserRole getUserType() {
         return userType;
     }
 
-    public void setUserType(EUserType userType) {
+    public void setUserType(EUserRole userType) {
         this.userType = userType;
     }
 

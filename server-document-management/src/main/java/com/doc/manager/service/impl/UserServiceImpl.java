@@ -1,6 +1,7 @@
 package com.doc.manager.service.impl;
 
 import com.doc.manager.converter.BeanConverter;
+import com.doc.manager.dao.UserRepository;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.UserService;
 import com.doc.manager.transfer.UserDTO;
@@ -12,9 +13,20 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     BeanConverter beanConverter;
+    @Autowired
+    UserRepository userRepository;
 
     public RestResponse createUser(UserDTO userDTO) {
-       // appRepository.save(beanConverter.convertUserDTOToUser(userDTO));
+        userRepository.save(beanConverter.convertUserDTOToUser(userDTO));
+        return new RestResponse("success", null);
+    }
+
+    public RestResponse logoutUser() {
+        return null;
+    }
+
+    public RestResponse loginUser(String userName, String password) {
+        userRepository.findByUserName(userName);
         return new RestResponse("success", null);
     }
 }
