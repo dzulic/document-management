@@ -29,10 +29,12 @@ export class TextInputComponent extends Component {
     }
 
     render() {
-        const {label,required,input} = this.props;
+        const {label, required, input, placeholder} = this.props;
         return (
             <div id="text-input-component">
-                <FormControl type="text" required="required" name={label} {...input}/>
+                <FormControl type="text" required="required"
+                             name={label} placeholder={placeholder}
+                             {...input}/>
                 <span className="highlight"></span>
                 <span className="bar"></span>
                 <label>{label}</label>
@@ -47,5 +49,6 @@ TextInputComponent.propTypes = {
     label: PropTypes.string.isRequired,
     required: PropTypes.bool,
     input: PropTypes.object.isRequired,
+    placeholder: PropTypes.string
 }
 export default (TextInputComponent);

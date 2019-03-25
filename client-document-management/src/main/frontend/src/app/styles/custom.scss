@@ -8,7 +8,7 @@ body {
   padding: 20px;
   text-decoration: none;
   color: black !important;
-  background-color: #EDE1F2!important; /* fallback for old browsers */
+  background-color: #EDE1F2 !important; /* fallback for old browsers */
 }
 
 #mainPanel {
@@ -17,7 +17,7 @@ body {
 
 // NAVIGATION
 .navbar-brand {
-  height: 80px;
+  height: 65px;
 }
 
 
@@ -26,7 +26,7 @@ h1 {
   justify-content: center;
   align-items: center;
   padding-bottom: 30px;
-  font-weight: 200!important;
+  font-weight: 200 !important;
 }
 
 //COMPONENTS
@@ -54,5 +54,37 @@ div#text-input-component group {
   align-items: center;
   border: solid;
   margin-top: 20px;
-  float:right;
+  float: right;
+}
+
+.form-control {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.form-control:focus {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.label {
+  top: -5px;
+}
+
+.nav ul li:nth-child(2) > a:before {
+  display: none !important;
+}
+
+.nav ul li:nth-last-child(2) a:after {
+  border-left: 15px solid #EDE1F2 !important;
+}
+
+.document-form {
+  box-shadow: 1px 0px 15px 5px rgba(0, 0, 0, 0.50);
+  min-height: 300px;
+  background-color: white;
+}
+
+.container {
+  padding-top: 20px;
 }

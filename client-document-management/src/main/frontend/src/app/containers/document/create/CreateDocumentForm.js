@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {DocumentForm} from "./DocumentForm";
 import {DocumentItemForm} from "./DocumentItemForm";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
+import {connect} from "react-redux";
+import {reduxForm} from "redux-form";
+import {LoginForm} from "../../login/LoginForm";
 
 export class CreateDocumentForm extends Component {
 
@@ -21,14 +24,21 @@ export class CreateDocumentForm extends Component {
     render() {
         return (
             <div className="container">
-                <ButtonComponent label="Add new item" click={this.addNewRow}/>
-                <DocumentForm>
-                    {
-                        this.state.map((item) => (
-                            <DocumentItemForm key={item.id} label={item.label} type={item.type}/>
-                        ))
-                    }
-                </DocumentForm>
+                <div className="row">
+                    <div className="col-lg-8 offset-2">
+                        <DocumentForm>
+                            {
+                                this.state != null && this.state.map((item) => (
+                                    <DocumentItemForm key={item.id} label={item.label} type={item.type}/>
+                                ))
+                            }
+                        </DocumentForm>
+                    </div>
+                    <div className="col-lg-2">
+                        <ButtonComponent label="Add new item" click={this.addNewRow}/>
+                    </div>
+
+                </div>
             </div>
         );
     }
@@ -38,4 +48,8 @@ export class CreateDocumentForm extends Component {
 CreateDocumentForm.PropTypes = {
     label: PropTypes.string.isRequired
 }
-export default (CreateDocumentForm);
+export default connect()
+(reduxForm({
+    form: "AppForm",
+    destroyOnUnmount: true,
+})(CreateDocumentForm));
