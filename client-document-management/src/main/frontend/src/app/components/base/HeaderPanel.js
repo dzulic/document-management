@@ -6,11 +6,10 @@ export class HeaderPanel extends Component {
     render() {
         return (
             <div className="row" id="header-panel">
-                <div className="col-md-2 offset-md-1" id="header-panel-logo">
-                    <img src={logo} className="navbar-brand"/>
+                <div className="col-2" id="header-panel-logo">
+                    <img src={logo} className="brand"/>
                 </div>
-                <div className="col-md-4"></div>
-                <div className="col-md-5">
+                <div className="col-10">
                     <MenuPanel/>
                 </div>
             </div>

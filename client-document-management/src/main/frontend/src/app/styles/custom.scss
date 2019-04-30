@@ -5,7 +5,8 @@ html {
 body {
   height: 100%;
   margin: 0;
-  padding: 20px;
+  padding: 0 20px;
+  font-size: 12px;
   text-decoration: none;
   color: black !important;
   background-color: #EDE1F2 !important; /* fallback for old browsers */
@@ -13,11 +14,6 @@ body {
 
 #mainPanel {
   padding: 100px;
-}
-
-// NAVIGATION
-.navbar-brand {
-  height: 65px;
 }
 
 
@@ -87,4 +83,11 @@ div#text-input-component group {
 
 .container {
   padding-top: 20px;
+}
+
+@media (max-width: 300px) {
+  body {
+    padding: 10px 0;
+
+  }
 }

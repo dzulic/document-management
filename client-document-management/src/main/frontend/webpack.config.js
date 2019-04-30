@@ -100,13 +100,6 @@ module.exports = {
             allChunks: true
         }),
         new DashboardPlugin(),
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-            files: {
-                css: ['style.css'],
-                js: ["bundle.js"],
-            }
-        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('nodedev'),
