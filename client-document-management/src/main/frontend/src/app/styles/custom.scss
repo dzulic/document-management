@@ -54,11 +54,9 @@ div#text-input-component group {
 
 .form-control {
   background-color: transparent !important;
-  border: 0 !important;
 }
 
 .form-control:focus {
-  border: 0 !important;
   box-shadow: none !important;
 }
 
@@ -77,6 +75,7 @@ div#text-input-component group {
 .document-form {
   box-shadow: 1px 0px 15px 5px rgba(0, 0, 0, 0.50);
   min-height: 50px;
+  padding-bottom: 10px;
   background-color: white;
 }
 
@@ -87,18 +86,62 @@ div#text-input-component group {
 @media (max-width: 300px) {
   body {
     font-size: 8px;
+    line-height: 1;
   }
-  .container{
+  .container {
     padding: -10px 0;
 
   }
-  .form-control{
-   font-size: 0.4em;
+  .form-control {
+    font-size: 0.4em;
+    height: auto;
+    padding: 0 0;
+    border: 0;
+    border-radius:0;
+    border-bottom: solid #394177;
   }
-  .btn{
+
+  .btn {
     font-size: 0.4em;
   }
-  .bar{
-    height: 1px;
+  .bar {
+    height: 0.5px;
+  }
+  .text-input-component {
+    height: 15px;
+  }
+  .form-group{
+    margin-bottom: 10px;
+  }
+
+  .bar:before {
+    width: 60%;
+    align-self: center;
+    height: 70%;
+  }
+
+  label {
+    position: relative;
+    bottom: 20px;
+    font: 200 0.3em Roboto;
+    margin-bottom: 0px;
+  }
+  input:valid ~ label {
+    bottom: 10px;
+    font: 200 0.5em Roboto;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  input:focus ~ label {
+    bottom: 10px;
+    font: 200 0.5em Roboto;
+    color: #394177;
+  }
+  input {
+    padding-top: 20px;
+
+  }
+  div#text-input-component group {
+    margin-bottom: 5px;
+    max-width: 200px;
   }
 }

@@ -14,13 +14,11 @@ export class DocumentForm extends Component {
     render() {
         const {children} = this.props;
         return (
-            <div className="document-form col-lg-12">
-                <div className="row">
-                    <div className="col-lg-4 offset-lg-4">
-                        <Field component={TextInputComponent} name="docTitle" placeholder="Document Title"/>
+            <div className="document-form">
+                    <div className="col-6 offset-3">
+                        <Field component={TextInputComponent} name="docTitle" placeholder="Document Title" customClass="text-center"/>
                     </div>
-                </div>
-                <div>
+                <div className="col-6 offset-1">
                     {children}
                 </div>
             </div>
