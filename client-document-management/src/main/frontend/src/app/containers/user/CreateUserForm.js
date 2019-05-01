@@ -12,15 +12,15 @@ export class CreateUserForm extends Component {
 
     render() {
         return (
-            <div className="col-lg-6 offset-lg-3">
+            <div className="col-12">
                 <h1>Create User</h1>
                 <div className="row">
-                    <div className="col-lg">
+                    <div className="col-4 offset-2">
                         <Field name="username"
                                label="username"
                                component={TextInputComponent}/>
                     </div>
-                    <div className="col-lg">
+                    <div className="col-4">
                         <Field name="password"
                                label="password"
                                component={TextInputComponent}/>
@@ -28,12 +28,12 @@ export class CreateUserForm extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-lg">
+                    <div className="col-4 offset-2">
                         <Field name="name"
                                label="name"
                                component={TextInputComponent}/>
                     </div>
-                    <div className="col-lg">
+                    <div className="col-4">
                         <Field name="lastName"
                                label="lastName"
                                component={TextInputComponent}/>
@@ -41,56 +41,55 @@ export class CreateUserForm extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-lg">
+                    <div className="col-4 offset-2">
                         <Field name="email"
                                label="email"
                                component={TextInputComponent}/>
                     </div>
-                    <div className="col-lg">
+                    <div className="col-4">
                         <Field name="mobilePhone"
                                label="mobilePhone"
                                component={TextInputComponent}/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg">
+                    <div className="col-4 offset-2">
                         <Field name="company"
                                label="company"
                                component={TextInputComponent}/>
                     </div>
-                    <div className="col-lg">
+                    <div className="col-4">
                         <Field name="country"
                                label="country"
                                component={TextInputComponent}/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg">
+                    <div className="col-4 offset-2">
                         <Field name="team"
                                label="team"
                                component={TextInputComponent}/>
                     </div>
-                    <div className="col-lg">
+                    <div className="col-4">
                         <Field name="position"
                                label="position"
                                component={TextInputComponent}/>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-6">
+                    <div className="col-4 offset-2">
                         <Field name="profession"
                                label="profession"
                                component={TextInputComponent}/>
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-4">
                         <Field name="employeeID"
                                label="employeeID"
                                component={TextInputComponent}/>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-lg-6"></div>
-                    <div className="col-lg-6"><ButtonComponent label="Submit"/></div>
+                <div className="col-12">
+                    <div className="col-4 offset-4"><ButtonComponent label="Submit"/></div>
                 </div>
             </div>
         );

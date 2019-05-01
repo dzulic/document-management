@@ -14,22 +14,22 @@ export class CreateCompanyForm extends Component {
             <div className="col-lg-6 offset-lg-3">
                 <h1>Create Company</h1>
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="companyName"/></div>
-                    <div className="col-lg"><TextInputComponent label="companyNo"/></div>
+                    <div className="col-4 offset-2"><TextInputComponent label="companyName"/></div>
+                    <div className="col-4"><TextInputComponent label="companyNo"/></div>
                 </div>
 
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="country"/></div>
-                    <div className="col-lg"><TextInputComponent label="city"/></div>
+                    <div className="col-4 offset-2"><TextInputComponent label="country"/></div>
+                    <div className="col-4"><TextInputComponent label="city"/></div>
                 </div>
 
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="yearOfEstablishment"/></div>
-                    <div className="col-lg"><TextInputComponent label="business"/></div>
+                    <div className="col-4 offset-2"><TextInputComponent label="yearOfEstablishment"/></div>
+                    <div className="col-4"><TextInputComponent label="business"/></div>
                 </div>
                 <div className="row">
-                    <div className="col-lg"><TextInputComponent label="phone"/></div>
-                    <div className="col-lg"><TextInputComponent label="email"/></div>
+                    <div className="col-4 offset-2"><TextInputComponent label="phone"/></div>
+                    <div className="col-4"><TextInputComponent label="email"/></div>
                 </div>
                 <div className="row">
                     <div className="col-lg-6"></div>

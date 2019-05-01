@@ -33,6 +33,7 @@ export class CreateDocumentForm extends Component {
         return (
             <div>
                 <div className="col-lg-12">
+                    <h1>Create Document</h1>
                     <div className="col-lg-8 offset-lg-2">
                         <DocumentForm>
                             {
