@@ -10,7 +10,7 @@ export class CreateCompanyTask extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <CreateCompanyForm/>
             </div>
         );

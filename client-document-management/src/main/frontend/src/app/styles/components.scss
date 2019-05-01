@@ -27,7 +27,7 @@ input {
 
 input:valid ~ label {
   top: 0;
-  font: 700 22px Roboto;
+  font: 700 1em Roboto;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -37,7 +37,7 @@ input:focus {
 
 input:focus ~ label {
   top: 0;
-  font: 700 22px Roboto;
+  font: 700 1em Roboto;
   color: #394177;
 }
 
@@ -52,7 +52,7 @@ input:-webkit-autofill {
 
 .bar {
   content: '';
-  height: 1px;
+  height: 0.5px;
   transition: .3s ease;
   position: relative;
 }

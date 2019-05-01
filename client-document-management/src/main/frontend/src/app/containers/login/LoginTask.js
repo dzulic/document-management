@@ -10,7 +10,7 @@ export class LoginTask extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <LoginForm/>
             </div>
         );

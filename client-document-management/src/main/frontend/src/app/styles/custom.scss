@@ -5,7 +5,6 @@ html {
 body {
   height: 100%;
   margin: 0;
-  padding: 0 20px;
   font-size: 12px;
   text-decoration: none;
   color: black !important;
@@ -77,7 +76,7 @@ div#text-input-component group {
 
 .document-form {
   box-shadow: 1px 0px 15px 5px rgba(0, 0, 0, 0.50);
-  min-height: 300px;
+  min-height: 50px;
   background-color: white;
 }
 
@@ -87,7 +86,19 @@ div#text-input-component group {
 
 @media (max-width: 300px) {
   body {
-    padding: 10px 0;
+    font-size: 8px;
+  }
+  .container{
+    padding: -10px 0;
 
+  }
+  .form-control{
+   font-size: 0.4em;
+  }
+  .btn{
+    font-size: 0.4em;
+  }
+  .bar{
+    height: 1px;
   }
 }

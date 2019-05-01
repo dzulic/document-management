@@ -5,30 +5,38 @@ import {DocumentItemForm} from "./DocumentItemForm";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
 import {reduxForm} from "redux-form";
-import {LoginForm} from "../../login/LoginForm";
 
 export class CreateDocumentForm extends Component {
 
     constructor(props) {
         super(props);
-        this.addNewRow.bind = this.addNewRow.bind(this);
-
+        this.addNewRow = this.addNewRow.bind(this);
+        this.state = {
+            items: []
+        }
     }
 
     addNewRow(id, type, label) {
-        this.setState(this.state.concat([
-            {id: id, type: type, label: label}
-        ]))
+        console.log("NES")
+        id = "J";
+        type = "INPUT";
+        label = "JUL";
+        let it = this.state.items;
+        let i1 = {
+            items: it.push(
+                {id: id, type: type, label: label})
+        };
+        this.setState(it)
     }
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-8 offset-2">
+            <div>
+                <div className="col-lg-12">
+                    <div className="col-lg-8 offset-lg-2">
                         <DocumentForm>
                             {
-                                this.state != null && this.state.map((item) => (
+                                this.state != null && this.state.items.map((item) => (
                                     <DocumentItemForm key={item.id} label={item.label} type={item.type}/>
                                 ))
                             }

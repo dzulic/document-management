@@ -22,7 +22,7 @@ export class CreateUserTask extends Component {
         const {handleSubmit} = this.props;
 
         return (
-            <form onSubmit={handleSubmit(this.onSubmit)} className="container">
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 <CreateUserForm/>
             </form>
         );

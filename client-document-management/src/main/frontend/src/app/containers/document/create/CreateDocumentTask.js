@@ -10,7 +10,7 @@ export class CreateDocumentTask extends Component {
 
     render() {
         return (
-            <div id="container">
+            <div>
                 <CreateDocumentForm/>
             </div>
         );
