@@ -3,6 +3,23 @@ import {Modal} from 'react-bootstrap';
 import {Field} from "redux-form";
 import {TextInputComponent} from "../integral/TextInputComponent";
 import PropTypes from "prop-types";
+import DropDownComponent from "../integral/DropDownComponent";
+export const requiredProps = {
+    props: {
+        required: true,
+    }
+};
+const buttonOptions = {
+    selectOptions: [
+        {label: 'Text Input', value: 'INPUT'},
+        {label: 'Title', value: 'TITLE'},
+        {label: 'Drop Down', value: 'DROP_DOWN'},
+    ]
+};
+export const BtnTypeInputProps = {
+    ...buttonOptions,
+    ...requiredProps
+};
 
 class AddNewItemModal extends React.Component {
     constructor(props) {
@@ -47,6 +64,10 @@ class AddNewItemModal extends React.Component {
                         <form onSubmit={this.handleSubmit(this.onSubmit)}>
                             <div className="row">
                                 <div className="col-md-8 col-md-offset-2">
+                                    <Field name="componentType"
+                                           label="componentType"
+                                           baseComponentConfig={BtnTypeInputProps}
+                                           component={DropDownComponent}/>
                                     <Field name="username"
                                            label="username"
                                            component={TextInputComponent}/>

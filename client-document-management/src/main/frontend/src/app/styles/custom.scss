@@ -94,8 +94,53 @@ div#text-input-component group {
 .modal-footer {
   display: none;
 }
-.modal-body{
+
+.modal-body {
   z-index: 1099;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.selectdiv:after {
+  content: '<>';
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /*Adjust for position however you want*/
+  /*left line */
+  float: right;
+  font-size: inherit;
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+
+  display: block;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  -ms-word-break: normal;
+  word-break: normal;
 }
 
 @media (max-width: 300px) {
@@ -178,10 +223,26 @@ div#text-input-component group {
   .modal-body {
     padding: 0 5px 10px 5px;
   }
-  .modal-header .close{
+  .modal-header .close {
     font-size: 5px;
     z-index: 1098;
     padding: 0 5px;
     margin: 0;
   }
+  .selectdiv:after {
+    font-size: 0.3em;
+    padding: -10px 0 0 0;
+  }
+  .selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    height: inherit;
+    line-height: 1.5;
+    padding: 1.5px;
+    font-size: 0.4em;
+
+  }
+
 }
