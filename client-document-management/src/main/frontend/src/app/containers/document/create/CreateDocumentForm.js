@@ -5,6 +5,7 @@ import {DocumentItemForm} from "./DocumentItemForm";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
 import {reduxForm} from "redux-form";
+import AddNewItemModal from "../../../components/modals/AddNewItemModal";
 
 export class CreateDocumentForm extends Component {
 
@@ -12,11 +13,16 @@ export class CreateDocumentForm extends Component {
         super(props);
         this.addNewRow = this.addNewRow.bind(this);
         this.state = {
-            items: []
+            items: [],
+            showModal: false,
         }
     }
 
     addNewRow(id, type, label) {
+        this.setState({
+            showModal: true
+        });
+
         console.log("NES")
         id = "J";
         type = "INPUT";
@@ -30,8 +36,10 @@ export class CreateDocumentForm extends Component {
     }
 
     render() {
+        console.log(this.state.showModal);
         return (
             <div>
+                {this.state.showModal && <AddNewItemModal showModal={this.state.showModal}/>}
                 <div className="col-lg-12">
                     <h1>Create Document</h1>
                     <div className="col-lg-8 offset-lg-2">
@@ -46,7 +54,6 @@ export class CreateDocumentForm extends Component {
                     <div className="col-lg-2">
                         <ButtonComponent label="Add new item" click={this.addNewRow}/>
                     </div>
-
                 </div>
             </div>
         );

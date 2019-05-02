@@ -83,6 +83,21 @@ div#text-input-component group {
   padding-top: 20px;
 }
 
+.modal-dialog {
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+}
+
+.modal-footer {
+  display: none;
+}
+.modal-body{
+  z-index: 1099;
+}
+
 @media (max-width: 300px) {
   body {
     font-size: 8px;
@@ -97,11 +112,11 @@ div#text-input-component group {
     height: auto;
     padding: 0 0;
     border: 0;
-    border-radius:0;
+    border-radius: 0;
     border-bottom: solid #394177;
   }
 
-  h1{
+  h1 {
     font-size: 10px;
     padding-bottom: 0;
   }
@@ -114,7 +129,7 @@ div#text-input-component group {
   .text-input-component {
     height: 15px;
   }
-  .form-group{
+  .form-group {
     margin-bottom: 10px;
   }
 
@@ -151,8 +166,22 @@ div#text-input-component group {
   #button-component button {
     margin-top: 10px;
   }
-  .btn{
+  .btn {
     padding: 3px 3px;
   }
-
+  .modal-header {
+    padding: 5px 0 3px 5px;
+  }
+  .modal-title {
+    font-size: 0.5em;
+  }
+  .modal-body {
+    padding: 0 5px 10px 5px;
+  }
+  .modal-header .close{
+    font-size: 5px;
+    z-index: 1098;
+    padding: 0 5px;
+    margin: 0;
+  }
 }
