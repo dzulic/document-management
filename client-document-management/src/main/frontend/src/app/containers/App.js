@@ -5,7 +5,7 @@ class App extends Component {
     render() {
         const {children} = this.props;
         return (
-            <div className="container-fluid">
+            <div className="container page">
                 <HeaderPanel/>
                 {children}
             </div>);

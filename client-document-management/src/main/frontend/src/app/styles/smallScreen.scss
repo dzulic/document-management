@@ -1,0 +1,103 @@
+@media (max-width: 300px) {
+  body {
+    font-size: 8px;
+    line-height: 1;
+  }
+  .container {
+    padding: -10px 0;
+
+  }
+  .form-control {
+    font-size: 0.4em;
+    height: auto;
+    padding: 0 0;
+    border: 0;
+    border-radius: 0;
+    border-bottom: solid #394177;
+  }
+
+  h1 {
+    font-size: 10px;
+    padding-bottom: 0;
+  }
+  .btn {
+    font-size: 0.4em;
+  }
+  .bar {
+    height: 0.5px;
+  }
+  .text-input-component {
+    height: 15px;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .bar:before {
+    width: 60%;
+    align-self: center;
+    height: 70%;
+  }
+
+  label {
+    position: relative;
+    bottom: 20px;
+    font: 200 0.3em Roboto;
+    margin-bottom: 0px;
+  }
+  input:valid ~ label {
+    bottom: 10px;
+    font: 200 0.5em Roboto;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  input:focus ~ label {
+    bottom: 10px;
+    font: 200 0.5em Roboto;
+    color: #394177;
+  }
+  input {
+    padding-top: 20px;
+
+  }
+  div#text-input-component group {
+    margin-bottom: 5px;
+    max-width: 200px;
+  }
+  #button-component button {
+    margin-top: 10px;
+  }
+  .btn {
+    padding: 3px 3px;
+  }
+  .modal-header {
+    padding: 5px 0 3px 5px;
+  }
+  .modal-title {
+    font-size: 0.5em;
+  }
+  .modal-body {
+    padding: 0 5px 10px 5px;
+  }
+  .modal-header .close {
+    font-size: 5px;
+    z-index: 1098;
+    padding: 0 5px;
+    margin: 0;
+  }
+  .selectdiv:after {
+    font-size: 0.3em;
+    padding: 0px 0 0 0;
+  }
+  .selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    height: inherit;
+    line-height: 1.5;
+    padding: 1.5px;
+    font-size: 0.4em;
+
+  }
+
+}
