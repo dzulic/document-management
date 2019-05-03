@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FormControl} from "react-bootstrap";
+import {Translate} from "react-redux-i18n";
+import {I18n} from "react-redux-i18n";
 
 export class TextInputComponent extends Component {
 
@@ -36,7 +38,7 @@ export class TextInputComponent extends Component {
                     <FormControl id={label} type="text" required="required" spellCheck="false"
                                  name={label} placeholder={placeholder} className={customClass}
                                  {...input}/>
-                    <label htmlFor={label}>{label}</label>
+                    {label && <label htmlFor={label}>{I18n.t("application.label." + label)}</label>}
                 </div>
 
             </div>
@@ -46,7 +48,7 @@ export class TextInputComponent extends Component {
 }
 
 TextInputComponent.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     required: PropTypes.bool,
     input: PropTypes.object,
     placeholder: PropTypes.string,

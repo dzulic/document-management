@@ -25,9 +25,6 @@ export default class DropDownComponent extends React.Component {
 
     getOptions(dropDownOptions, withTranslate, translateValuePrefix) {
         var dropDownElements = [];
-
-        //FIXME I18n.t - should be changed with custom react component which will then allow runtime i18n change
-
         for (var i = 0; i < dropDownOptions.length; i++) {
             let disable = dropDownOptions[i].selectable != undefined && dropDownOptions[i].selectable === false;
             if (!withTranslate) {
@@ -66,7 +63,7 @@ export default class DropDownComponent extends React.Component {
                     <select className="form-control" {...props} disabled id={label}>
                         {selectElement}
                     </select>
-                    <label htmlFor={label}>{label}</label>
+                    <label htmlFor={label}>{I18n.t('application.label.' + label)}</label>
                 </div>
             )
         } else {
@@ -76,7 +73,7 @@ export default class DropDownComponent extends React.Component {
                         <option key={-1} value=""/>
                         {selectElement}
                     </select>
-                    <label htmlFor={label}>{label}</label>
+                    <label htmlFor={label}>{I18n.t('application.label.' + label)}</label>
                 </div>
             )
 

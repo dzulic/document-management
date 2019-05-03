@@ -18,7 +18,7 @@ export class UploadDocumentForm extends Component {
 
 }
 
-UploadDocumentForm.PropTypes = {
+UploadDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
 export default (UploadDocumentForm);

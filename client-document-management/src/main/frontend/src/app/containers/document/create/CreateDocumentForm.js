@@ -61,7 +61,7 @@ export class CreateDocumentForm extends Component {
 
 }
 
-CreateDocumentForm.PropTypes = {
+CreateDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
 export default connect()

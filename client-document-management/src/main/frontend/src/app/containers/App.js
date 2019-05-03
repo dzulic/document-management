@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import HeaderPanel from "../components/base/HeaderPanel";
 
+
 class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         const {children} = this.props;
         return (
