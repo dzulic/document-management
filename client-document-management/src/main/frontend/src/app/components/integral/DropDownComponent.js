@@ -39,7 +39,8 @@ export default class DropDownComponent extends React.Component {
             } else {
                 if (translateValuePrefix) {
                     dropDownElements.push(
-                        <DropDownOptionElement key={i} translateValuePrefix={translateValuePrefix} dropDownOption={dropDownOptions[i]} />
+                        <DropDownOptionElement key={i} translateValuePrefix={translateValuePrefix}
+                                               dropDownOption={dropDownOptions[i]}/>
                     );
                 } else {
                     dropDownElements.push(
@@ -56,21 +57,27 @@ export default class DropDownComponent extends React.Component {
     }
 
     getData() {
-        const {baseComponentConfig: {selectOptions, props, withTranslate, translateValuePrefix, disableSingleElementReadOnly}} = this.props;
+        const {baseComponentConfig: {selectOptions, props, withTranslate, translateValuePrefix, disableSingleElementReadOnly, label}} = this.props;
         var selectElement = this.getOptions(selectOptions, withTranslate, translateValuePrefix);
 
         if (!disableSingleElementReadOnly && selectOptions.length == 1) {
             return (
-                <select className="form-control" {...props} disabled>
-                    {selectElement}
-                </select>
+                <div>
+                    <select className="form-control" {...props} disabled id={label}>
+                        {selectElement}
+                    </select>
+                    <label htmlFor={label}>{label}</label>
+                </div>
             )
         } else {
             return (
-                <select className="form-control" {...props} onChange={this.onChange}>
-                    <option key={-1} value=""/>
-                    {selectElement}
-                </select>
+                <div>
+                    <select className="form-control" {...props} onChange={this.onChange} id={label}>
+                        <option key={-1} value=""/>
+                        {selectElement}
+                    </select>
+                    <label htmlFor={label}>{label}</label>
+                </div>
             )
 
         }
@@ -104,5 +111,6 @@ DropDownComponent.propTypes = {
         props: PropTypes.object //data sent as {...props} to primitive element
 
     }).isRequired,
-    inputProps: PropTypes.object //array of attributes inside of select (used by @ReduxForm)
+    inputProps: PropTypes.object, //array of attributes inside of select (used by @ReduxForm),
+    label: PropTypes.string
 }

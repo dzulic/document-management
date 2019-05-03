@@ -33,10 +33,10 @@ export class TextInputComponent extends Component {
         return (
             <div className="text-input-component">
                 <div className="form-group">
-                    <label htmlFor={label}>{label}</label>
                     <FormControl id={label} type="text" required="required" spellCheck="false"
                                  name={label} placeholder={placeholder} className={customClass}
                                  {...input}/>
+                    <label htmlFor={label}>{label}</label>
                 </div>
 
             </div>

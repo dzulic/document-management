@@ -1,0 +1,33 @@
+.modal {
+  &-dialog {
+    width: 40%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+  }
+  &-title {
+    font-size: 15px;
+  }
+
+  &-footer {
+    display: none;
+  }
+
+  &-body {
+    z-index: 1099;
+    padding: 20px 0 0 50px;
+  }
+
+  &-header {
+    padding: 15px 0 13px 15px;
+
+    .close {
+      font-size: 15px;
+      padding: 0 20px;
+      margin: 0;
+      z-index: 1099;
+    }
+  }
+}
+

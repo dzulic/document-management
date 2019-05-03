@@ -4,6 +4,7 @@ import {Field} from "redux-form";
 import {TextInputComponent} from "../integral/TextInputComponent";
 import PropTypes from "prop-types";
 import DropDownComponent from "../integral/DropDownComponent";
+
 export const requiredProps = {
     props: {
         required: true,
@@ -18,7 +19,8 @@ const buttonOptions = {
 };
 export const BtnTypeInputProps = {
     ...buttonOptions,
-    ...requiredProps
+    ...requiredProps,
+    label: "documentType"
 };
 
 class AddNewItemModal extends React.Component {

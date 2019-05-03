@@ -9,11 +9,37 @@ body {
   text-decoration: none;
   color: black !important;
   background-color: #EDE1F2 !important;
+  overflow: hidden scroll;
+}
+
+.form-control {
+  height: auto;
+  padding: 0 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: solid #394177;
+  background-color: transparent !important;
+
+  &:focus {
+    box-shadow: none !important;
+
+  }
 }
 
 .page {
   padding: 0 0 20px 0;
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    font-weight: 200 !important;
+  }
+
+
 }
+
 
 #mainPanel {
   padding: 100px;
@@ -22,13 +48,6 @@ body {
 
 }
 
-h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 30px;
-  font-weight: 200 !important;
-}
 
 //COMPONENTS
 div#text-input-component group {
@@ -58,17 +77,6 @@ div#text-input-component group {
   float: right;
 }
 
-.form-control {
-  background-color: transparent !important;
-}
-
-.form-control:focus {
-  box-shadow: none !important;
-}
-
-.label {
-  top: -5px;
-}
 
 .nav ul li:nth-child(2) > a:before {
   display: none !important;
@@ -89,21 +97,6 @@ div#text-input-component group {
   padding-top: 30px;
 }
 
-.modal-dialog {
-  width: 40%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
-}
-
-.modal-footer {
-  display: none;
-}
-
-.modal-body {
-  z-index: 1099;
-}
 
 select {
   -webkit-appearance: none;
@@ -116,35 +109,36 @@ select::-ms-expand {
   display: none;
 }
 
-.selectdiv:after {
-  content: '<>';
-  color: #333;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  /*Adjust for position however you want*/
-  /*left line */
-  float: right;
-  font-size: inherit;
-  position: absolute;
-  pointer-events: none;
-}
+.selectdiv {
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    max-width: 320px;
+    height: 40px;
+    float: right;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    -ms-word-break: normal;
+    word-break: normal;
 
-.selectdiv select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  /* Add some styling */
+    &:after {
+      content: '<>';
+      color: #333;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+      /*Adjust for position however you want*/
+      /*left line */
+      float: right;
+      font-size: inherit;
+      position: absolute;
+      pointer-events: none;
+    }
 
-  display: block;
-  max-width: 320px;
-  height: 50px;
-  float: right;
-  line-height: 1.75;
-  color: #333;
-  background-color: #ffffff;
-  background-image: none;
-  -ms-word-break: normal;
-  word-break: normal;
+  }
+
 }
