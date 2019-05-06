@@ -29,7 +29,6 @@ export class MenuComponent extends Component {
     }
 
     onMouseEnteredSubMenu() {
-        console.log("onMouseEnteredSubMenu");
         this.state.mouseDown = 1;
     }
 

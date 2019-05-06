@@ -2,7 +2,6 @@ import ApiLogin from "../api/LoginApi";
 import {call, put} from "redux-saga/effects";
 
 export function* loginUser(action) {
-    console.log("SAGAS");
 
     try {
         const response = yield call(ApiLogin.login, action.user);

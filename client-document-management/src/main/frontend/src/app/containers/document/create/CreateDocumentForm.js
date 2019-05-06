@@ -6,32 +6,22 @@ import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {openAddItemModal} from "../../../actions/actions";
+import {getValueAppPropertyStore} from "../../../utils/storeUtil";
+import {DOCUMENT_ITEMS} from "../../../utils/Constants";
 
 export class CreateDocumentForm extends Component {
 
     constructor(props) {
         super(props);
         this.addNewRow = this.addNewRow.bind(this);
-        this.state = {
-            items: [],
-        }
     }
 
-    addNewRow(id, type, label) {
-      this.props.dispatch(openAddItemModal())
-        console.log("inpt");
-        type = "INPUT";
-        label = "JUL";
-        let it = this.state.items;
-        console.log("IT",it.length);
-        let i1 = {
-            items: it.push(
-                {id: it.length, type: type, label: label})
-        };
-        this.setState(it)
+    addNewRow() {
+        this.props.dispatch(openAddItemModal());
     }
 
     render() {
+        const {items} = this.props;
         return (
             <div>
                 <div className="col-lg-12">
@@ -39,7 +29,7 @@ export class CreateDocumentForm extends Component {
                     <div className="col-lg-8 offset-lg-2">
                         <DocumentForm>
                             {
-                                this.state != null && this.state.items.map((item) => (
+                                items != null && items.map((item) => (
                                     <DocumentItemForm key={item.id} label={item.label} type={item.type}/>
                                 ))
                             }
@@ -59,12 +49,11 @@ CreateDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
 const selector = getFormValues("AppForm");
-const selectorItem = getFormValues("ItemForm");
 
 function mapStateToProps(state) {
     return {
         formValues: selector(state),
-        formValuesItem: selectorItem(state),
+        items: getValueAppPropertyStore(state, DOCUMENT_ITEMS),
     }
 }
 

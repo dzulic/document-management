@@ -3,6 +3,7 @@ import {routerReducer} from "react-router-redux";
 import {reducer as reduxFormReducer} from "redux-form";
 import {i18nReducer} from 'react-redux-i18n';
 import modalDialog from "./modalDialog";
+import application from "./application";
 
 // main reducers
 export const reducers = combineReducers({
@@ -10,4 +11,5 @@ export const reducers = combineReducers({
     form: reduxFormReducer,
     i18n: i18nReducer,
     modalDialog: modalDialog,
+    application: application
 });
