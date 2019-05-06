@@ -8,6 +8,6 @@ import {createUser} from '../sagas/userSaga'
 export function* sagas() {
     yield [
         fork(takeEvery, types.LOGIN, loginUser),
-        takeEvery(types.CREATE_USER, createUser)
+        takeEvery(types.CREATE_USER, createUser),
     ];
 }

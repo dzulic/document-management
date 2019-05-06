@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {I18n} from "react-redux-i18n";
 
 export class ButtonComponent extends Component {
 
@@ -8,10 +9,11 @@ export class ButtonComponent extends Component {
     }
 
     render() {
-        const {label,click} = this.props;
+        const {label, click} = this.props;
         return (
             <div id="button-component">
-                <button className="btn btn-submit" type="submit" onClick={click}>{label}</button>
+                <button className="btn btn-submit" type="button"
+                        onClick={click}>{I18n.t("application." + label)}</button>
             </div>
         );
     }

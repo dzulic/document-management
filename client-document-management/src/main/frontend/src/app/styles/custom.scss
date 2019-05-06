@@ -157,7 +157,7 @@ select::-ms-expand {
   }
 
   &-footer {
-    display: none;
+    z-index: 1098;
   }
 
   &-body {

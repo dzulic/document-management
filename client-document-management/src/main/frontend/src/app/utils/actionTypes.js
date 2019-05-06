@@ -1,2 +1,4 @@
 export var CREATE_USER = "CREATE_USER";
 export var LOGIN = "LOGIN";
+export var OPEN_ADD_ITEM_MODAL = "OPEN_ADD_ITEM_MODAL";
+export var CLOSE_MODAL_DIALOG = "CLOSE_MODAL_DIALOG";

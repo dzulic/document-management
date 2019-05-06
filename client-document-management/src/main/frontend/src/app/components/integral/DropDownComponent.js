@@ -14,8 +14,8 @@ export default class DropDownComponent extends React.Component {
 
 
     onChange(event) {
-        const {baseComponentConfig: {props: {onChange}, decorateOnChange}} = this.props;
-        onChange(event.target.value);
+        const {baseComponentConfig: {decorateOnChange}, input} = this.props;
+        input.onChange(event.target.value);
         if (decorateOnChange !== undefined) {
             decorateOnChange(event);
         }
@@ -60,7 +60,7 @@ export default class DropDownComponent extends React.Component {
         if (!disableSingleElementReadOnly && selectOptions.length == 1) {
             return (
                 <div>
-                    <select className="form-control" {...props} disabled id={label}>
+                    <select className="form-control" {...props} onChange={this.onChange} disabled id={label}>
                         {selectElement}
                     </select>
                     <label htmlFor={label}>{I18n.t('application.label.' + label)}</label>

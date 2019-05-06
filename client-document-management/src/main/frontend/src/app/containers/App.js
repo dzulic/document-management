@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HeaderPanel from "../components/base/HeaderPanel";
+import Dialog from "../components/modals/Dialog";
 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         return (
             <div className="container page">
                 <HeaderPanel/>
+                <Dialog/>
                 {children}
             </div>);
     }

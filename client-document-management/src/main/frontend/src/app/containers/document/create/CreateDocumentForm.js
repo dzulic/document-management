@@ -4,8 +4,8 @@ import {DocumentForm} from "./DocumentForm";
 import {DocumentItemForm} from "./DocumentItemForm";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
-import {reduxForm} from "redux-form";
-import AddNewItemModal from "../../../components/modals/AddNewItemModal";
+import {getFormValues, reduxForm} from "redux-form";
+import {openAddItemModal} from "../../../actions/actions";
 
 export class CreateDocumentForm extends Component {
 
@@ -14,32 +14,26 @@ export class CreateDocumentForm extends Component {
         this.addNewRow = this.addNewRow.bind(this);
         this.state = {
             items: [],
-            showModal: false,
         }
     }
 
     addNewRow(id, type, label) {
-        this.setState({
-            showModal: true
-        });
-
-        console.log("NES")
-        id = "J";
+      this.props.dispatch(openAddItemModal())
+        console.log("inpt");
         type = "INPUT";
         label = "JUL";
         let it = this.state.items;
+        console.log("IT",it.length);
         let i1 = {
             items: it.push(
-                {id: id, type: type, label: label})
+                {id: it.length, type: type, label: label})
         };
         this.setState(it)
     }
 
     render() {
-        console.log(this.state.showModal);
         return (
             <div>
-                {this.state.showModal && <AddNewItemModal showModal={this.state.showModal}/>}
                 <div className="col-lg-12">
                     <h1>Create Document</h1>
                     <div className="col-lg-8 offset-lg-2">
@@ -64,7 +58,17 @@ export class CreateDocumentForm extends Component {
 CreateDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
-export default connect()
+const selector = getFormValues("AppForm");
+const selectorItem = getFormValues("ItemForm");
+
+function mapStateToProps(state) {
+    return {
+        formValues: selector(state),
+        formValuesItem: selectorItem(state),
+    }
+}
+
+export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
     destroyOnUnmount: true,

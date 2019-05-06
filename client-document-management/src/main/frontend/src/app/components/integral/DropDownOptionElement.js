@@ -23,7 +23,6 @@ class DropDownOptionElement extends React.Component {
 
     render() {
         const {key, dropDownOption, translateValuePrefix} = this.props;
-
         return (
             <option key={key} value={dropDownOption.value}>
                 {this.getTranslate(translateValuePrefix, dropDownOption.label)}
