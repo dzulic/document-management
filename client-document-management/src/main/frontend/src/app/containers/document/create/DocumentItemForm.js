@@ -31,6 +31,8 @@ export class DocumentItemForm extends Component {
         let typeInput = type !== undefined && type != "" && type == "INPUT";
         let typeDate = type !== undefined && type != "" && type == "DATE";
         let typeDropDown = type !== undefined && type != "" && type == "DROP_DOWN";
+        let typeBreak = type !== undefined && type != "" && type == "BREAK";
+
         const baseConfigDropDown = {
             ...this.defineOptions(options),
             label: label,
@@ -56,6 +58,7 @@ export class DocumentItemForm extends Component {
                     {typeTitle && <Field name={label}
                                          label={label}
                                          component={TextInputComponent}/>}
+                    {typeBreak && <br/>}
                 </div>
             </div>
         );

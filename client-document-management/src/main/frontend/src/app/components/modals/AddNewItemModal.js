@@ -21,6 +21,8 @@ const buttonOptions = {
         {label: 'Title', value: 'TITLE'},
         {label: 'Drop Down', value: 'DROP_DOWN'},
         {label: 'Date', value: 'DATE'},
+        {label: 'Break', value: 'BREAK'},
+
     ]
 };
 export const BtnTypeInputProps = {
@@ -41,7 +43,12 @@ class AddNewItemModal extends React.Component {
     handleSubmit() {
         const {items, formValuesItem, dispatch} = this.props;
         let it = items == null ? [] : items;
-        it.push({id: it.length, type: formValuesItem.componentType, label: formValuesItem.label, options: formValuesItem.options});
+        it.push({
+            id: it.length,
+            type: formValuesItem.componentType,
+            label: formValuesItem.label,
+            options: formValuesItem.options
+        });
         dispatch({
             type: 'ADD_EDIT_APP_PROP_STORE',
             property: {
@@ -76,17 +83,19 @@ class AddNewItemModal extends React.Component {
                                        label="componentType"
                                        baseComponentConfig={BtnTypeInputProps}
                                        component={DropDownComponent}/>
-                                {formValuesItem!=undefined && formValuesItem.componentType == 'DROP_DOWN' &&
+                                {formValuesItem != undefined && formValuesItem.componentType == 'DROP_DOWN' &&
                                 <p>Insert options, separated by ','</p>
                                 }
-                                {formValuesItem!=undefined && formValuesItem.componentType == 'DROP_DOWN' &&
+                                {formValuesItem != undefined && formValuesItem.componentType == 'DROP_DOWN' &&
                                 <Field name="options"
                                        label="options"
                                        component={TextInputComponent}/>
                                 }
+                                {formValuesItem != undefined && formValuesItem.componentType !== 'BREAK' &&
                                 <Field name="label"
                                        label="label"
                                        component={TextInputComponent}/>
+                                }
                             </div>
                         </div>
                     </Modal.Body>
