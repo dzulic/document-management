@@ -30,7 +30,8 @@ export class CreateDocumentForm extends Component {
                         <DocumentForm>
                             {
                                 items != null && items.map((item) => (
-                                    <DocumentItemForm key={item.id} label={item.label} type={item.type}/>
+                                    <DocumentItemForm key={item.id} label={item.label} type={item.type}
+                                                      options={item.options != undefined ? item.options.split(',') : undefined}/>
                                 ))
                             }
                         </DocumentForm>

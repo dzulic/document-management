@@ -41,7 +41,7 @@ class AddNewItemModal extends React.Component {
     handleSubmit() {
         const {items, formValuesItem, dispatch} = this.props;
         let it = items == null ? [] : items;
-        it.push({id: it.length, type: formValuesItem.componentType, label: formValuesItem.label});
+        it.push({id: it.length, type: formValuesItem.componentType, label: formValuesItem.label, options: formValuesItem.options});
         dispatch({
             type: 'ADD_EDIT_APP_PROP_STORE',
             property: {
@@ -58,6 +58,7 @@ class AddNewItemModal extends React.Component {
     }
 
     render() {
+        const {formValuesItem} = this.props;
         return (
             <div className="col-4 offset-4">
                 <Modal show={this.props.showModal}
@@ -75,6 +76,14 @@ class AddNewItemModal extends React.Component {
                                        label="componentType"
                                        baseComponentConfig={BtnTypeInputProps}
                                        component={DropDownComponent}/>
+                                {formValuesItem!=undefined && formValuesItem.componentType == 'DROP_DOWN' &&
+                                <p>Insert options, separated by ','</p>
+                                }
+                                {formValuesItem!=undefined && formValuesItem.componentType == 'DROP_DOWN' &&
+                                <Field name="options"
+                                       label="options"
+                                       component={TextInputComponent}/>
+                                }
                                 <Field name="label"
                                        label="label"
                                        component={TextInputComponent}/>

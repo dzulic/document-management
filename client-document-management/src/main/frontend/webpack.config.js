@@ -112,7 +112,7 @@ module.exports = {
                 app_root: app_root, // the app root folder, needed by the other webpack configs
             }
         }),
-        new CleanWebpackPlugin(['css/main.css', 'js/*'], {
+        new CleanWebpackPlugin(['styles/main.css', 'js/*'], {
             root: __dirname + '/' + dist_root,
             verbose: true,
             dry: false, // true for simulation

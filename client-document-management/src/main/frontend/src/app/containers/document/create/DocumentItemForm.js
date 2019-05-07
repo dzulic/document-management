@@ -10,20 +10,29 @@ export class DocumentItemForm extends Component {
         super(props);
     }
 
+    defineOptions(options) {
+        let optionArray = [];
+
+        options != undefined ?
+            options.forEach(value => {
+                optionArray.push({label: value, value: value})
+            })
+            : optionArray;
+        const buttonOptions = {
+            selectOptions: [
+                ...optionArray
+            ]
+        };
+        return buttonOptions;
+    }
+
     render() {
         const {type, label, options} = this.props;
         let typeInput = type !== undefined && type != "" && type == "INPUT";
         let typeDate = type !== undefined && type != "" && type == "DATE";
         let typeDropDown = type !== undefined && type != "" && type == "DROP_DOWN";
-        const buttonOptions = {
-            selectOptions: [
-                {label: '', value: ''},
-                {label: '1', value: '1'},
-
-            ]
-        };
         const baseConfigDropDown = {
-            ...buttonOptions,
+            ...this.defineOptions(options),
             label: label,
             formName: "AppForm"
         };
@@ -35,17 +44,17 @@ export class DocumentItemForm extends Component {
                                          label={label}
                                          component={TextInputComponent}/>}
 
-                    {typeDate && <Field name="username"
-                                        label="username"
+                    {typeDate && <Field name={label}
+                                        label={label}
                                         component={TextInputComponent}/>}
 
-                    {typeDropDown && <Field name="username"
-                                            label="username"
+                    {typeDropDown && <Field name={label}
+                                            label={label}
                                             baseComponentConfig={baseConfigDropDown}
                                             component={DropDownComponent}/>}
 
-                    {typeTitle && <Field name="username"
-                                         label="username"
+                    {typeTitle && <Field name={label}
+                                         label={label}
                                          component={TextInputComponent}/>}
                 </div>
             </div>
