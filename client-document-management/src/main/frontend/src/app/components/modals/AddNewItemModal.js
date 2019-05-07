@@ -20,6 +20,7 @@ const buttonOptions = {
         {label: 'Text Input', value: 'INPUT'},
         {label: 'Title', value: 'TITLE'},
         {label: 'Drop Down', value: 'DROP_DOWN'},
+        {label: 'Date', value: 'DATE'},
     ]
 };
 export const BtnTypeInputProps = {
@@ -40,7 +41,6 @@ class AddNewItemModal extends React.Component {
     handleSubmit() {
         const {items, formValuesItem, dispatch} = this.props;
         let it = items == null ? [] : items;
-        debugger;
         it.push({id: it.length, type: formValuesItem.componentType, label: formValuesItem.label});
         dispatch({
             type: 'ADD_EDIT_APP_PROP_STORE',

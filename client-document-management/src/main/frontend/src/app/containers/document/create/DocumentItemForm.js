@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Field} from "redux-form";
 import {TextInputComponent} from "../../../components/integral/TextInputComponent";
+import DropDownComponent from "../../../components/integral/DropDownComponent";
 
 export class DocumentItemForm extends Component {
 
@@ -14,6 +15,18 @@ export class DocumentItemForm extends Component {
         let typeInput = type !== undefined && type != "" && type == "INPUT";
         let typeDate = type !== undefined && type != "" && type == "DATE";
         let typeDropDown = type !== undefined && type != "" && type == "DROP_DOWN";
+        const buttonOptions = {
+            selectOptions: [
+                {label: '', value: ''},
+                {label: '1', value: '1'},
+
+            ]
+        };
+        const baseConfigDropDown = {
+            ...buttonOptions,
+            label: label,
+            formName: "AppForm"
+        };
         let typeTitle = type !== undefined && type != "" && type == "TITLE";
         return (
             <div id="document-item">
@@ -28,7 +41,8 @@ export class DocumentItemForm extends Component {
 
                     {typeDropDown && <Field name="username"
                                             label="username"
-                                            component={TextInputComponent}/>}
+                                            baseComponentConfig={baseConfigDropDown}
+                                            component={DropDownComponent}/>}
 
                     {typeTitle && <Field name="username"
                                          label="username"
