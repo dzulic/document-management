@@ -42,7 +42,9 @@ class AddNewItemModal extends React.Component {
 
     handleSubmit() {
         const {items, formValuesItem, dispatch} = this.props;
-        let it = items == null ? [] : items;
+        let it = items == null ? [] : JSON.parse(
+            JSON.stringify(items)
+        );
         it.push({
             id: it.length,
             type: formValuesItem.componentType,

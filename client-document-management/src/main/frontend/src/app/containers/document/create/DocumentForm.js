@@ -18,7 +18,7 @@ export class DocumentForm extends Component {
                     <div className="col-6 offset-3">
                         <Field component={TextInputComponent} name="docTitle" placeholder="Document Title" customClass="text-center"/>
                     </div>
-                <div className="col-6 offset-1">
+                <div className="row">
                     {children}
                 </div>
             </div>

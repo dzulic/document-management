@@ -93,6 +93,12 @@ div#text-input-component group {
   background-color: white;
 }
 
+.document-item {
+  .text-input-component {
+    padding-left: 50px;
+  }
+}
+
 .container {
   padding-top: 30px;
 }
