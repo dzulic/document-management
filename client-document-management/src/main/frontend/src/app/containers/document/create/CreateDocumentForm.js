@@ -8,6 +8,7 @@ import {getFormValues, reduxForm} from "redux-form";
 import {openAddItemModal} from "../../../actions/actions";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {DOCUMENT_ITEMS} from "../../../utils/Constants";
+import {I18n} from "react-redux-i18n";
 
 export class CreateDocumentForm extends Component {
 
@@ -25,7 +26,7 @@ export class CreateDocumentForm extends Component {
         return (
             <div>
                 <div className="col-lg-12">
-                    <h1>Create Document</h1>
+                    <h1>{I18n.t("application.label.createDocument")}</h1>
                     <div className="col-lg-8 offset-lg-2">
                         <DocumentForm>
                             {
@@ -37,7 +38,7 @@ export class CreateDocumentForm extends Component {
                         </DocumentForm>
                     </div>
                     <div className="col-lg-2">
-                        <ButtonComponent label="Add new item" click={this.addNewRow}/>
+                        <ButtonComponent label="addNewItem" click={this.addNewRow}/>
                     </div>
                 </div>
             </div>

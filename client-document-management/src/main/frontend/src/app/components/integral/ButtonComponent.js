@@ -13,7 +13,7 @@ export class ButtonComponent extends Component {
         return (
             <div id="button-component">
                 <button className="btn btn-submit" type="button"
-                        onClick={click}>{I18n.t("application." + label)}</button>
+                        onClick={click}>{I18n.t("application.label." + label)}</button>
             </div>
         );
     }
