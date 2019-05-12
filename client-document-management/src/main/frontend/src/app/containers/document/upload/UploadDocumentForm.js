@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {I18n} from "react-redux-i18n";
+import {connect} from "react-redux";
+import {getFormValues, reduxForm} from "redux-form";
+import {CreateDocumentTask} from "../create/CreateDocumentTask";
 
 export class UploadDocumentForm extends Component {
 
@@ -22,4 +25,15 @@ export class UploadDocumentForm extends Component {
 UploadDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
-export default (UploadDocumentForm);
+const selector = getFormValues("AppForm");
+
+function mapStateToProps(state) {
+    return {
+        formValues: selector(state)
+    }
+}
+export default connect(mapStateToProps)
+(reduxForm({
+    form: "AppForm",
+    destroyOnUnmount: true,
+})(UploadDocumentForm));

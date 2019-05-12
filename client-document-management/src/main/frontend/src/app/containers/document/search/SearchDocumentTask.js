@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {getFormValues, reduxForm} from "redux-form";
+import {connect} from "react-redux";
 
 export class SearchDocumentForm extends Component {
 
@@ -20,4 +22,15 @@ export class SearchDocumentForm extends Component {
 SearchDocumentForm.propTypes = {
     label: PropTypes.string.isRequired
 }
-export default (SearchDocumentForm);
+const selector = getFormValues("AppForm");
+
+function mapStateToProps(state) {
+    return {
+        formValues: selector(state)
+    }
+}
+export default connect(mapStateToProps)
+(reduxForm({
+    form: "AppForm",
+    destroyOnUnmount: true,
+})(SearchDocumentForm));
