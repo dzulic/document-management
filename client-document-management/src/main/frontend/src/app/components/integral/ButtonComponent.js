@@ -9,7 +9,7 @@ export class ButtonComponent extends Component {
     }
 
     render() {
-        const {label, click} = this.props;
+        const {label, click, buttonType} = this.props;
         return (
             <div id="button-component">
                 <button className="btn btn-submit" type="button"
@@ -22,6 +22,7 @@ export class ButtonComponent extends Component {
 
 ButtonComponent.propTypes = {
     label: PropTypes.string.isRequired,
-    click: PropTypes.func
+    click: PropTypes.func,
+    buttonType: PropTypes.string,
 }
 export default (ButtonComponent);

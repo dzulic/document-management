@@ -4,13 +4,11 @@ import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.UserService;
 import com.doc.manager.transfer.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/userWS")
 @RestController
+@CrossOrigin(value = "*")
 public class UserFacade {
     @Autowired
     UserService userService;
@@ -33,6 +31,7 @@ public class UserFacade {
     }
 
     @RequestMapping("/loginUser")
+    @CrossOrigin(value = "*")
     public RestResponse loginUser(@RequestBody UserDTO user) {
         try {
             return userService.loginUser(user.getUserName(), user.getPassword());

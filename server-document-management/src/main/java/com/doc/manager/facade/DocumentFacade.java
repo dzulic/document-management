@@ -5,12 +5,14 @@ import com.doc.manager.service.DocumentService;
 import com.doc.manager.transfer.DocumentDTO;
 import com.doc.manager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/documentWS")
 @RestController
+@CrossOrigin(value = "*")
 public class DocumentFacade {
     @Autowired
     DocumentService documentService;

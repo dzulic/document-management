@@ -41,7 +41,7 @@ export class DocumentItemForm extends Component {
         let typeTitle = type !== undefined && type != "" && type == "TITLE";
         return (
             <div className="document-item">
-                <div className="row">
+                <div>
                     {typeInput && <Field name={label}
                                          label={label}
                                          component={TextInputComponent}/>}

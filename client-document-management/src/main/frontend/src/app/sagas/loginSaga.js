@@ -6,7 +6,6 @@ export function* loginUser(action) {
     try {
         const response = yield call(ApiLogin.login, action.user);
 
-
         if (response.success === false) {
             throw new Error(response.message);
         }

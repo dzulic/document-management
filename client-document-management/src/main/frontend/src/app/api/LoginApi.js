@@ -1,9 +1,9 @@
-import {DEFAULT_REST_PARAMS_POST, REST_ROOT_ENDPOINT} from "./applicationServerConstants";
+import {DEFAULT_REST_PARAMS_POST} from "./applicationServerConstants";
 import 'whatwg-fetch';
-import {handleApiFetchGET, handleApiFetchPOST} from "../utils/apiUtil";
+import {handleApiFetchGET, handleApiFetchPOST, REST_ROOT_ENDPOINT} from "../utils/apiUtil";
 
-const LOGIN_USER = "loginWS/login"
-const LOGOUT_USER = "loginWS/logout"
+const LOGIN_USER = "userWS/login"
+const LOGOUT_USER = "userWS/logout"
 
 class LoginApi {
 
@@ -12,11 +12,11 @@ class LoginApi {
             ...DEFAULT_REST_PARAMS_POST,
             body: JSON.stringify(user)
         }
-        return handleApiFetchPOST(LOGIN_USER, request);
+        return handleApiFetchPOST(REST_ROOT_ENDPOINT + LOGIN_USER, request);
     }
 
     static logout() {
-        return handleApiFetchGET(LOGOUT_USER, '');
+        return handleApiFetchGET(REST_ROOT_ENDPOINT + LOGOUT_USER, '');
     }
 }
 

@@ -1,4 +1,15 @@
-import {ADD_EDIT_APP_PROP_STORE, CLOSE_MODAL_DIALOG, CREATE_USER, OPEN_ADD_ITEM_MODAL} from "../utils/actionTypes";
+import {
+    ADD_EDIT_APP_PROP_STORE,
+    CLOSE_MODAL_DIALOG,
+    CREATE_USER,
+    LOGIN,
+    OPEN_ADD_ITEM_MODAL
+} from "../utils/actionTypes";
+
+export const loginUser = (property) => ({
+    type: LOGIN,
+    property
+});
 
 export const createUser = (property) => ({
     type: CREATE_USER,

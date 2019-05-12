@@ -5,12 +5,15 @@ import com.doc.manager.service.CompanyService;
 import com.doc.manager.transfer.CompanyDTO;
 import com.doc.manager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/companyWS")
 @RestController
+//TODO REMOVE CROSS ORIGIN AND SET SAME SERVER PORT
+@CrossOrigin(value = "*")
 public class CompanyFacade {
     @Autowired
     CompanyService companyService;
