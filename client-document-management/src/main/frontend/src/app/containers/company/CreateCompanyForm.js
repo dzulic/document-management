@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import TextInputComponent from "../../components/integral/TextInputComponent";
 import ButtonComponent from "../../components/integral/ButtonComponent";
 
@@ -33,7 +32,7 @@ export class CreateCompanyForm extends Component {
                 </div>
                 <div className="row">
                     <div className="col-lg-6"></div>
-                    <div className="col-lg-6"><ButtonComponent label="Submit"/></div>
+                    <div className="col-lg-6"><ButtonComponent buttonType="submit" label="Submit"/></div>
                 </div>
             </div>
         );

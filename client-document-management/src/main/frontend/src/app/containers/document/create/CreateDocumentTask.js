@@ -1,24 +1,42 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import CreateDocumentForm from "../../document/create/CreateDocumentForm";
+import {connect} from "react-redux";
+import {reduxForm} from "redux-form";
+import {createDocument} from "../../../actions/actions";
 
 export class CreateDocumentTask extends Component {
 
     constructor(props) {
         super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit() {
+        const {dispatch, formValues} = this.props;
+        dispatch(createDocument({
+            document: formValues
+        }))
     }
 
     render() {
+        const {handleSubmit} = this.props;
         return (
-            <div>
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 <CreateDocumentForm/>
-            </div>
+            </form>
         );
     }
 
 }
 
-CreateDocumentTask.propTypes = {
-    label: PropTypes.string.isRequired
+function mapStateToProps(state) {
+    return {
+        formValues: selector(state),
+    }
 }
-export default (CreateDocumentTask);
+
+export default connect(mapStateToProps)
+(reduxForm({
+    form: "AppForm",
+    destroyOnUnmount: true,
+})(CreateDocumentTask));

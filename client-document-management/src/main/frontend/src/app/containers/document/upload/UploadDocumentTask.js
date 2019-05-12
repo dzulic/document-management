@@ -11,6 +11,7 @@ export class UploadDocumentTask extends Component {
         const {label} = this.props;
         return (
             <div>
+                <UploadDocumentTask/>
             </div>
         );
     }

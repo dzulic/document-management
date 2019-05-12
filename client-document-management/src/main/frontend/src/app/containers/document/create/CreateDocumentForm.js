@@ -39,6 +39,7 @@ export class CreateDocumentForm extends Component {
                     </div>
                     <div className="col-lg-2">
                         <ButtonComponent label="addNewItem" click={this.addNewRow}/>
+                        <ButtonComponent label="createDocument" buttonType="submit"/>
                     </div>
                 </div>
             </div>

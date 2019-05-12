@@ -1,22 +1,45 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import CreateCompanyForm from "./CreateCompanyForm";
+import {getFormValues, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import {createCompany} from "../../actions/actions";
 
 export class CreateCompanyTask extends Component {
 
     constructor(props) {
         super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit() {
+        const {dispatch, formValues} = this.props;
+        dispatch(createCompany({
+            company: {
+                ...formValues
+            }
+        }));
     }
 
     render() {
         return (
-            <div>
+            <form onSubmit={this.handleSubmit}>
                 <CreateCompanyForm/>
-            </div>
+            </form>
         );
     }
 
 }
 
+const selector = getFormValues("CompanyForm");
 
-export default (CreateCompanyTask);
+function mapStateToProps(state) {
+    return {
+        formValues: selector(state),
+    }
+}
+
+export default connect(mapStateToProps)
+(reduxForm({
+    form: "CompanyForm",
+    destroyOnUnmount: true,
+})(CreateCompanyTask));

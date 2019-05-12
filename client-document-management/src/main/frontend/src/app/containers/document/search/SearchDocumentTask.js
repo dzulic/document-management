@@ -9,7 +9,8 @@ export class SearchDocumentForm extends Component {
 
     render() {
         return (
-            <div >
+            <div>
+                <SearchDocumentForm/>
             </div>
         );
     }
