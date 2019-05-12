@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
+import {UploadDocumentForm} from "./UploadDocumentForm";
 
 export class UploadDocumentTask extends Component {
 
@@ -13,7 +14,7 @@ export class UploadDocumentTask extends Component {
         const {label} = this.props;
         return (
             <div>
-                <UploadDocumentTask/>
+                <UploadDocumentForm/>
             </div>
         );
     }

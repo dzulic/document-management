@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
+import {SearchDocumentForm} from "./SearchDocumentForm";
 
-export class SearchDocumentForm extends Component {
+export class SearchDocumentTask extends Component {
 
     constructor(props) {
         super(props);
@@ -33,4 +34,4 @@ export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
     destroyOnUnmount: true,
-})(SearchDocumentForm));
+})(SearchDocumentTask));

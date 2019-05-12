@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CreateDocumentForm from "../../document/create/CreateDocumentForm";
 import {connect} from "react-redux";
-import {reduxForm} from "redux-form";
+import {getFormValues, reduxForm} from "redux-form";
 import {createDocument} from "../../../actions/actions";
 
 export class CreateDocumentTask extends Component {
@@ -28,6 +28,7 @@ export class CreateDocumentTask extends Component {
     }
 
 }
+const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {
