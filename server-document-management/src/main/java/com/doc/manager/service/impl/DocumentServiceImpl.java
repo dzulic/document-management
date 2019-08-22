@@ -2,16 +2,16 @@ package com.doc.manager.service.impl;
 
 import com.doc.manager.converter.BeanConverter;
 import com.doc.manager.responses.RestResponse;
+import com.doc.manager.service.DocumentService;
 import com.doc.manager.transfer.DocumentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.doc.manager.service.DocumentService;
 
 @Service
 public class DocumentServiceImpl implements DocumentService {
 
     @Autowired
-    BeanConverter beanConverter;
+    private BeanConverter beanConverter;
 
     public RestResponse createDocument(DocumentDTO documentDTO) {
         return null;

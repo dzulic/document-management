@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
-    BeanConverter beanConverter;
+    private BeanConverter beanConverter;
 
     public RestResponse createCompany(CompanyDTO companyDTO) {
-       // companyDAOService.save(beanConverter.convertCompanyDTOToCompany(companyDTO));
+        // companyDAOService.save(beanConverter.convertCompanyDTOToCompany(companyDTO));
         return new RestResponse("success", null);
     }
 }

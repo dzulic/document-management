@@ -1,7 +1,7 @@
 package com.doc.manager.converter;
 
+import com.doc.manager.domain.Account;
 import com.doc.manager.domain.Company;
-import com.doc.manager.domain.User;
 import com.doc.manager.transfer.CompanyDTO;
 import com.doc.manager.transfer.UserDTO;
 import org.springframework.beans.BeanUtils;
@@ -10,20 +10,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class BeanConverter {
 
-    public User convertUserDTOToUser(UserDTO userDTO) {
-        User user = null;
+    public Account convertUserDTOToUser(UserDTO userDTO) {
+        Account account = null;
         if (userDTO != null) {
-            user = new User();
-            BeanUtils.copyProperties(user, userDTO);
+            account = new Account();
+            BeanUtils.copyProperties(account, userDTO);
         }
-        return user;
+        return account;
     }
 
-    public UserDTO convertUserToUserDTO(User user) {
+    public UserDTO convertUserToUserDTO(Account account) {
         UserDTO userDTO = null;
-        if (user != null) {
+        if (account != null) {
             userDTO = new UserDTO();
-            BeanUtils.copyProperties(userDTO, user);
+            BeanUtils.copyProperties(userDTO, account);
         }
         return userDTO;
     }

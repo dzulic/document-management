@@ -1,6 +1,6 @@
 package com.doc.manager.security;
 
-import com.doc.manager.domain.User;
+import com.doc.manager.domain.Account;
 import com.doc.manager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,15 +18,15 @@ public class SecurityServiceImpl implements SecurityService {
 
     public String findLoggedInUsername() {
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if (userDetails instanceof User) {
-            return ((User) userDetails).getUserName();
+        if (userDetails instanceof Account) {
+            return ((Account) userDetails).getUserName();
         }
 
         return null;
     }
 
     public void autoLogin(String username, String password) {
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(new User(), password, null);
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(new Account(), password, null);
 
         authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 

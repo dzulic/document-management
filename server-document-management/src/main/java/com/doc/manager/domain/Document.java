@@ -1,49 +1,33 @@
 package com.doc.manager.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
-public class Document {
+@Data
+public class Document implements Serializable {
     @Id
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String name;
-    Date lastModified;
-    User lastModifiedBy;
+    String content;
+    @CreationTimestamp
+    @Column(name = "created")
+    private LocalDateTime created;
 
-    public Long getId() {
-        return id;
-    }
+    @UpdateTimestamp
+    @Column(name = "updated")
+    private LocalDateTime updated;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @JoinColumn(name = "account_id")
+    Account createdBy;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(Date lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    public User getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(User lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
+    @JoinColumn(name = "company_id")
+    Company company;
 }
