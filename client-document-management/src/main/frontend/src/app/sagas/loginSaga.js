@@ -4,7 +4,8 @@ import {call, put} from "redux-saga/effects";
 export function* loginUser(action) {
 
     try {
-        const response = yield call(ApiLogin.login, action.user);
+        console.log("AC", action)
+        const response = yield call(ApiLogin.login, action.property.user);
 
         if (response.success === false) {
             throw new Error(response.message);

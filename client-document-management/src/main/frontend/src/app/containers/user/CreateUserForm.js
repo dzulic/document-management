@@ -16,8 +16,8 @@ export class CreateUserForm extends Component {
                 <h1>Create User</h1>
                 <div className="row">
                     <div className="col-4 offset-2">
-                        <Field name="username"
-                               label="username"
+                        <Field name="userName"
+                               label="userName"
                                component={TextInputComponent}/>
                     </div>
                     <div className="col-4">

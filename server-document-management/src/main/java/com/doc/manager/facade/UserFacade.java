@@ -21,6 +21,7 @@ public class UserFacade {
             return new RestResponse("error", null);
         }
     }
+
     @RequestMapping("/logoutUser")
     public RestResponse logoutUser() {
         try {
@@ -30,7 +31,7 @@ public class UserFacade {
         }
     }
 
-    @RequestMapping("/loginUser")
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     @CrossOrigin(value = "*")
     public RestResponse loginUser(@RequestBody UserDTO user) {
         try {

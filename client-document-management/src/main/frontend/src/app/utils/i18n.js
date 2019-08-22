@@ -3,7 +3,7 @@ export const i18n = {
         "application": {
             "message": {},
             "label": {
-                "username": "User name",
+                "userName": "User name",
                 "documentType": "Document Type",
                 "componentType": "Component Type",
                 "label": "Label",

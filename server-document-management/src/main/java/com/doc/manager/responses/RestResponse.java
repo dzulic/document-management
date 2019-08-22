@@ -1,5 +1,8 @@
 package com.doc.manager.responses;
 
+import lombok.Data;
+
+@Data
 public class RestResponse {
 
     String message;

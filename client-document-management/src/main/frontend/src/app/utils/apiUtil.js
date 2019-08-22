@@ -49,9 +49,12 @@ export const handleApiFetchGET =
 export const handleApiFetchPOST =
     (restEndpoint, postRequest) => fetch(restEndpoint, postRequest
     ).then(
-        (response) =>
+        (response) => {
+            console.log("RESP", response);
             handleServerResponse(response)
+        }
     ).then((responseJson) => {
+        console.log("RESP J", responseJson);
         return responseJson;
     }).catch((error) => {
         console.error(error);
@@ -60,13 +63,13 @@ export const handleApiFetchPOST =
 
 const handleServerResponse =
     (response) => {
-        // console.log("handleServerResponse...response.status = " + response.status);
-        if (response.status === 401 || response.status === 403) {
-            //redirect, as it has some dellay between redirection we will continue with return
-            window.location = "localhost:8082//" + 'login';
-            throw new Error("SESSION_TIMEOUT");
-        } else if (response.status === 500) {
-            throw new Error("ERROR_CODE_GENERIC");
-        }
-        return response.json();
+        /*        // console.log("handleServerResponse...response.status = " + response.status);
+             if (response.status === 401 || response.status === 403) {
+                 //redirect, as it has some dellay between redirection we will continue with return
+                 window.location = "localhost:8082//" + 'login';
+                 throw new Error("SESSION_TIMEOUT");
+             } else if (response.status === 500) {
+                 throw new Error("ERROR_CODE_GENERIC");
+             }
+             return response.json();*/
     };
