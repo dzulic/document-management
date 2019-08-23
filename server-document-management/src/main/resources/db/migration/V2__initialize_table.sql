@@ -1,5 +1,6 @@
 create sequence hibernate_sequence start 1 increment 1;
 
+
 create table account
 (
   account_id int8 not null,
@@ -13,7 +14,7 @@ create table account
   country    varchar(25),
   team       varchar(25),
   position   varchar(25),
-  company_id int8 not null,
+  company_id int8,
   primary key (account_id)
 );
 
@@ -47,9 +48,7 @@ create table file_document
   id           int8 not null,
   file_name    varchar(25),
   content_type varchar(25),
-  data         bytea,
-  company_id   int8 not null,
-  account_id   int8 not null,
+  data         varchar(10000),
   primary key (id)
 );
 
@@ -61,3 +60,9 @@ alter table document
 
 alter table account
   add constraint ACCOUNT_COMPANY_ID_fkey foreign key (company_id) references company;
+
+alter table file_document
+  add constraint FILE_DOC_ID_fkey foreign key (account_id) references account;
+
+INSERT into account
+values (0, 'asa', 'aasasas', null, null, null, null, null, null);

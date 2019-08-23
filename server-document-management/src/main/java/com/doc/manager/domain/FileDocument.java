@@ -1,12 +1,14 @@
 package com.doc.manager.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "file_document")
+@NoArgsConstructor
 public class FileDocument {
 
     @Id
@@ -18,8 +20,6 @@ public class FileDocument {
     private String contentType;
     @Lob
     private byte[] data;
-    private Company company_id;
-    private Account account_id;
 
     public FileDocument(String originalFilename, String contentType, byte[] bytes) {
         this.fileName = originalFilename;
