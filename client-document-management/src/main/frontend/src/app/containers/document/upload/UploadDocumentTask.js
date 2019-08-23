@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {UploadDocumentForm} from "./UploadDocumentForm";
@@ -21,9 +20,7 @@ export class UploadDocumentTask extends Component {
 
 }
 
-UploadDocumentTask.propTypes = {
-    label: PropTypes.string
-}
+UploadDocumentTask.propTypes = {}
 const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {

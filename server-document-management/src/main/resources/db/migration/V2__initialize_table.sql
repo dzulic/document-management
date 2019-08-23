@@ -42,6 +42,17 @@ create table document
   primary key (id)
 );
 
+create table file_document
+(
+  id           int8 not null,
+  file_name    varchar(25),
+  content_type varchar(25),
+  data         bytea,
+  company_id   int8 not null,
+  account_id   int8 not null,
+  primary key (id)
+);
+
 alter table document
   add constraint DOCUMENT_account_fkey foreign key (account_id) references account;
 

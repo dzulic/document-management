@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {SearchDocumentForm} from "./SearchDocumentForm";
+import {I18n} from "react-redux-i18n";
 
 export class SearchDocumentTask extends Component {
 
@@ -13,6 +13,7 @@ export class SearchDocumentTask extends Component {
     render() {
         return (
             <div>
+                <h1>{I18n.t("application.label.searchDocument")}</h1>
                 <SearchDocumentForm/>
             </div>
         );
@@ -20,10 +21,8 @@ export class SearchDocumentTask extends Component {
 
 }
 
-SearchDocumentForm.propTypes = {
-    label: PropTypes.string.isRequired
-}
-const selector = getFormValues("AppForm");
+SearchDocumentForm.propTypes = {}
+const selector = getFormValues("SearchDocumentForm");
 
 function mapStateToProps(state) {
     return {
@@ -32,6 +31,6 @@ function mapStateToProps(state) {
 }
 export default connect(mapStateToProps)
 (reduxForm({
-    form: "AppForm",
+    form: "SearchDocumentForm",
     destroyOnUnmount: true,
 })(SearchDocumentTask));

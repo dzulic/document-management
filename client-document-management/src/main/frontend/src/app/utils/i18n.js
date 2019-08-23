@@ -26,7 +26,11 @@ export const i18n = {
                 "profession": "Profession",
                 "employeeID": "Employee ID",
                 "addNewItem": "Add new item",
-                "createDocument": "Create Document"
+                "createDocument": "Create Document",
+                "searchDocument": "Search Document",
+                "uploadDocument": "Upload Document",
+                "searchByCompany": "Search by company",
+                "searchByName": "Search by name"
             },
             "submit": "Submit",
             "err": {},

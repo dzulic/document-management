@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {I18n} from "react-redux-i18n";
+import {Field} from "redux-form";
+import {TextInputComponent} from "../../../components/integral/TextInputComponent";
 
 export class SearchDocumentForm extends Component {
 
@@ -9,17 +9,15 @@ export class SearchDocumentForm extends Component {
     }
 
     render() {
-        const {label} = this.props;
         return (
-            <div>
-                <h1>{I18n.t("application.label.searchDocument")}</h1>
-            </div>
+            <form>
+                <Field name="searchByName" label="searchByName" component={TextInputComponent}/>
+                <Field name="searchByCompany" label="searchByCompany" component={TextInputComponent}/>
+            </form>
         );
     }
 
 }
 
-SearchDocumentForm.PropTypes = {
-    label: PropTypes.string.isRequired
-}
+SearchDocumentForm.PropTypes = {}
 export default (SearchDocumentForm);
