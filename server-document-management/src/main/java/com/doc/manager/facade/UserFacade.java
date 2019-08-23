@@ -31,7 +31,7 @@ public class UserFacade {
         }
     }
 
-    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/loginUser", method = RequestMethod.GET)
     @CrossOrigin(value = "*")
     public RestResponse loginUser(@RequestBody UserDTO user) {
         try {

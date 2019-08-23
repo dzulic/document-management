@@ -20,13 +20,13 @@ create table account
 
 create table company
 (
-  company_id  int8 not null,
-  companyName varchar(25),
-  country     varchar(25),
-  city        varchar(25),
-  business    varchar(25),
-  phone       varchar(25),
-  email       varchar(25),
+  company_id   int8 not null,
+  company_name varchar(25),
+  country      varchar(25),
+  city         varchar(25),
+  business     varchar(25),
+  phone        varchar(25),
+  email        varchar(25),
   primary key (company_id)
 );
 

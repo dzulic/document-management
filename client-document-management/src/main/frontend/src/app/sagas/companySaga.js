@@ -4,7 +4,7 @@ import CompanyApi from "../api/CompanyApi";
 export function* createCompany(action) {
 
     try {
-        const response = yield call(CompanyApi.createCompany, action.company);
+        const response = yield call(CompanyApi.createCompany, action.property.company);
 
         if (response.success === false) {
             throw new Error(response.message);

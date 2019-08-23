@@ -32,7 +32,7 @@ public class BeanConverter {
         Company company = null;
         if (companyDTO != null) {
             company = new Company();
-            BeanUtils.copyProperties(company, companyDTO);
+            BeanUtils.copyProperties(companyDTO, company);
         }
         return company;
     }

@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Company implements Serializable {
     @Id
     @Column(name = "company_id")
-    String companyId;
+    int companyId;
     String companyName;
     String country;
     String city;

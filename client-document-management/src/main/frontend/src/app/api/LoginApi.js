@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
-import {handleApiFetchGET, handleApiFetchPOST, REST_ROOT_ENDPOINT} from "../utils/apiUtil";
-import {DEFAULT_REST_PARAMS_POST} from "./applicationServerConstants";
+import {handleApiFetchGET, REST_ROOT_ENDPOINT} from "../utils/apiUtil";
+import {DEFAULT_REST_PARAMS_GET} from "./applicationServerConstants";
 
 const LOGIN_USER = "userWS/loginUser";
 const LOGOUT_USER = "userWS/logoutUser";
@@ -10,11 +10,11 @@ class LoginApi {
     static login(user) {
         try {
             let request = {
-                ...DEFAULT_REST_PARAMS_POST,
+                ...DEFAULT_REST_PARAMS_GET,
                 body: JSON.stringify(user)
             }
 
-            return handleApiFetchPOST(REST_ROOT_ENDPOINT + LOGIN_USER, request);
+            return handleApiFetchGET(REST_ROOT_ENDPOINT + LOGIN_USER, request);
         } catch (e) {
             console.log(e);
         }

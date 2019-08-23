@@ -21,8 +21,9 @@ export class CreateCompanyTask extends Component {
     }
 
     render() {
+        const {handleSubmit} = this.props;
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit(this.handleSubmit)}>
                 <CreateCompanyForm/>
             </form>
         );

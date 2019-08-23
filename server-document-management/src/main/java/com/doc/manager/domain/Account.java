@@ -11,7 +11,8 @@ import java.io.Serializable;
 public class Account implements Serializable {
     @Id
     @Column(name = "account_id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Column(name = "user_role")
     private EUserRole userRole;
     @Column(name = "user_name")
