@@ -11,7 +11,9 @@ export class LoginTask extends Component {
 
     render() {
         return (
-            <LoginForm/>
+            <div>
+                <LoginForm/>
+            </div>
         );
     }
 }
@@ -25,6 +27,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(reduxForm({
-    form: "AppForm",
+    form: "LoginForm",
     destroyOnUnmount: true,
 })(LoginTask));

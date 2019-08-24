@@ -59,21 +59,25 @@ export default class DropDownComponent extends React.Component {
 
         if (!disableSingleElementReadOnly && selectOptions.length == 1) {
             return (
-                <div>
-                    <select className="form-control" {...props} onChange={this.onChange} disabled id={label}>
-                        {selectElement}
-                    </select>
-                    <label htmlFor={label}>{I18n.t('application.label.' + label)}</label>
+                <div className="drop-down">
+                    <div className="form-group">
+                        <select className="form-control" {...props} onChange={this.onChange} disabled id={label}>
+                            {selectElement}
+                        </select>
+                        <label htmlFor={label}>{I18n.t('application.message.' + label)}</label>
+                    </div>
                 </div>
             )
         } else {
             return (
-                <div>
-                    <select className="form-control" {...props} onChange={this.onChange} id={label}>
-                        <option key={-1} value=""/>
-                        {selectElement}
-                    </select>
-                    <label htmlFor={label}>{I18n.t('application.label.' + label)}</label>
+                <div className="drop-down">
+                    <div className="form-group">
+                        <select className="form-control" {...props} onChange={this.onChange} id={label}>
+                            <option key={-1} value=""/>
+                            {selectElement}
+                        </select>
+                        <label htmlFor={label}>{I18n.t('application.message.' + label)}</label>
+                    </div>
                 </div>
             )
 
@@ -81,9 +85,8 @@ export default class DropDownComponent extends React.Component {
     }
 
     render() {
-        return (<div className="selectdiv">
-                {this.getData()}
-            </div>
+        return (
+            this.getData()
         )
     }
 }

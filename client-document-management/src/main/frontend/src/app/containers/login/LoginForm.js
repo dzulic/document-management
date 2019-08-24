@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import ButtonComponent from "../../components/integral/ButtonComponent";
-import {Field, getFormValues, reduxForm} from "redux-form";
 import TextInputComponent from "../../components/integral/TextInputComponent";
-import {I18n} from "react-redux-i18n";
-import {connect} from "react-redux";
 import {loginUser} from "../../actions/actions";
+import {I18n} from "react-redux-i18n";
+import {Field, getFormValues, reduxForm} from "redux-form";
+import {ButtonComponent} from "../../components/integral/ButtonComponent";
+import {connect} from "react-redux";
 
 export class LoginForm extends Component {
 
@@ -14,7 +14,7 @@ export class LoginForm extends Component {
     }
 
     handleSubmit() {
-        const {dispatch, formValues} = this.props;
+        const {dispatch, formValues, type} = this.props;
         dispatch(loginUser({
             user: {
                 userName: formValues.userName,
@@ -24,29 +24,16 @@ export class LoginForm extends Component {
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="col-lg-12 login">
-                    <div className="col-lg-2 offset-lg-5">
-                        <div className="row">
-                            <h1>{I18n.t("application.label.login")}</h1>
-                        </div>
-                        <div className="row">
-                            <Field name="userName"
-                                   label="userName"
-                                   component={TextInputComponent}/>
-                        </div>
-                        <div className="row">
-                            <Field name="password"
-                                   label="password"
-                                   component={TextInputComponent}/>
-                        </div>
-                        <div className="col-lg-3 offset-4">
-                            <div className="row">
-                                <ButtonComponent label="login" buttonType="submit"/>
-                            </div>
-                        </div>
-
-                    </div>
+            <form onSubmit={this.handleSubmit} className={'login'}>
+                <div>
+                    <h1>{I18n.t("application.message.login")}</h1>
+                    <Field name="userName"
+                           label="userName"
+                           component={TextInputComponent}/>
+                    <Field name="password"
+                           label="password"
+                           component={TextInputComponent}/>
+                    <ButtonComponent label="login" buttonType="submit"/>
                 </div>
             </form>
         );

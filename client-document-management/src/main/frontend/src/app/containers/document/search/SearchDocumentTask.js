@@ -13,7 +13,7 @@ export class SearchDocumentTask extends Component {
     render() {
         return (
             <div>
-                <h1>{I18n.t("application.label.searchDocument")}</h1>
+                <h1>{I18n.t("application.message.searchDocument")}</h1>
                 <SearchDocumentForm/>
             </div>
         );

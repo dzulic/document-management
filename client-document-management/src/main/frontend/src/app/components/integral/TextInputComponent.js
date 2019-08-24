@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {FormControl} from "react-bootstrap";
-import {Translate} from "react-redux-i18n";
 import {I18n} from "react-redux-i18n";
 
 export class TextInputComponent extends Component {
@@ -31,14 +30,21 @@ export class TextInputComponent extends Component {
     }
 
     render() {
-        const {label, customClass, input, placeholder} = this.props;
+        const {label, customClass, input, placeholder, required, maxlength, minLength} = this.props;
         return (
             <div className="text-input-component">
                 <div className="form-group">
-                    <FormControl id={label} type="text" required="required" spellCheck="false"
-                                 name={label} placeholder={placeholder} className={customClass}
+                    <FormControl id={label} type="text"
+                                 required={required}
+                                 spellCheck="false"
+                                 autoComplete="off"
+                                 name={label}
+                                 placeholder={placeholder}
+                                 className={customClass}
+                                 maxlength={maxlength}
+                                 minLength={minLength}
                                  {...input}/>
-                    {label && <label htmlFor={label}>{I18n.t("application.label." + label)}</label>}
+                    {label && <label htmlFor={label}>{I18n.t("application.message." + label)}</label>}
                 </div>
 
             </div>
@@ -52,6 +58,8 @@ TextInputComponent.propTypes = {
     required: PropTypes.bool,
     input: PropTypes.object,
     placeholder: PropTypes.string,
-    customClass: PropTypes.string
-}
+    customClass: PropTypes.string,
+    maxlength: PropTypes.number,
+    minLength: PropTypes.number
+};
 export default (TextInputComponent);

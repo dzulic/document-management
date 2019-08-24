@@ -1,8 +1,7 @@
 export const i18n = {
     "en": {
         "application": {
-            "message": {},
-            "label": {
+            "message": {
                 "userName": "User name",
                 "documentType": "Document Type",
                 "componentType": "Component Type",
@@ -30,7 +29,9 @@ export const i18n = {
                 "searchDocument": "Search Document",
                 "uploadDocument": "Upload Document",
                 "searchByCompany": "Search by company",
-                "searchByName": "Search by name"
+                "searchByName": "Search by name",
+                "login": "Login",
+                "user": "User",
             },
             "submit": "Submit",
             "err": {},

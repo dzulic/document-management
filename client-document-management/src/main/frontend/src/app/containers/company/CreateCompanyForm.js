@@ -22,69 +22,59 @@ export class CreateCompanyForm extends Component {
     }
     render() {
         return (
-            <div className="col-lg-6 offset-lg-3">
+            <div className="create-company">
                 <h1>Create Company</h1>
                 <div className="row">
-                    <div className="col-4 offset-2">
-                        <Field name="companyName"
-                               label="companyName"
-                               component={TextInputComponent}/>
-                    </div>
-                    <div className="col-4">
-                        <Field name="companyId"
-                               label="companyId"
-                               component={TextInputComponent}/>
-                    </div>
+                    <Field name="companyName"
+                           label="companyName"
+                           component={TextInputComponent}
+                           required/>
+                    <Field name="companyId"
+                           label="companyId"
+                           component={TextInputComponent}
+                           required
+                           maxlength={6}/>
+
+                </div>
+                <div className="row">
+                    <Field name="country"
+                           label="country"
+                           component={TextInputComponent}
+                           required/>
+
+                    <Field name="city"
+                           label="city"
+                           component={TextInputComponent}/>
                 </div>
 
                 <div className="row">
-                    <div className="col-4 offset-2">
-                        <Field name="country"
-                               label="country"
-                               component={TextInputComponent}/>
-                    </div>
-                    <div className="col-4">
-                        <Field name="city"
-                               label="city"
-                               component={TextInputComponent}/>
-                    </div>
-                </div>
+                    <Field name="yearOfEstablishment"
+                           label="yearOfEstablishment"
+                           component={TextInputComponent}/>
 
-                <div className="row">
-                    <div className="col-4 offset-2">
-                        <Field name="yearOfEstablishment"
-                               label="yearOfEstablishment"
-                               component={TextInputComponent}/>
-                    </div>
-                    <div className="col-4">
-                        <Field name="business"
-                               label="business"
-                               component={TextInputComponent}/>
-                    </div>
+                    <Field name="business"
+                           label="business"
+                           component={TextInputComponent}/>
                 </div>
                 <div className="row">
-                    <div className="col-4 offset-2">
-                        <Field name="phone"
-                               label="phone"
-                               component={TextInputComponent}/>
-                    </div>
-                    <div className="col-4">
-                        <Field name="email"
-                               label="email"
-                               component={TextInputComponent}/>
-                    </div>
+                    <Field name="phone"
+                           label="phone"
+                           component={TextInputComponent}
+                           required/>
+
+                    <Field name="email"
+                           label="email"
+                           component={TextInputComponent}
+                           required/>
                 </div>
                 <div className="row">
-                    <div className="col-lg-6"></div>
-                    <div className="col-lg-6"><ButtonComponent buttonType="submit" label="Submit"/></div>
+                    <ButtonComponent buttonType="submit" label="Submit"/>
                 </div>
             </div>
         );
     }
 
 }
-
-CreateCompanyForm.propTypes = {}
 const selector = getFormValues("CompanyForm");
 
 function mapStateToProps(state) {

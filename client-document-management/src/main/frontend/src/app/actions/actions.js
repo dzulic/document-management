@@ -1,11 +1,17 @@
 import {
     ADD_EDIT_APP_PROP_STORE,
     CLOSE_MODAL_DIALOG,
+    CREATE_COMPANY,
+    CREATE_DOCUMENT,
     CREATE_USER,
+    FETCH_COMPANIES,
     LOGIN,
-    OPEN_ADD_ITEM_MODAL,
-    CREATE_COMPANY, CREATE_DOCUMENT
+    OPEN_ADD_ITEM_MODAL
 } from "../utils/actionTypes";
+
+export const fetchCompanies = () => ({
+    type: FETCH_COMPANIES,
+});
 
 export const loginUser = (property) => ({
     type: LOGIN,

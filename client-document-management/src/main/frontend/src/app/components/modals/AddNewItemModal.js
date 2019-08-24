@@ -12,7 +12,7 @@ import {DOCUMENT_ITEMS} from "../../utils/Constants";
 
 export const requiredProps = {
     props: {
-        required: true,
+        required: false,
     }
 };
 const buttonOptions = {

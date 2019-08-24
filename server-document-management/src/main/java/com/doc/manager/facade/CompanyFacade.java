@@ -4,10 +4,7 @@ import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.CompanyService;
 import com.doc.manager.transfer.CompanyDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/companyWS")
 @RestController
@@ -20,6 +17,15 @@ public class CompanyFacade {
     public RestResponse createCompany(@RequestBody CompanyDTO companyDTO) {
         try {
             return companyService.createCompany(companyDTO);
+        } catch (Exception ex) {
+            return new RestResponse("error", null);
+        }
+    }
+
+    @RequestMapping(value = "/getCompanies", method = RequestMethod.GET)
+    public RestResponse getCompanies() {
+        try {
+            return companyService.getCompanies();
         } catch (Exception ex) {
             return new RestResponse("error", null);
         }

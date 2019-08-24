@@ -26,7 +26,7 @@ export class CreateDocumentForm extends Component {
         return (
             <div>
                 <div className="col-lg-12">
-                    <h1>{I18n.t("application.label.createDocument")}</h1>
+                    <h1>{I18n.t("application.message.createDocument")}</h1>
                     <div className="col-lg-8 offset-lg-2">
                         <DocumentForm>
                             {

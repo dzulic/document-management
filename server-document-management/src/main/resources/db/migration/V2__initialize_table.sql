@@ -12,7 +12,6 @@ create table account
   email      varchar(25),
   phone      varchar(25),
   country    varchar(25),
-  team       varchar(25),
   position   varchar(25),
   company_id int8,
   primary key (account_id)

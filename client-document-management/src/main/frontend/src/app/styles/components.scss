@@ -8,11 +8,22 @@ label {
   padding: 10px 0;
 }
 
-.login label {
-  position: relative !important;
-  top: 0px;
+.login {
+  margin: auto;
+  width: 30%;
 }
 
+.create {
+  &-company, &-user {
+    margin: auto;
+    width: 50%;
+    padding-top: 50px;
+
+    h1 {
+      bottom: 50px;
+    }
+  }
+}
 
 input {
   display: block;

@@ -1,10 +1,8 @@
-/**
- * @author raicevicm on 05/06/2017.
- */
 import React from "react";
 import {connect} from "react-redux";
 import MainPanel from "../components/base/MainPanel";
-import LoginForm from "../containers/login/LoginForm";
+import LoginTask from "./login/LoginTask";
+import {fetchCompanies} from "../actions/actions";
 
 class Home extends React.Component {
 
@@ -14,16 +12,16 @@ class Home extends React.Component {
 
     componentDidMount() {
         const {dispatch} = this.props;
+        dispatch(fetchCompanies());
     }
 
     render() {
-
         return (
             <div className="home-container">
                 <div className="row">
                     <div className="col-lg-12">
                         <MainPanel>
-                            <LoginForm/>
+                            <LoginTask/>
                         </MainPanel>
                     </div>
                 </div>

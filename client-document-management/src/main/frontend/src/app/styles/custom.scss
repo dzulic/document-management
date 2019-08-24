@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px;
+    padding-bottom: 60px;
     font-weight: 200 !important;
   }
 
@@ -50,18 +50,12 @@ body {
 
 
 //COMPONENTS
-div#text-input-component group {
-  margin-bottom: 20px !important;
-  max-width: 200px;
+
+.text-input-component {
+  margin: auto;
+  width: 250px;
 }
 
-#text-input-component input {
-  width: 100%;
-}
-
-#text-input-component label {
-
-}
 
 #button-component {
   color: #394177;
@@ -115,20 +109,20 @@ select::-ms-expand {
   display: none;
 }
 
-.selectdiv {
+.drop-down {
+  margin: auto;
+
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
     display: block;
-    max-width: 320px;
-    height: 40px;
-    float: right;
-    line-height: 1.75;
+    width: 250px;
     color: #333;
     background-color: #ffffff;
     background-image: none;
     -ms-word-break: normal;
     word-break: normal;
+    margin: auto;
 
     &:after {
       content: '<>';

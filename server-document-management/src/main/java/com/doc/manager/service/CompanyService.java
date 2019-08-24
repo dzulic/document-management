@@ -5,4 +5,6 @@ import com.doc.manager.transfer.CompanyDTO;
 
 public interface CompanyService {
     RestResponse createCompany(CompanyDTO companyDTO);
+
+    RestResponse getCompanies();
 }
