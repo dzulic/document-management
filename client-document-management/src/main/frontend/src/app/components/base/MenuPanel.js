@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 export class MenuComponent extends Component {
 
@@ -40,7 +39,7 @@ export class MenuComponent extends Component {
         let subMenu = this.state.refIsShowing ?
             <ul className='menu' onMouseLeave={this.onMouseLeftSubMenu}
                 onMouseOver={this.onMouseEnteredSubMenu}>
-                <li >
+                <li>
                     <a href='createDocument'>
                         Create
                     </a>
@@ -89,6 +88,5 @@ export class MenuComponent extends Component {
 
 }
 
-MenuComponent.propTypes = {
-}
+MenuComponent.propTypes = {}
 export default (MenuComponent);

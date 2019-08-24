@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {getFormValues, reduxForm} from "redux-form";
-import {LoginForm} from "./LoginForm";
+import LoginForm from "./LoginForm";
 import {connect} from "react-redux";
 
 export class LoginTask extends Component {
@@ -18,7 +18,7 @@ export class LoginTask extends Component {
     }
 }
 
-const selector = getFormValues("AppForm");
+const selector = getFormValues("LoginForm");
 
 function mapStateToProps(state) {
     return {

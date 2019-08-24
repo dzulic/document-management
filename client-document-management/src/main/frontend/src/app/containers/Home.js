@@ -1,13 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
-import MainPanel from "../components/base/MainPanel";
-import LoginTask from "./login/LoginTask";
 import {fetchCompanies} from "../actions/actions";
+import MainPanel from "../components/base/MainPanel";
 
 class Home extends React.Component {
 
     constructor(props) {
         super(props);
+        this.isUserLoggedIn = this.isUserLoggedIn.bind(this);
+    }
+    isUserLoggedIn() {
+        return false;
     }
 
     componentDidMount() {
@@ -18,13 +21,13 @@ class Home extends React.Component {
     render() {
         return (
             <div className="home-container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <MainPanel>
-                            <LoginTask/>
-                        </MainPanel>
-                    </div>
-                </div>
+                {this.isUserLoggedIn()} ? (
+                <MainPanel/>
+                ) : (
+                {/*
+                <Redirect to="/login"/>
+*/}
+                )
             </div>
         );
     }

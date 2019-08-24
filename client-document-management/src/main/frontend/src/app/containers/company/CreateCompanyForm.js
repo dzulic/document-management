@@ -3,23 +3,13 @@ import TextInputComponent from "../../components/integral/TextInputComponent";
 import ButtonComponent from "../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
 import {Field, getFormValues, reduxForm} from "redux-form";
-import {createCompany} from "../../actions/actions";
 
 export class CreateCompanyForm extends Component {
 
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit() {
-        const {dispatch, formValues} = this.props;
-        dispatch(createCompany({
-            company: {
-                ...formValues
-            }
-        }));
-    }
     render() {
         return (
             <div className="create-company">
@@ -33,7 +23,7 @@ export class CreateCompanyForm extends Component {
                            label="companyId"
                            component={TextInputComponent}
                            required
-                           maxlength={6}/>
+                           maxLength={6}/>
 
                 </div>
                 <div className="row">

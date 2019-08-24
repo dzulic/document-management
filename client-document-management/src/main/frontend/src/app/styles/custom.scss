@@ -12,6 +12,12 @@ body {
   overflow: hidden scroll;
 }
 
+.home-container {
+  padding: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-control {
   height: auto;
   padding: 0 0;
@@ -39,15 +45,6 @@ body {
 
 
 }
-
-
-#mainPanel {
-  padding: 100px;
-  justify-content: center;
-  align-items: center;
-
-}
-
 
 //COMPONENTS
 

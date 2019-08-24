@@ -70,7 +70,7 @@ export class CreateUserForm extends Component {
                     />
                     <Field name="employeeID"
                            label="employeeID"
-                           maxlength={7}
+                           maxLength={7}
                            minLength={2}
                            component={TextInputComponent}
                            required/>

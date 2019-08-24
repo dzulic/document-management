@@ -23,8 +23,9 @@ export class LoginForm extends Component {
         }))
     }
     render() {
+        const {handleSubmit} = this.props;
         return (
-            <form onSubmit={this.handleSubmit} className={'login'}>
+            <form onSubmit={handleSubmit(this.handleSubmit)} className={'login'}>
                 <div>
                     <h1>{I18n.t("application.message.login")}</h1>
                     <Field name="userName"
@@ -49,6 +50,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(reduxForm({
-    form: "AppForm",
+    form: "LoginForm",
     destroyOnUnmount: true,
 })(LoginForm));
