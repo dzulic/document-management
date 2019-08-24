@@ -1,6 +1,6 @@
 import React from "react";
 import {history} from "./store.js";
-import {Route, Router} from "react-router";
+import {Route, Router, Switch} from "react-router";
 import Home from "./containers/Home"
 import App from "./containers/App";
 import CreateDocumentTask from "./containers/document/create/CreateDocumentTask";
@@ -12,16 +12,18 @@ import {LoginTask} from "./containers/login/LoginTask";
 
 const router =
     <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
-        <App>
-            <Route exact path={"/"} component={Home}/>
-            <Route exact path={"/login"} component={LoginTask}/>
-            <Route exact path={"/logout"} component={LoginTask}/>
-            <Route exact path={"/createCompany"} component={CreateCompanyTask}/>
-            <Route exact path={"/createUser"} component={CreateUserTask}/>
-            <Route exact path={"/searchDocument"} component={SearchDocumentTask}/>
-            <Route exact path={"/uploadDocument"} component={UploadDocumentTask}/>
-            <Route exact path={"/createDocument"} component={CreateDocumentTask}/>
-        </App>
+        <Switch>
+            <App>
+                <Route exact path={"/"} component={Home}/>
+                <Route exact path={"/login"} component={LoginTask}/>
+                <Route exact path={"/logout"} component={LoginTask}/>
+                <Route exact path={"/createCompany"} component={CreateCompanyTask}/>
+                <Route exact path={"/createUser"} component={CreateUserTask}/>
+                <Route exact path={"/searchDocument"} component={SearchDocumentTask}/>
+                <Route exact path={"/uploadDocument"} component={UploadDocumentTask}/>
+                <Route exact path={"/createDocument"} component={CreateDocumentTask}/>
+            </App>
+        </Switch>
     </Router>;
 
 // export

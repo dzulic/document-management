@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {fetchCompanies} from "../actions/actions";
 import MainPanel from "../components/base/MainPanel";
+import {Redirect} from "react-router";
 
 class Home extends React.Component {
 
@@ -24,10 +25,7 @@ class Home extends React.Component {
                 {this.isUserLoggedIn()} ? (
                 <MainPanel/>
                 ) : (
-                {/*
-                <Redirect to="/login"/>
-*/}
-                )
+                <Redirect to="/login"/>)
             </div>
         );
     }

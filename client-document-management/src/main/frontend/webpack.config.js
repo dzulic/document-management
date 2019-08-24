@@ -13,7 +13,7 @@ var app_root = 'src/app'; // the app root folder: src, src_users, etc
 
 
 const HOST = process.env.HOST || "localhost";
-const PORT =  8090;
+const PORT = 8090;
 
 module.exports = {
     entry: [
@@ -31,27 +31,32 @@ module.exports = {
     ,
     resolve: {
         extensions: ['.js', '.jsx'],
-        modules: [
-            path.join(__dirname, "src"),
-            path.join(__dirname, "node_modules"), // the old 'fallback' option (needed for npm link-ed packages)
-        ],
+        modules: ['src', 'node_modules'],
         alias: {
             "styles": path.resolve(__dirname, 'styles/'),
         }
     },
-    devServer: {
-        contentBase: "./public",
-        // do not print bundle build stats
-        noInfo: true,
-        // enable HMR
-        hot: true,
-        // embed the webpack-dev-server runtime into the bundle
-        inline: true,
-        // serve index.html in place of 404 responses to allow HTML5 history
-        historyApiFallback: true,
-        port: PORT,
-        host: HOST
-    },
+    devServer:
+        {
+            contentBase: "./public",
+            // do not print bundle build stats
+            noInfo:
+                true,
+            // enable HMR
+            hot:
+                true,
+            // embed the webpack-dev-server runtime into the bundle
+            inline:
+                true,
+            // serve index.html in place of 404 responses to allow HTML5 history
+            historyApiFallback:
+                true,
+            port:
+            PORT,
+            host:
+            HOST
+        }
+    ,
     module: {
         rules: [
             {
@@ -90,7 +95,8 @@ module.exports = {
                     }
                 ]
             }]
-    },
+    }
+    ,
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.NamedModulesPlugin(),
