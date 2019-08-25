@@ -64,8 +64,9 @@ public class UserServiceImpl implements UserService {
             lr.setLoggedIn(true);
         } catch (AuthenticationException authException) {
             lr.setLoggedIn(false);
-            lr.setMessage("bar credentials");
+            lr.setMessage("bad credentials");
         }
         return lr;
+
     }
 }

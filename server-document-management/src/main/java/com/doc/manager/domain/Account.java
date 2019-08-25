@@ -12,8 +12,9 @@ public class Account implements Serializable {
     @Id
     @Column(name = "account_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
     private EUserRole userRole;
     @Column(name = "user_name")
     private String userName;

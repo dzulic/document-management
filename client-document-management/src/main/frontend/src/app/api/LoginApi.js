@@ -9,14 +9,17 @@ class LoginApi {
     static login(user) {
         try {
             let request = {
-                method: "POST",
-                body: JSON.stringify(user),
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Basic ' + window.btoa("admin:admin"),
-                    'Access-Control-Allow-Origin': "*"
-                },
-            };
+                    method: "POST",
+                    body: JSON.stringify(user),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: 'Basic ' + window.btoa(user.userName + ":" + user.password
+                        ),
+                        'Access-Control-Allow-Origin':
+                            "*"
+                    },
+                }
+            ;
 
             return handleApiFetchPOST(REST_ROOT_ENDPOINT + LOGIN_USER, request);
         } catch (e) {
