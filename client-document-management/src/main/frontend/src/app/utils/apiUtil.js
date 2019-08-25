@@ -51,11 +51,9 @@ export const handleApiFetchPOST =
     (restEndpoint, postRequest) => fetch(restEndpoint, postRequest
     ).then(
         (response) => {
-            console.log("RESP", response);
-            handleServerResponse(response)
+            return handleServerResponse(response);
         }
     ).then((responseJson) => {
-        console.log("RESP J", responseJson);
         return responseJson;
     }).catch((error) => {
         console.error(error);
@@ -73,5 +71,7 @@ const handleServerResponse =
         } else if (response.status === 500) {
             throw new Error("ERROR_CODE_GENERIC");
         }
-        return response.json();
+        let c = response.json();
+        console.log("C", c)
+        return c;
     };

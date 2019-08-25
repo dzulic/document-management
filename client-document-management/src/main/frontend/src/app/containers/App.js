@@ -11,7 +11,7 @@ class App extends Component {
     render() {
         const {children} = this.props;
         return (
-            <div className="container page">
+            <div className="container">
                 <HeaderPanel/>
                 <Dialog/>
                 {children}

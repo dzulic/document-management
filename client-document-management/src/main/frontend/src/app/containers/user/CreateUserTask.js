@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import CreateUserForm from "./CreateUserForm";
-import * as constants from "../../utils/Constants";
 import {createUser} from "../../actions/actions"
 import {connect} from "react-redux";
-import {reduxForm, change, Field, getFormValues, isValid, initialize} from "redux-form";
+import {getFormValues, reduxForm} from "redux-form";
 
 export class CreateUserTask extends Component {
 

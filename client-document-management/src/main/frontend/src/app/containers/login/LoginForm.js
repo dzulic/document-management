@@ -26,7 +26,7 @@ export class LoginForm extends Component {
     render() {
         const {handleSubmit, error} = this.props;
         return (
-            <form onSubmit={handleSubmit(this.handleSubmit)} className={'login'}>
+            <form onSubmit={handleSubmit(this.handleSubmit)} className={'login container'}>
                 <div>
                     {error && I18n.t("application.message." + error)}
                     <h1>{I18n.t("application.message.login")}</h1>

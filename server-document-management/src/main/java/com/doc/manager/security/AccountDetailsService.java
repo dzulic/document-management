@@ -28,7 +28,7 @@ public class AccountDetailsService implements UserDetailsService {
         if (account == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(account.getUserName(), passwordEncoder().encode(account.getPassword()), Collections.singleton(new SimpleGrantedAuthority(account.getUserRole().name())));
+        return new AccountDetails(account, new User(account.getUserName(), passwordEncoder().encode(account.getPassword()), Collections.singleton(new SimpleGrantedAuthority(account.getUserRole().name()))), passwordEncoder());
     }
 
     @Bean

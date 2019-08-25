@@ -5,6 +5,7 @@ import com.doc.manager.dao.AccountRepository;
 import com.doc.manager.domain.Account;
 import com.doc.manager.responses.LoginRestResponse;
 import com.doc.manager.responses.RestResponse;
+import com.doc.manager.security.AccountDetails;
 import com.doc.manager.service.UserService;
 import com.doc.manager.transfer.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,7 @@ public class UserServiceImpl implements UserService {
             session.setAttribute("userName", userName);
             session.setAttribute("password", password);
             lr.setLoggedIn(true);
+            lr.setData(((AccountDetails) result.getPrincipal()).getAccount());
         } catch (AuthenticationException authException) {
             lr.setLoggedIn(false);
             lr.setMessage("bad credentials");

@@ -32,6 +32,13 @@ export const i18n = {
                 "searchByName": "Search by name",
                 "login": "Login",
                 "user": "User",
+                "welcome": "Welcome to the document manager",
+                "createUser": "Create user",
+                "createCompany": "Create company",
+                "documents": "Documents",
+                "logout": "Logout",
+                "upload": "Upload",
+                "search": "Search"
             },
             "submit": "Submit",
             "err": {},

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {I18n} from "react-redux-i18n";
 
 export class MainPanel extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ export class MainPanel extends Component {
         const {children} = this.props;
         return (
             <div id="mainPanel">
-                {children}
+                {I18n.t("application.message.welcome")}
             </div>
         );
     }

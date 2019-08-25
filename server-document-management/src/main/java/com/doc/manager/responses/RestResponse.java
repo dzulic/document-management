@@ -2,8 +2,10 @@ package com.doc.manager.responses;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class RestResponse {
+public class RestResponse implements Serializable {
 
     String message;
     Object data;

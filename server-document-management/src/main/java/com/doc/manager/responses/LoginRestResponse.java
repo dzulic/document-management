@@ -9,6 +9,5 @@ public class LoginRestResponse extends RestResponse {
 
     public LoginRestResponse(String message, Object data) {
         super(message, data);
-
     }
 }

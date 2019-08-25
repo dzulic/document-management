@@ -32,8 +32,8 @@ body {
   }
 }
 
-.page {
-  padding: 0 0 20px 0;
+.container {
+  padding: 50px 0 20px 0;
 
   h1 {
     display: flex;
@@ -88,10 +88,6 @@ body {
   .text-input-component {
     padding-left: 50px;
   }
-}
-
-.container {
-  padding-top: 30px;
 }
 
 

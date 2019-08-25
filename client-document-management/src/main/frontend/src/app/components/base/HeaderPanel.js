@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import logo from "../../../../../resources/static/icon/logo.png";
+import MenuPanel from "./MenuPanel";
 
 export class HeaderPanel extends Component {
     render() {
@@ -14,6 +15,9 @@ export class HeaderPanel extends Component {
                             <span>Document Manager</span>
                         </div>
                     </div>
+                </div>
+                <div className="col-9">
+                    <MenuPanel/>
                 </div>
             </div>
         );

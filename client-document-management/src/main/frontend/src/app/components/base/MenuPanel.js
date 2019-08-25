@@ -68,7 +68,8 @@ export class MenuComponent extends Component {
                     <li>
                         <NavLink to='createCompany'>{I18n.t("application.message.createCompany")}</NavLink>
                     </li>
-                    <li onMouseOver={this.handleHover} onMouseLeave={this.onAnimationComplete}>
+                    <li onMouseOver={this.handleHover} onMouseLeave={this.onAnimationComplete}
+                        className={this.state.refIsShowing ? 'hover' : ''}>
                         <a>
                             {I18n.t("application.message.documents")}
                         </a>
