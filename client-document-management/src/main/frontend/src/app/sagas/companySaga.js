@@ -52,7 +52,7 @@ export function* createCompany(action) {
 
         if (response) {
             const loginProperty = {
-                key: 'LOGIN_USER',
+                key: 'COMPANY',
                 value: response
             };
 

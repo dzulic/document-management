@@ -1,5 +1,6 @@
 import ApiLogin from "../api/LoginApi";
 import {call, put} from "redux-saga/effects";
+import {LOGIN_USER} from "../utils/Constants";
 
 export function* loginUser(action) {
 
@@ -10,22 +11,21 @@ export function* loginUser(action) {
             throw new Error(response.message);
         }
 
-        if (response.loggedIn === true) {
-            //redirect to homepage
-            window.location = "/";
-        }
-
-
         if (response) {
             const loginProperty = {
-                key: 'LOGIN_USER',
-                value: response
+                key: LOGIN_USER,
+                value: response.data
             };
 
             yield put({
                 type: 'ADD_EDIT_APP_PROP_STORE',
                 property: loginProperty
             });
+
+            if (response.loggedIn === true) {
+                //redirect to homepage
+                //    window.location = "/main";
+            }
         }
 
     } catch (e) {

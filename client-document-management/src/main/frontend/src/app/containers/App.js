@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import HeaderPanel from "../components/base/HeaderPanel";
 import Dialog from "../components/modals/Dialog";
+import {connect} from "react-redux";
+import {getValueAppPropertyStore} from "../utils/storeUtil";
+import {LOGIN_USER} from "../utils/Constants";
 
 
 class App extends Component {
@@ -9,14 +12,20 @@ class App extends Component {
     }
 
     render() {
-        const {children} = this.props;
+        const {children, loggedUser} = this.props;
+        console.log("LG", loggedUser)
         return (
             <div className="container">
-                <HeaderPanel/>
+                <HeaderPanel logged={loggedUser}/>
                 <Dialog/>
                 {children}
             </div>);
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        loggedUser: getValueAppPropertyStore(state, LOGIN_USER)
+    }
+}
+export default connect(mapStateToProps)(App);
