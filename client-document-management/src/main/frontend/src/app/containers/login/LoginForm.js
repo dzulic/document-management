@@ -5,6 +5,7 @@ import {I18n} from "react-redux-i18n";
 import {Field, getFormValues, reduxForm} from "redux-form";
 import {ButtonComponent} from "../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
+import {getValueAppPropertyStore} from "../../utils/storeUtil";
 
 export class LoginForm extends Component {
 
@@ -23,10 +24,11 @@ export class LoginForm extends Component {
         }))
     }
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, error} = this.props;
         return (
             <form onSubmit={handleSubmit(this.handleSubmit)} className={'login'}>
                 <div>
+                    {error && I18n.t("application.message." + error)}
                     <h1>{I18n.t("application.message.login")}</h1>
                     <Field name="userName"
                            label="userName"
@@ -45,7 +47,8 @@ const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {
-        formValues: selector(state)
+        formValues: selector(state),
+        error: getValueAppPropertyStore(state, "error"),
     }
 }
 

@@ -31,10 +31,12 @@ public class UserFacade {
         }
     }
 
-    @RequestMapping(value = "/loginUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
     @CrossOrigin(value = "*")
     public RestResponse loginUser(@RequestBody UserDTO user) {
+
         try {
+            System.out.println("US");
             return userService.loginUser(user.getUserName(), user.getPassword());
         } catch (Exception ex) {
             return new RestResponse("error", null);

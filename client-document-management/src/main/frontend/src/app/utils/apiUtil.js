@@ -35,16 +35,17 @@ export function createGetParams(params) {
 
 
 export const handleApiFetchGET =
-    (restEndpoint) => fetch(restEndpoint, DEFAULT_REST_PARAMS_GET
-    ).then(
-        (response) =>
-            handleServerResponse(response)
-    ).then((responseJson) => {
-        return responseJson;
-    }).catch((error) => {
-        console.error(error);
-        throw error;
-    });
+    console.log("LGET");
+(restEndpoint) => fetch(restEndpoint, DEFAULT_REST_PARAMS_GET
+).then(
+    (response) =>
+        handleServerResponse(response)
+).then((responseJson) => {
+    return responseJson;
+}).catch((error) => {
+    console.error(error);
+    throw error;
+});
 
 export const handleApiFetchPOST =
     (restEndpoint, postRequest) => fetch(restEndpoint, postRequest

@@ -6,7 +6,7 @@ export class UploadDocumentForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {};
         this.onFileChange = this.onFileChange.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
 

@@ -46,6 +46,8 @@ export function* logoutUser(action) {
         if (response.success === false) {
             throw new Error(response.message);
         }
+        sessionStorage.setItem("USER_NAME_SESSION_ATTRIBUTE_NAME", response.username);
+
 
         //redirect to homepage
         window.location = context_root_page_redirect + 'login';

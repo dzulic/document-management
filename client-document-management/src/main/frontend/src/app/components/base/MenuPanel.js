@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
+import {I18n} from 'react-redux-i18n';
 
 export class MenuComponent extends Component {
 
@@ -40,49 +42,45 @@ export class MenuComponent extends Component {
             <ul className='menu' onMouseLeave={this.onMouseLeftSubMenu}
                 onMouseOver={this.onMouseEnteredSubMenu}>
                 <li>
-                    <a href='createDocument'>
-                        Create
-                    </a>
+                    <NavLink to='createDocument'>
+                        {I18n.t("application.message.createDocument")}
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="uploadDocument">
-                        Upload
-                    </a>
+                    <NavLink to='uploadDocument'>
+                        {I18n.t("application.message.upload")}
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="searchDocument">
-                        Search
-                    </a>
+                    <NavLink to='searchDocument'>
+                        {I18n.t("application.message.search")}
+                    </NavLink>
                 </li>
             </ul> : '';
 
 
-        const {label} = this.props;
         return (
-            <div id="menu-component">
-                <div className='nav'>
-                    <ul>
-                        <li>
-                            <a href='createUser'>
-                                User panel
-                            </a>
-                        </li>
-                        <li>
-                            <a href='createCompany'>Create company</a>
-                        </li>
-                        <li onMouseOver={this.handleHover} onMouseLeave={this.onAnimationComplete}>
-                            <a>
-                                Documents
-                                <i className='fa fa-caret-down'></i>
-                            </a>
-                            {subMenu}
-                        </li>
-                        <li>
-                            <a href='logout'>Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <nav id="menu-component">
+                <ul>
+                    <li>
+                        <NavLink to='/createUser'>{I18n.t("application.message.createUser")}</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='createCompany'>{I18n.t("application.message.createCompany")}</NavLink>
+                    </li>
+                    <li onMouseOver={this.handleHover} onMouseLeave={this.onAnimationComplete}>
+                        <a>
+                            {I18n.t("application.message.documents")}
+                        </a>
+                        {subMenu}
+                    </li>
+                    <li>
+                        <NavLink to='logout'>
+                            {I18n.t("application.message.logout")}
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
         );
     }
 
