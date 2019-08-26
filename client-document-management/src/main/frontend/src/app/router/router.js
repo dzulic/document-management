@@ -15,11 +15,9 @@ const router =
     <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <App>
             <Switch>
-                <Route exact path={"/"} component={LoginTask}/>
-                <Route exact path={"/main"} component={MainPanel}/>
-                <Route exact path={"/login"} component={LoginTask}/>
-                <Route path='/logout' component={LoginTask}/>
-                <Route path='/createCompany' component={CreateCompanyTask}/>
+                <Route exact path="/" component={MainPanel}/>
+                <Route path='/login' component={LoginTask}/>
+                <PrivateRoute path='/logout' component={LoginTask}/>
                 <PrivateRoute path='/createCompany' component={CreateCompanyTask}/>
                 <PrivateRoute path='/createUser' component={CreateUserTask}/>
                 <PrivateRoute path='/searchDocument' component={SearchDocumentTask}/>

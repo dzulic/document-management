@@ -26,8 +26,8 @@ export function* loginUser(action) {
                 property: loginProperty
             });
 
-            sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, response.data.userName);
-            sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_PASS, response.data.password);
+
+            sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, response.data.userName + ":" + response.data.password);
 
             if (response.loggedIn === true) {
                 //redirect to homepage

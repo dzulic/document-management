@@ -4,6 +4,7 @@ import Dialog from "../components/modals/Dialog";
 import {connect} from "react-redux";
 import {getValueAppPropertyStore} from "../utils/storeUtil";
 import {LOGIN_USER} from "../utils/Constants";
+import {withRouter} from "react-router";
 
 
 class App extends Component {
@@ -27,4 +28,4 @@ function mapStateToProps(state) {
         loggedUser: getValueAppPropertyStore(state, LOGIN_USER)
     }
 }
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

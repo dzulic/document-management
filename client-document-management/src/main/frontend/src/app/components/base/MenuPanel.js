@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {NavLink} from "react-router-dom";
 import {I18n} from 'react-redux-i18n';
 import PropTypes from 'prop-types'
+import {USER_NAME_SESSION_ATTRIBUTE_NAME} from "../../utils/Constants";
 
 export class MenuComponent extends Component {
 
@@ -42,6 +43,7 @@ export class MenuComponent extends Component {
         const {userRole} = this.props;
         let admin = userRole === 'ADMIN';
         let superUser = userRole === 'SUPER';
+        let logged = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
 
         let subMenu = this.state.refIsShowing ?
             <ul className='menu' onMouseLeave={this.onMouseLeftSubMenu}
@@ -66,6 +68,7 @@ export class MenuComponent extends Component {
 
         return (
             <nav id="menu-component">
+                {logged &&
                 <ul>
                     {(superUser || admin) &&
                     <li>
@@ -89,8 +92,10 @@ export class MenuComponent extends Component {
                         </NavLink>
                     </li>
                 </ul>
+                }
             </nav>
-        );
+        )
+            ;
     }
 
 }

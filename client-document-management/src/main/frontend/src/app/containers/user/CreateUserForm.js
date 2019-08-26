@@ -14,8 +14,8 @@ export const buttonOptions = {
 export const BtnTypeInputProps = {
     ...buttonOptions,
     ...requiredProps,
-    label: "componentType",
-    formName: "ItemForm"
+    label: "company",
+    formName: "UserForm"
 };
 
 export class CreateUserForm extends Component {
@@ -28,7 +28,7 @@ export class CreateUserForm extends Component {
     render() {
         const {companies} = this.props;
         if (companies) {
-            BtnTypeInputProps.selectOptions.push(companies);
+            BtnTypeInputProps.selectOptions = companies;
         }
         return (
             <div className="create-user">

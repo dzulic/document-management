@@ -10,10 +10,8 @@ export function* fetchCompanies() {
             throw new Error(response.message);
         }
         if (response) {
-            console.log("RESP COMPANIES", response);
-
-            let companiesMap = response.map((company) => {
-                return {key: company.id, value: company.name};
+            let companiesMap = response.data.map((company) => {
+                return {label: company.companyName, value: JSON.stringify(company.companyId)};
             });
             const companies = {
                 key: COMPANIES,
