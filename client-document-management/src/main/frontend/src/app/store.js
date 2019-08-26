@@ -1,14 +1,13 @@
-import {createStore, applyMiddleware, compose} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
 import {browserHistory} from "react-router";
-import {syncHistoryWithStore, routerMiddleware} from "react-router-redux";
+import {routerMiddleware, syncHistoryWithStore} from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
 import freeze from "redux-freeze";
 import {reducers} from "./reducers/index";
 import {sagas} from "./sagas/index";
 import thunk from 'redux-thunk';
-import {syncTranslationWithStore} from 'react-redux-i18n';
+import {loadTranslations, setLocale, syncTranslationWithStore} from 'react-redux-i18n';
 import {createBrowserHistory} from 'history';
-import {loadTranslations, setLocale} from "react-redux-i18n";
 import {i18n} from "./utils/i18n";
 
 // add the middlewares
@@ -47,4 +46,5 @@ syncTranslationWithStore(store);
 store.dispatch(loadTranslations(i18n));
 store.dispatch(setLocale('en'));
 // export
+
 export {store, history};

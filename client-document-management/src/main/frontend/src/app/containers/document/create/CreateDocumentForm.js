@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {DocumentForm} from "./DocumentForm";
 import {DocumentItemForm} from "./DocumentItemForm";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
@@ -48,9 +47,7 @@ export class CreateDocumentForm extends Component {
 
 }
 
-CreateDocumentForm.propTypes = {
-    label: PropTypes.string.isRequired
-}
+CreateDocumentForm.propTypes = {}
 const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
