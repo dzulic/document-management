@@ -4,7 +4,7 @@ export const DEFAULT_REST_PARAMS_POST = {
         'Content-Type': 'application/json',
         'Cache': 'no-cache'
     }
-}
+};
 export const DEFAULT_REST_PARAMS_GET = {
     method: "GET",
     headers: {
@@ -12,4 +12,4 @@ export const DEFAULT_REST_PARAMS_GET = {
         'Content-Type': 'application/json',
         'Cache': 'no-cache'
     }
-}
+};

@@ -1,6 +1,5 @@
 export const REST_ROOT_ENDPOINT = "http://localhost:10700/";
 ;
-import {DEFAULT_REST_PARAMS_GET} from "../api/applicationServerConstants";
 
 export function createGetParam(key, value, andParam) {
     if (value && String(value).trim()) {
@@ -35,17 +34,16 @@ export function createGetParams(params) {
 
 
 export const handleApiFetchGET =
-    console.log("LGET");
-(restEndpoint) => fetch(restEndpoint, DEFAULT_REST_PARAMS_GET
-).then(
-    (response) =>
-        handleServerResponse(response)
-).then((responseJson) => {
-    return responseJson;
-}).catch((error) => {
-    console.error(error);
-    throw error;
-});
+    (restEndpoint, getRequest) => fetch(restEndpoint, getRequest
+    ).then(
+        (response) => {
+            return handleServerResponse(response)
+        }).then((responseJson) => {
+        return responseJson;
+    }).catch((error) => {
+        console.error(error);
+        throw error;
+    });
 
 export const handleApiFetchPOST =
     (restEndpoint, postRequest) => fetch(restEndpoint, postRequest

@@ -21,7 +21,7 @@ export class HeaderPanel extends Component {
                 </div>
                 {logged &&
                 <div className="col-9">
-                    <MenuPanel/>
+                    <MenuPanel userRole={logged.userRole}/>
                 </div>
                 }
             </div>

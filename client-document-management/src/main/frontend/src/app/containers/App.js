@@ -13,7 +13,6 @@ class App extends Component {
 
     render() {
         const {children, loggedUser} = this.props;
-        console.log("LG", loggedUser)
         return (
             <div className="container">
                 <HeaderPanel logged={loggedUser}/>

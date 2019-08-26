@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from "react-router-dom";
 import {I18n} from 'react-redux-i18n';
+import PropTypes from 'prop-types'
 
 export class MenuComponent extends Component {
 
@@ -38,6 +39,10 @@ export class MenuComponent extends Component {
     }
 
     render() {
+        const {userRole} = this.props;
+        let admin = userRole === 'ADMIN';
+        let superUser = userRole === 'SUPER';
+
         let subMenu = this.state.refIsShowing ?
             <ul className='menu' onMouseLeave={this.onMouseLeftSubMenu}
                 onMouseOver={this.onMouseEnteredSubMenu}>
@@ -62,12 +67,15 @@ export class MenuComponent extends Component {
         return (
             <nav id="menu-component">
                 <ul>
+                    {(superUser || admin) &&
                     <li>
                         <NavLink to='/createUser'>{I18n.t("application.message.createUser")}</NavLink>
                     </li>
-                    <li>
+                    }
+                    {admin && <li>
                         <NavLink to='createCompany'>{I18n.t("application.message.createCompany")}</NavLink>
                     </li>
+                    }
                     <li onMouseOver={this.handleHover} onMouseLeave={this.onAnimationComplete}
                         className={this.state.refIsShowing ? 'hover' : ''}>
                         <a>
@@ -87,5 +95,7 @@ export class MenuComponent extends Component {
 
 }
 
-MenuComponent.propTypes = {}
+MenuComponent.propTypes = {
+    userRole: PropTypes.string
+};
 export default (MenuComponent);

@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {fetchCompanies} from "../actions/actions";
 import MainPanel from "../components/base/MainPanel";
 import {Redirect} from "react-router";
 
@@ -14,10 +13,6 @@ class Home extends React.Component {
         return false;
     }
 
-    componentDidMount() {
-        const {dispatch} = this.props;
-        dispatch(fetchCompanies());
-    }
 
     render() {
         return (

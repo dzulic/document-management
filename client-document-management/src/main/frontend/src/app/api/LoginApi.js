@@ -14,9 +14,7 @@ class LoginApi {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: 'Basic ' + window.btoa(user.userName + ":" + user.password
-                        ),
-                        'Access-Control-Allow-Origin':
-                            "*"
+                        )
                     },
                 }
             ;

@@ -3,9 +3,9 @@ import CompanyApi from "../api/CompanyApi";
 import {COMPANIES} from "../utils/Constants";
 import {ADD_EDIT_APP_PROP_STORE} from "../utils/actionTypes";
 
-export function* fetchCompanies(action) {
+export function* fetchCompanies() {
     try {
-        const response = yield call(CompanyApi.getCompanies, action.property.company);
+        const response = yield call(CompanyApi.getCompanies);
         if (response.success === false) {
             throw new Error(response.message);
         }
@@ -51,14 +51,14 @@ export function* createCompany(action) {
 
 
         if (response) {
-            const loginProperty = {
+            const company = {
                 key: 'COMPANY',
                 value: response
             };
 
             yield put({
                 type: ADD_EDIT_APP_PROP_STORE,
-                property: loginProperty
+                property: company
             });
         }
 
