@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import WaitModalDialog from "./WaitModalDialog";
 import AddNewItemModal from "./AddNewItemModal";
+import {SHOW_WAITING_MODAL} from "../../utils/actionTypes";
 
 class Dialog extends React.Component {
     constructor(props) {
@@ -14,18 +15,21 @@ class Dialog extends React.Component {
         dispatch({
             type: 'CLOSE_MODAL_DIALOG'
         });
+        dispatch({
+            type: SHOW_WAITING_MODAL,
+            showWaitingModal: false
+        });
     }
 
     render() {
         const {
             modalDialog: {
-                showModal, addItem, showWaitingModal, waiting
+                showModal, addItem, showWaitingModal,
             }
         } = this.props;
-        console.log("TH", this.props)
         const content =
             showModal && (
-            showWaitingModal && <WaitModalDialog showModal={showModal} message={waiting.message}/>
+            showWaitingModal && <WaitModalDialog showModal={showWaitingModal}/>
             || addItem && <AddNewItemModal showModal={addItem}/>);
         return (
             <div>

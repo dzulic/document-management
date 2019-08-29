@@ -44,12 +44,6 @@ export function* createCompany(action) {
             throw new Error(response.message);
         }
 
-        if (response.loggedIn === true) {
-            //redirect to homepage
-            window.location = "/";
-        }
-
-
         if (response) {
             const company = {
                 key: 'COMPANY',

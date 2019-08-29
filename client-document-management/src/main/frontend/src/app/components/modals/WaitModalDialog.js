@@ -7,8 +7,7 @@ import {I18n} from "react-redux-i18n";
 export default class WaitModalDialog extends React.Component {
 
     render() {
-        const {message, showModal} = this.props;
-        console.log("WMD", message);
+        const {showModal} = this.props;
         return (
             <div className="col-4 offset-4">
                 <Modal show={showModal}

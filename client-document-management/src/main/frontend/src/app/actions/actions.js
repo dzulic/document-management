@@ -47,6 +47,7 @@ export const addEditAppProperty = (property) => ({
     property
 });
 
-export const showWaitingDialog = () => ({
+export const showWaitingDialog = (property) => ({
     type: SHOW_WAITING_MODAL,
+    showWaitingModal: property
 });

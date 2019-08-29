@@ -7,9 +7,7 @@ import {showWaitingDialog} from "../actions/actions";
 export function* loginUser(action) {
 
     try {
-        yield put(showWaitingDialog('loginUser'));
-        yield call((promise) => promise, yield put(showWaitingDialog('loginUser')));
-
+        yield put(showWaitingDialog(true));
         const response = yield call(ApiLogin.login, action.property.user);
 
         if (response.success === false) {
@@ -30,13 +28,13 @@ export function* loginUser(action) {
 
             localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));
             yield call((promise) => promise, yield put({type: FETCH_COMPANIES}));
-            debugger;
-
             window.location = "/main";
-
         }
+        yield put(showWaitingDialog(false));
 
     } catch (e) {
+        yield put(showWaitingDialog(false));
+
         yield put({
             type: 'SHOW_ERROR_MODAL',
             message: ""
@@ -46,7 +44,7 @@ export function* loginUser(action) {
 
 export function* logoutUser(action) {
 
-    yield put(showWaitingDialog('logoutUser'));
+    yield put(showWaitingDialog(true));
     try {
         const response = yield call(ApiLogin.logout);
 
@@ -58,7 +56,11 @@ export function* logoutUser(action) {
 
         //redirect to homepage
         window.location = 'http://localhost:8090/login';
+        yield put(showWaitingDialog(false));
+
     } catch (e) {
+        yield put(showWaitingDialog(false));
+
         yield put({
             type: 'SHOW_ERROR_MODAL',
             message: handleError(e)

@@ -10,7 +10,6 @@ class App extends Component {
     constructor(props) {
         super(props);
     }
-
     render() {
         const {children} = this.props;
         let loggedUser = JSON.parse(localStorage.getItem(USER_LOGGED_SESSION));
