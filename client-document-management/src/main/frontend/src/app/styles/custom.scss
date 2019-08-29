@@ -136,6 +136,14 @@ select::-ms-expand {
 
 }
 
+.mainPanel {
+  margin: auto;
+  width: 50%;
+  height: 500px;
+  padding-top: 300px;
+  font-size: 30px;
+}
+
 .modal {
   &-dialog {
     width: 40%;
@@ -143,6 +151,7 @@ select::-ms-expand {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
+    padding: 20px 0 0 50px;
   }
 
   &-title {
@@ -155,7 +164,6 @@ select::-ms-expand {
 
   &-body {
     z-index: 1099;
-    padding: 20px 0 0 50px;
   }
 
   &-header {
@@ -168,4 +176,28 @@ select::-ms-expand {
       z-index: 1099;
     }
   }
+}
+
+
+/* ===========================================================================
+// Spinner ================================================================ */
+.sweet-loading {
+  height: 150px;
+}
+
+.loading {
+  top: 40px;
+  height: 100%;
+  margin: auto;
+  width: fit-content;
+}
+
+.waiting-dialog-text {
+  div {
+    width: 100px;
+    margin: auto;
+  }
+
+  color: black;
+  font-size: 20px;
 }

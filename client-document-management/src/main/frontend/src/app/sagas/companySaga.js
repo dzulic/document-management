@@ -1,6 +1,6 @@
 import {call, put} from "redux-saga/effects";
 import CompanyApi from "../api/CompanyApi";
-import {COMPANIES} from "../utils/Constants";
+import {COMPANIES, COMPANIES_SESSION} from "../utils/Constants";
 import {ADD_EDIT_APP_PROP_STORE} from "../utils/actionTypes";
 
 export function* fetchCompanies() {
@@ -22,6 +22,8 @@ export function* fetchCompanies() {
                 type: ADD_EDIT_APP_PROP_STORE,
                 property: companies
             });
+
+            localStorage.setItem(COMPANIES_SESSION, JSON.stringify(companiesMap));
         }
     } catch (e) {
         yield put({

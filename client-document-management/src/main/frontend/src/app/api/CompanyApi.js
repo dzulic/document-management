@@ -1,4 +1,4 @@
-import {USER_NAME_SESSION_ATTRIBUTE_NAME} from "../utils/Constants";
+import {USER_LOGGED_SESSION} from "../utils/Constants";
 import {handleApiFetchGET, handleApiFetchPOST, REST_ROOT_ENDPOINT} from "../utils/apiUtil";
 import {DEFAULT_REST_PARAMS_GET, DEFAULT_REST_PARAMS_POST} from "./applicationServerConstants";
 
@@ -8,11 +8,11 @@ const GET_COMPANIES = "companyWS/getCompanies";
 class CompanyApi {
     static createCompany(company) {
         let defaultrestparamspost = DEFAULT_REST_PARAMS_POST;
-        let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        let user = localStorage.getItem(USER_LOGGED_SESSION);
 
         defaultrestparamspost.headers = {
             'Content-Type': 'application/json',
-            Authorization: 'Basic ' + window.btoa(String.raw`${user}`)
+            Authorization: 'Basic ' + window.btoa(user.userName + ":" + user.password),
         };
 
         let request = {
@@ -23,11 +23,11 @@ class CompanyApi {
     }
     static getCompanies() {
         let defaultrestparamspost = DEFAULT_REST_PARAMS_GET;
-        let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        let user = JSON.parse(localStorage.getItem(USER_LOGGED_SESSION));
 
         defaultrestparamspost.headers = {
             'Content-Type': 'application/json',
-            Authorization: 'Basic ' + window.btoa(String.raw`${user}`)
+            Authorization: 'Basic ' + window.btoa(user.userName + ":" + user.password)
         };
         let request = {
             ...defaultrestparamspost

@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import HeaderPanel from "../components/base/HeaderPanel";
 import Dialog from "../components/modals/Dialog";
 import {connect} from "react-redux";
-import {getValueAppPropertyStore} from "../utils/storeUtil";
-import {LOGIN_USER} from "../utils/Constants";
 import {withRouter} from "react-router";
+import {USER_LOGGED_SESSION} from "../utils/Constants";
 
 
 class App extends Component {
@@ -13,7 +12,9 @@ class App extends Component {
     }
 
     render() {
-        const {children, loggedUser} = this.props;
+        const {children} = this.props;
+        let loggedUser = JSON.parse(localStorage.getItem(USER_LOGGED_SESSION));
+
         return (
             <div className="container">
                 <HeaderPanel logged={loggedUser}/>
@@ -24,8 +25,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        loggedUser: getValueAppPropertyStore(state, LOGIN_USER)
-    }
+    return {}
 }
 export default withRouter(connect(mapStateToProps)(App));

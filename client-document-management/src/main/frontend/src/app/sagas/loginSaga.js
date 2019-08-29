@@ -1,11 +1,15 @@
 import ApiLogin from "../api/LoginApi";
 import {call, put} from "redux-saga/effects";
-import {LOGIN_USER, USER_NAME_SESSION_ATTRIBUTE_NAME, USER_NAME_SESSION_ATTRIBUTE_PASS} from "../utils/Constants";
+import {LOGIN_USER, USER_LOGGED_SESSION} from "../utils/Constants";
 import {FETCH_COMPANIES} from "../utils/actionTypes";
+import {showWaitingDialog} from "../actions/actions";
 
 export function* loginUser(action) {
 
     try {
+        yield put(showWaitingDialog('loginUser'));
+        yield call((promise) => promise, yield put(showWaitingDialog('loginUser')));
+
         const response = yield call(ApiLogin.login, action.property.user);
 
         if (response.success === false) {
@@ -13,8 +17,6 @@ export function* loginUser(action) {
         }
 
         if (response) {
-
-            yield put({type: FETCH_COMPANIES});
 
             const loginProperty = {
                 key: LOGIN_USER,
@@ -26,13 +28,12 @@ export function* loginUser(action) {
                 property: loginProperty
             });
 
+            localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));
+            yield call((promise) => promise, yield put({type: FETCH_COMPANIES}));
+            debugger;
 
-            sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, response.data.userName + ":" + response.data.password);
+            window.location = "/main";
 
-            if (response.loggedIn === true) {
-                //redirect to homepage
-                //    window.location = "/main";
-            }
         }
 
     } catch (e) {
@@ -52,11 +53,11 @@ export function* logoutUser(action) {
         if (response.success === false) {
             throw new Error(response.message);
         }
-        sessionStorage.setItem("USER_NAME_SESSION_ATTRIBUTE_NAME", response.username);
+        localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));
 
 
         //redirect to homepage
-        window.location = context_root_page_redirect + 'login';
+        window.location = 'http://localhost:8090/login';
     } catch (e) {
         yield put({
             type: 'SHOW_ERROR_MODAL',

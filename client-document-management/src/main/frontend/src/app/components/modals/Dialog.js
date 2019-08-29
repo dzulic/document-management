@@ -1,6 +1,7 @@
 import React from 'react';
-import AddNewItemModal from "./AddNewItemModal";
 import {connect} from "react-redux";
+import WaitModalDialog from "./WaitModalDialog";
+import AddNewItemModal from "./AddNewItemModal";
 
 class Dialog extends React.Component {
     constructor(props) {
@@ -18,15 +19,14 @@ class Dialog extends React.Component {
     render() {
         const {
             modalDialog: {
-                showAddModal, addItem
+                showModal, addItem, showWaitingModal, waiting
             }
         } = this.props;
-
+        console.log("TH", this.props)
         const content =
-            showAddModal &&
-            <AddNewItemModal showModal={addItem}/>
-        ;
-
+            showModal && (
+            showWaitingModal && <WaitModalDialog showModal={showModal} message={waiting.message}/>
+            || addItem && <AddNewItemModal showModal={addItem}/>);
         return (
             <div>
                 {content}

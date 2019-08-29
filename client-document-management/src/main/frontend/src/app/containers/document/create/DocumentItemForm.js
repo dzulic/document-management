@@ -59,7 +59,7 @@ export class DocumentItemForm extends Component {
                     <Field component={TextInputComponent} name={label} label={label} placeholder={"Title"}
                            customClass="text-center"/>
                     }
-                    {typeBreak && <br/>}
+                    {typeBreak && <div className="text-break"/>}
                 </div>
             </div>
         );

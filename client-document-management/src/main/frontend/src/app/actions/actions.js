@@ -6,7 +6,8 @@ import {
     CREATE_USER,
     FETCH_COMPANIES,
     LOGIN,
-    OPEN_ADD_ITEM_MODAL
+    OPEN_ADD_ITEM_MODAL,
+    SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
 export const fetchCompanies = () => ({
@@ -44,4 +45,8 @@ export const closeItemModal = () => ({
 export const addEditAppProperty = (property) => ({
     type: ADD_EDIT_APP_PROP_STORE,
     property
+});
+
+export const showWaitingDialog = () => ({
+    type: SHOW_WAITING_MODAL,
 });

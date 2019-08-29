@@ -35,6 +35,7 @@ export class LoginForm extends Component {
                            component={TextInputComponent}/>
                     <Field name="password"
                            label="password"
+                           type="password"
                            component={TextInputComponent}/>
                     <ButtonComponent label="login" buttonType="submit"/>
                 </div>

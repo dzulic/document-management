@@ -5,8 +5,7 @@ import {Field, getFormValues, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
 import DropDownComponent from "../../components/integral/DropDownComponent";
 import {requiredProps} from "../../components/modals/AddNewItemModal";
-import {getValueAppPropertyStore} from "../../utils/storeUtil";
-import {COMPANIES} from "../../utils/Constants";
+import {COMPANIES_SESSION} from "../../utils/Constants";
 
 export const buttonOptions = {
     selectOptions: []
@@ -26,10 +25,13 @@ export class CreateUserForm extends Component {
     }
 
     render() {
-        const {companies} = this.props;
+        console.log("local", localStorage.getItem(COMPANIES_SESSION));
+        let companies = JSON.parse(localStorage.getItem(COMPANIES_SESSION));
+
         if (companies) {
             BtnTypeInputProps.selectOptions = companies;
         }
+        console.log("CO", companies)
         return (
             <div className="create-user">
                 <h1>Create User</h1>
@@ -96,7 +98,6 @@ CreateUserForm.propTypes = {};
 function mapStateToProps(state) {
     return {
         formValues: selector(state),
-        companies: getValueAppPropertyStore(state, COMPANIES),
     }
 }
 

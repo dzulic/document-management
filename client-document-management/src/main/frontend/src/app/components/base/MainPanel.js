@@ -9,7 +9,7 @@ export class MainPanel extends Component {
     render() {
         const {children} = this.props;
         return (
-            <div id="mainPanel">
+            <div className="mainPanel">
                 {I18n.t("application.message.welcome")}
             </div>
         );
