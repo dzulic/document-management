@@ -10,11 +10,11 @@ export class UploadDocumentTask extends Component {
     }
 
     render() {
-        const {label} = this.props;
         return (
-            <div>
+            <form>
+                <h1>Upload a file</h1>
                 <UploadDocumentForm/>
-            </div>
+            </form>
         );
     }
 

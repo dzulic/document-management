@@ -28,7 +28,7 @@ export function* loginUser(action) {
 
             localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));
             yield call((promise) => promise, yield put({type: FETCH_COMPANIES}));
-            window.location = "/main";
+            window.location = "/";
         }
         yield put(showWaitingDialog(false));
 

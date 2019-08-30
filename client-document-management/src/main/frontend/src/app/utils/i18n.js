@@ -39,7 +39,8 @@ export const i18n = {
                 "logout": "Logout",
                 "upload": "Upload",
                 "search": "Search",
-                "pleaseWait": "Please wait"
+                "pleaseWait": "Please wait",
+                "uploadFileText": "If you want to upload file please click upload:"
 
             },
             "submit": "Submit",

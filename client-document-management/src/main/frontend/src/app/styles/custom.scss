@@ -54,20 +54,19 @@ body {
 }
 
 
-#button-component {
+.button-component {
   color: #394177;
-}
 
-#button-component button {
-  color: #394177;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid;
-  margin-top: 10px;
-  float: right;
+  button {
+    margin-top: 10px;
+    color: #394177;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    float: right;
+  }
 }
-
 
 .nav ul li:nth-child(2) > a:before {
   display: none !important;
@@ -75,6 +74,30 @@ body {
 
 .nav ul li:nth-last-child(2) a:after {
   border-left: 15px solid #EDE1F2 !important;
+}
+
+form {
+  padding-top: 80px;
+}
+
+.upload {
+  &-file {
+    display: inline;
+    font-size: 20px;
+    padding-right: 50px;
+
+  }
+
+  &-btn {
+    display: inline;
+    float: right;
+    margin-top: -15px;
+  }
+}
+
+.file {
+  width: 800px;
+  margin: auto;
 }
 
 .document-form {

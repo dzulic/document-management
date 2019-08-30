@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {getFormValues, reduxForm} from "redux-form";
+import {Field, getFormValues, reduxForm} from "redux-form";
+import {I18n} from 'react-redux-i18n';
+import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 
 export class UploadDocumentForm extends Component {
 
@@ -9,7 +11,6 @@ export class UploadDocumentForm extends Component {
         this.state = {};
         this.onFileChange = this.onFileChange.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
-
     }
     onFileChange(event) {
         this.setState({
@@ -42,30 +43,18 @@ export class UploadDocumentForm extends Component {
             this.setState({error: err});
         });
     }
-    downloadRandomImage() {
-        fetch('http://localhost:10700/api/files')
-            .then(response => {
-                const filename = response.headers.get('Content-Disposition').split('filename=')[1];
-                response.blob().then(blob => {
-                    let url = window.URL.createObjectURL(blob);
-                    let a = document.createElement('a');
-                    a.href = url;
-                    a.download = filename;
-                    a.click();
-                });
-            });
-    }
     render() {
-        const {label} = this.props;
         return (
-            <div className="App-intro">
-                <h3>Upload a file</h3>
+            <div className="col-lg-12">
+                <div className="file">
+                    <span className="upload-file"
+                          onChange={this.onFileChange}>{I18n.t('application.message.uploadFileText')}
+                    </span>
+                    <Field component={ButtonComponent} label="Upload document" click={this.uploadFile}
+                           classBtn="upload-btn"/>
+                </div>
                 <h4 style={{color: 'red'}}>{this.state.error}</h4>
                 <h4 style={{color: 'green'}}>{this.state.msg}</h4>
-                <input onChange={this.onFileChange} type="file"></input>
-                <button onClick={this.uploadFile}>Upload</button>
-                <h3>Download a random file</h3>
-                <button onClick={this.downloadRandomImage}>Download</button>
             </div>
         );
     }
@@ -73,7 +62,7 @@ export class UploadDocumentForm extends Component {
 }
 
 UploadDocumentForm.propTypes = {}
-const selector = getFormValues("AppForm");
+const selector = getFormValues(" AppForm");
 
 function mapStateToProps(state) {
     return {
@@ -82,6 +71,6 @@ function mapStateToProps(state) {
 }
 export default connect(mapStateToProps)
 (reduxForm({
-    form: "AppForm",
+    form: " AppForm",
     destroyOnUnmount: true,
 })(UploadDocumentForm));
