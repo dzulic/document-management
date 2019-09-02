@@ -28,7 +28,6 @@ public class Account implements Serializable {
     @JoinColumn(name = "company_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
-    private String country;
     private String team;
     private String position;
 

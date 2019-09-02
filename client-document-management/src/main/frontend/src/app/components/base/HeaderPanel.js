@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 export class HeaderPanel extends Component {
     render() {
         const {logged} = this.props;
-
         return (
             <div className="row" id="header-panel">
                 <div className="col-3" id="header-panel-logo">

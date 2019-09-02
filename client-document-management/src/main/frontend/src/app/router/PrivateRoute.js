@@ -5,7 +5,8 @@ import {USER_LOGGED_SESSION} from "../utils/Constants";
 
 export default function PrivateRoute({component: Component, path, params, ...rest}) {
     if (path === '/logout') {
-        localStorage.setItem(USER_LOGGED_SESSION, null);
+        localStorage.removeItem(USER_LOGGED_SESSION);
+        localStorage.clear();
     }
     let user = localStorage.getItem(USER_LOGGED_SESSION);
     return (

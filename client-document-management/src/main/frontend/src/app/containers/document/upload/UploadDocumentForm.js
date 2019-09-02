@@ -50,7 +50,8 @@ export class UploadDocumentForm extends Component {
                     <span className="upload-file"
                           onChange={this.onFileChange}>{I18n.t('application.message.uploadFileText')}
                     </span>
-                    <Field component={ButtonComponent} label="Upload document" click={this.uploadFile}
+                    <Field component={ButtonComponent} name="uploadDocument" label="uploadDocument"
+                           click={this.uploadFile}
                            classBtn="upload-btn"/>
                 </div>
                 <h4 style={{color: 'red'}}>{this.state.error}</h4>

@@ -5,17 +5,24 @@ import {Field, getFormValues, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
 import DropDownComponent from "../../components/integral/DropDownComponent";
 import {requiredProps} from "../../components/modals/AddNewItemModal";
-import {COMPANIES_SESSION} from "../../utils/Constants";
+import {COMPANIES_SESSION, USER_LOGGED_SESSION} from "../../utils/Constants";
 
 export const buttonOptions = {
     selectOptions: []
 };
-export const BtnTypeInputProps = {
+export const CompanyProps = {
     ...buttonOptions,
     ...requiredProps,
     label: "company",
     formName: "UserForm"
 };
+export const UserRoleProps = {
+    label: "userRole",
+    ...requiredProps,
+    selectOptions: [],
+    formName: "UserForm"
+};
+
 
 export class CreateUserForm extends Component {
 
@@ -25,13 +32,21 @@ export class CreateUserForm extends Component {
     }
 
     render() {
-        console.log("local", localStorage.getItem(COMPANIES_SESSION));
         let companies = JSON.parse(localStorage.getItem(COMPANIES_SESSION));
+        let logged = localStorage.getItem(USER_LOGGED_SESSION);
+
+        if (logged.userRole === "ADMIN") {
+            UserRoleProps.selectOptions.push([
+                {label: "SUPER", value: "SUPER"},
+                {label: "SIMPLE", value: "SIMPLE"}])
+        } else if (logged.userRole === "SUPER") {
+            UserRoleProps.selectOptions.push({label: "SIMPLE", value: "SIMPLE"});
+        }
 
         if (companies) {
-            BtnTypeInputProps.selectOptions = companies;
+            CompanyProps.selectOptions = companies;
         }
-        console.log("CO", companies)
+
         return (
             <div className="create-user">
                 <h1>Create User</h1>
@@ -67,7 +82,7 @@ export class CreateUserForm extends Component {
                 <div className="row">
                     <Field name="company"
                            label="company"
-                           baseComponentConfig={BtnTypeInputProps}
+                           baseComponentConfig={CompanyProps}
                            component={DropDownComponent}
                     />
                     <Field name="employeeID"
@@ -78,9 +93,10 @@ export class CreateUserForm extends Component {
                            required/>
                 </div>
                 <div className="row">
-                    <Field name="country"
-                           label="country"
-                           component={TextInputComponent}/>
+                    <Field name="userRole"
+                           label="userRole"
+                           baseComponentConfig={UserRoleProps}
+                           component={DropDownComponent}/>
                     <Field name="position"
                            label="position"
                            component={TextInputComponent}/>
