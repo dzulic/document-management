@@ -30,12 +30,12 @@ export class TextInputComponent extends Component {
     }
 
     render() {
-        const {label, customClass, input, placeholder, required, maxLength, minLength, type} = this.props;
+        const {label, customClass, input, placeholder, required, maxLength, minLength, type, disabled} = this.props;
         let t = type;
         if (!type) {
             t = "text";
         }
-        
+
         return (
             <div className="text-input-component">
                 <div className="form-group">
@@ -48,6 +48,7 @@ export class TextInputComponent extends Component {
                                  className={customClass}
                                  maxLength={maxLength}
                                  minLength={minLength}
+                                 disabled={disabled}
                                  {...input}/>
                     {label && <label htmlFor={label}>{I18n.t("application.message." + label)}</label>}
                 </div>
@@ -66,6 +67,7 @@ TextInputComponent.propTypes = {
     customClass: PropTypes.string,
     maxLength: PropTypes.number,
     minLength: PropTypes.number,
-    type: PropTypes.string
+    type: PropTypes.string,
+    disabled: PropTypes.bool
 };
 export default (TextInputComponent);

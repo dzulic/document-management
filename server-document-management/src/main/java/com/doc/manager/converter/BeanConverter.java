@@ -2,7 +2,9 @@ package com.doc.manager.converter;
 
 import com.doc.manager.domain.Account;
 import com.doc.manager.domain.Company;
+import com.doc.manager.domain.Document;
 import com.doc.manager.transfer.CompanyDTO;
+import com.doc.manager.transfer.DocumentDTO;
 import com.doc.manager.transfer.UserDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -14,7 +16,7 @@ public class BeanConverter {
         Account account = null;
         if (userDTO != null) {
             account = new Account();
-            BeanUtils.copyProperties(account, userDTO);
+            BeanUtils.copyProperties(userDTO, account);
         }
         return account;
     }
@@ -35,5 +37,16 @@ public class BeanConverter {
             BeanUtils.copyProperties(companyDTO, company);
         }
         return company;
+    }
+
+    public Document convertDocumentDTOToDocument(DocumentDTO documentDTO) {
+        Document document = null;
+        if (documentDTO != null) {
+            document = new Document();
+            BeanUtils.copyProperties(documentDTO, document);
+            document.setCreatedBy(convertUserDTOToUser(documentDTO.getCreatedBy()));
+            document.setCompany(convertCompanyDTOToCompany(documentDTO.getCreatedBy().getCompany()));
+        }
+        return document;
     }
 }

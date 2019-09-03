@@ -1,11 +1,14 @@
 
 label {
+  display: block;
   position: relative;
   color: gray !important;
   font: 400 20px Roboto;
   cursor: text;
   transition: .25s ease;
   padding: 10px 0;
+  margin: auto;
+  width: 250px;
 }
 
 .login {

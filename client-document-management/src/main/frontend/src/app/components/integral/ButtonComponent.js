@@ -9,10 +9,11 @@ export class ButtonComponent extends Component {
     }
 
     render() {
-        const {label, click, buttonType, classBtn} = this.props;
+        const {label, click, buttonType, classBtn, disabled} = this.props;
         return (
             <div className={"button-component " + (classBtn !== undefined ? classBtn : '')}>
                 <button className={"btn btn-submit " + (classBtn !== undefined ? classBtn : '')} type={buttonType}
+                        disabled={disabled}
                         onClick={click}>{I18n.t("application.message." + label)}</button>
             </div>
         );
@@ -24,6 +25,7 @@ ButtonComponent.propTypes = {
     label: PropTypes.string.isRequired,
     click: PropTypes.func,
     buttonType: PropTypes.string,
-    classBtn: PropTypes.string
+    classBtn: PropTypes.string,
+    disabled: PropTypes.bool
 }
 export default (ButtonComponent);

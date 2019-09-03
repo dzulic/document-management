@@ -6,7 +6,6 @@ import lombok.Data;
 public class DocumentDTO {
 
     String name;
-    String dateOfCreation;
-    UserDTO creator;
+    UserDTO createdBy;
     String content;
 }

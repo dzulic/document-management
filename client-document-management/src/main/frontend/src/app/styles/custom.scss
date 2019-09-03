@@ -30,6 +30,10 @@ body {
     box-shadow: none !important;
 
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .container {
@@ -85,19 +89,36 @@ form {
     display: inline;
     font-size: 20px;
     padding-right: 50px;
+    margin: auto;
+    float: left;
+    padding-left: 30%;
 
+    &-div {
+      padding-top: 50px;
+      width: 800px;
+    }
   }
 
   &-btn {
+    float: left;
     display: inline;
-    float: right;
     margin-top: -15px;
   }
 }
 
 .file {
-  width: 800px;
+  width: 250px;
   margin: auto;
+  padding-bottom: 10px;
+
+  &-form {
+    width: 800px;
+    margin: auto;
+  }
+
+  &-label {
+    padding-bottom: 30px;
+  }
 }
 
 .document-form {

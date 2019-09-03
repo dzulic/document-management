@@ -25,9 +25,10 @@ public class Document implements Serializable {
     @Column(name = "updated")
     private LocalDateTime updated;
 
-    @JoinColumn(name = "account_id")
+    @ManyToOne
+    @JoinColumn(name = "created_by")
     Account createdBy;
-
+    @ManyToOne
     @JoinColumn(name = "company_id")
     Company company;
 }

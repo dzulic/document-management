@@ -3,12 +3,8 @@ package com.doc.manager.facade;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.DocumentService;
 import com.doc.manager.transfer.DocumentDTO;
-import com.doc.manager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/documentWS")
 @RestController
@@ -17,7 +13,7 @@ public class DocumentFacade {
     @Autowired
     DocumentService documentService;
 
-    @RequestMapping("/createDocument")
+    @RequestMapping(value = "/createDocument", method = RequestMethod.POST)
     public RestResponse createDocument(@RequestBody DocumentDTO documentDTO) {
         try {
             return documentService.createDocument(documentDTO);

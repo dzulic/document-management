@@ -4,14 +4,15 @@ import {
     CREATE_COMPANY,
     CREATE_DOCUMENT,
     CREATE_USER,
-    FETCH_COMPANIES,
     LOGIN,
     OPEN_ADD_ITEM_MODAL,
+    SAVE_DOCUMENT,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
-export const fetchCompanies = () => ({
-    type: FETCH_COMPANIES,
+export const saveDocument = (payload) => ({
+    type: SAVE_DOCUMENT,
+    payload
 });
 
 export const loginUser = (property) => ({

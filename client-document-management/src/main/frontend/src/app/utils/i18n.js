@@ -40,8 +40,10 @@ export const i18n = {
                 "upload": "Upload",
                 "search": "Search",
                 "pleaseWait": "Please wait",
-                "uploadFileText": "If you want to upload file please click upload:",
-                
+                "chooseFile": "If you want to upload file first you need to choose file",
+                "nameOfDocument": "Name of document",
+                "uploadFileText": "Please click upload to finish",
+
 
             },
             "submit": "Submit",

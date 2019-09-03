@@ -11,8 +11,7 @@ import java.io.Serializable;
 public class Account implements Serializable {
     @Id
     @Column(name = "account_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private int employeeID;
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     private EUserRole userRole;
@@ -25,10 +24,9 @@ public class Account implements Serializable {
     private String email;
     @Column(name = "phone")
     private String mobilePhone;
+    @ManyToOne
     @JoinColumn(name = "company_id")
-    @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
-    private String team;
     private String position;
 
     public Account() {

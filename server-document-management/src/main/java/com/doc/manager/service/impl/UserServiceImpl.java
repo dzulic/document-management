@@ -38,7 +38,8 @@ public class UserServiceImpl implements UserService {
 
     public RestResponse createUser(UserDTO userDTO) {
         try {
-            Account account = accountRepository.save(beanConverter.convertUserDTOToUser(userDTO));
+            Account account = beanConverter.convertUserDTOToUser(userDTO);
+            accountRepository.save(account);
             return new RestResponse(SUCCESS, null);
         } catch (Exception ex) {
             return new RestResponse(FAILURE, null);

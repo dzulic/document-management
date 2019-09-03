@@ -37,21 +37,22 @@ create table document
   created    timestamp,
   updated    timestamp,
   company_id int8 not null,
-  account_id int8 not null,
+  created_by int8 not null,
   primary key (id)
 );
 
-create table file_document
+create table template_document
 (
   id           int8 not null,
   file_name    varchar(25),
   content_type varchar(25),
   data         varchar(10000),
+  created_by   int8 not null,
   primary key (id)
 );
 
 alter table document
-  add constraint DOCUMENT_account_fkey foreign key (account_id) references account;
+  add constraint DOCUMENT_account_fkey foreign key (created_by) references account;
 
 alter table document
   add constraint DOCUMENT_COMPANY_ID_fkey foreign key (company_id) references company;
@@ -59,8 +60,12 @@ alter table document
 alter table account
   add constraint ACCOUNT_COMPANY_ID_fkey foreign key (company_id) references company;
 
-alter table file_document
-  add constraint FILE_DOC_ID_fkey foreign key (account_id) references account;
+alter table template_document
+  add constraint FILE_DOC_ID_fkey foreign key (created_by) references account;
 
 INSERT into account
-values (0, 'asa', 'aasasas', null, null, null, null, null, null);
+values (0, 'ADMIN', 'admin', 'admin', null, null, null, null, null);
+INSERT into company
+values ('11111', 'Fabrika', 'Serbia', 'Belgrade', 'Software', '+3815656565', 'fabrika@fmail.com');
+INSERT into account
+values (1, 'SIMPLE', 'simple', 'simple', null, null, null, null, '11111');
