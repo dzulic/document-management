@@ -15,9 +15,10 @@ export class DocumentForm extends Component {
         const {children} = this.props;
         return (
             <div className="document-form">
-                    <div className="col-6 offset-3">
-                        <Field component={TextInputComponent} name="docTitle" placeholder="Document Title" customClass="text-center"/>
-                    </div>
+                <div className="col-6 offset-3">
+                    <Field component={TextInputComponent} name="docTitle" placeholder="Document Title"
+                           customClass="text-center docTitle"/>
+                </div>
                 <div className="row">
                     {children}
                 </div>

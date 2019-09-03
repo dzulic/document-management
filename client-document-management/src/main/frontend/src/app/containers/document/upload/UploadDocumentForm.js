@@ -126,8 +126,5 @@ export default connect(mapStateToProps)
     reduxForm({
         form: "DocForm",
         destroyOnUnmount: true,
-    })
-    (
-        UploadDocumentForm
-    ))
+    })(UploadDocumentForm))
 ;

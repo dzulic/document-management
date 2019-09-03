@@ -41,6 +41,10 @@ export class DocumentItemForm extends Component {
         let typeTitle = type !== undefined && type != "" && type == "TITLE";
         return (
             <div className="document-item">
+                {typeBreak && <div className="type-break-div">
+                    <hr/>
+                </div>}
+                {!typeBreak &&
                 <div>
                     {typeInput && <Field name={label}
                                          label={label}
@@ -56,11 +60,15 @@ export class DocumentItemForm extends Component {
                                             component={DropDownComponent}/>}
 
                     {typeTitle &&
-                    <Field component={TextInputComponent} name={label} label={label} placeholder={"Title"}
-                           customClass="text-center"/>
+                    <Field component={TextInputComponent} name={"title"} label={""} placeholder={"Title"}
+                           customClass="text-center type-title"/>
+
                     }
-                    {typeBreak && <div className="text-break"/>}
+                    {typeTitle && <div className="type-break-div">
+                        <hr/>
+                    </div>}
                 </div>
+                }
             </div>
         );
     }

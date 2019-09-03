@@ -13,13 +13,14 @@ public class TemplateDocument implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private int id;
     @Column(name = "file_name")
-    private String userRole;
+    private String fileName;
     @Column(name = "content_type")
     private String contentType;
     private String data;
+    @ManyToOne
     @JoinColumn(name = "created_by")
-    private String createdBy;
+    private Account createdBy;
 
 }

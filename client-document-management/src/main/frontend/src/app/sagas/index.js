@@ -4,6 +4,7 @@ import {loginUser} from '../sagas/loginSaga';
 import {createUser} from '../sagas/userSaga'
 import {createCompany, fetchCompanies} from '../sagas/companySaga'
 import {saveDocuments} from "../sagas/documentSaga";
+import {createTemplate} from "../sagas/templateSaga";
 
 // main saga generators
 export function* sagas() {
@@ -12,7 +13,8 @@ export function* sagas() {
         takeEvery(types.CREATE_USER, createUser),
         takeEvery(types.CREATE_COMPANY, createCompany),
         takeEvery(types.FETCH_COMPANIES, fetchCompanies),
-        takeEvery(types.SAVE_DOCUMENT, saveDocuments)
+        takeEvery(types.SAVE_DOCUMENT, saveDocuments),
+        takeEvery(types.CREATE_TEMPLATE, createTemplate)
 
     ];
 }

@@ -22,12 +22,12 @@ export class SearchDocumentForm extends Component {
     }
     render() {
         return (
-            <form>
+            <div>
                 <Field name="searchByName" label="searchByName" component={TextInputComponent}/>
                 <Field name="searchByCompany" label="searchByCompany" component={TextInputComponent}/>
                 <h3>Download a random file</h3>
                 <button onClick={this.downloadRandomImage} className="upload-btn">Download</button>
-            </form>
+            </div>
         );
     }
 

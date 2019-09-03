@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {DocumentForm} from "./DocumentForm";
 import {DocumentItemForm} from "./DocumentItemForm";
-import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {openAddItemModal} from "../../../actions/actions";
@@ -23,25 +22,20 @@ export class CreateDocumentForm extends Component {
     render() {
         const {items} = this.props;
         return (
-            <div>
-                <div className="col-lg-12">
-                    <h1>{I18n.t("application.message.createDocument")}</h1>
-                    <div className="col-lg-8 offset-lg-2">
-                        <DocumentForm>
-                            {
-                                items != null && items.map((item) => (
-                                    <DocumentItemForm key={item.id} label={item.label} type={item.type}
-                                                      options={item.options != undefined ? item.options.split(',') : undefined}/>
-                                ))
-                            }
-                        </DocumentForm>
-                    </div>
-                    <div className="col-lg-2">
-                        <ButtonComponent label="addNewItem" click={this.addNewRow}/>
-                        <ButtonComponent label="createDocument" buttonType="submit"/>
-                    </div>
+            <div className="col-lg-12 template">
+                <h1>{I18n.t("application.message.createDocument")}</h1>
+                <div className="col-lg-8 offset-lg-2">
+                    <DocumentForm>
+                        {
+                            items != null && items.map((item) => (
+                                <DocumentItemForm key={item.id} label={item.label} type={item.type}
+                                                  options={item.options != undefined ? item.options.split(',') : undefined}/>
+                            ))
+                        }
+                    </DocumentForm>
                 </div>
             </div>
+
         );
     }
 

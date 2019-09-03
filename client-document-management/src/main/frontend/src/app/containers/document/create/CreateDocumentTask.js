@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import CreateDocumentForm from "../../document/create/CreateDocumentForm";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
-import {createDocument} from "../../../actions/actions";
+import {ButtonComponent} from "../../../components/integral/ButtonComponent";
+import {createTemplateDocument} from "../../../actions/actions";
+import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 
 export class CreateDocumentTask extends Component {
 
@@ -12,9 +14,13 @@ export class CreateDocumentTask extends Component {
     }
 
     onSubmit() {
-        const {dispatch, formValues} = this.props;
-        dispatch(createDocument({
-            document: formValues
+        const {dispatch, user} = this.props;
+
+        dispatch(createTemplateDocument({
+            data: document.getElementsByClassName("document-form")[0].innerHTML,
+            createdBy: user,
+            fileName: "",
+            contentType: "docx",
         }))
     }
 
@@ -23,6 +29,10 @@ export class CreateDocumentTask extends Component {
         return (
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 <CreateDocumentForm/>
+                <div className="col-lg-2">
+                    <ButtonComponent label="addNewItem" buttonType="button" click={this.addNewRow}/>
+                    <ButtonComponent label="createDocument" buttonType="submit"/>
+                </div>
             </form>
         );
     }
@@ -33,6 +43,8 @@ const selector = getFormValues("AppForm");
 function mapStateToProps(state) {
     return {
         formValues: selector(state),
+        user: JSON.parse(localStorage.getItem(USER_LOGGED_SESSION))
+
     }
 }
 

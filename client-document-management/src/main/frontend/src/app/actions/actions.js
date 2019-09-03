@@ -3,6 +3,7 @@ import {
     CLOSE_MODAL_DIALOG,
     CREATE_COMPANY,
     CREATE_DOCUMENT,
+    CREATE_TEMPLATE,
     CREATE_USER,
     LOGIN,
     OPEN_ADD_ITEM_MODAL,
@@ -10,6 +11,10 @@ import {
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
+export const createTemplateDocument = (payload) => ({
+    type: CREATE_TEMPLATE,
+    payload
+});
 export const saveDocument = (payload) => ({
     type: SAVE_DOCUMENT,
     payload

@@ -3,8 +3,10 @@ package com.doc.manager.converter;
 import com.doc.manager.domain.Account;
 import com.doc.manager.domain.Company;
 import com.doc.manager.domain.Document;
+import com.doc.manager.domain.TemplateDocument;
 import com.doc.manager.transfer.CompanyDTO;
 import com.doc.manager.transfer.DocumentDTO;
+import com.doc.manager.transfer.TemplateDTO;
 import com.doc.manager.transfer.UserDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -48,5 +50,15 @@ public class BeanConverter {
             document.setCompany(convertCompanyDTOToCompany(documentDTO.getCreatedBy().getCompany()));
         }
         return document;
+    }
+
+    public TemplateDocument convertTemplateDTOToTemplate(TemplateDTO templateDTO) {
+        TemplateDocument templateDocument = null;
+        if (templateDTO != null) {
+            templateDocument = new TemplateDocument();
+            BeanUtils.copyProperties(templateDTO, templateDocument);
+            templateDocument.setCreatedBy(convertUserDTOToUser(templateDTO.getCreatedBy()));
+        }
+        return templateDocument;
     }
 }
