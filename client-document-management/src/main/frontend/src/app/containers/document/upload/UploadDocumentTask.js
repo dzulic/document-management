@@ -21,7 +21,7 @@ export class UploadDocumentTask extends Component {
 }
 
 UploadDocumentTask.propTypes = {}
-const selector = getFormValues("DocForm");
+const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {
@@ -30,6 +30,6 @@ function mapStateToProps(state) {
 }
 export default connect(mapStateToProps)
 (reduxForm({
-    form: "DocForm",
+    form: "AppForm",
     destroyOnUnmount: true,
 })(UploadDocumentTask));

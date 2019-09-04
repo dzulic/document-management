@@ -13,6 +13,7 @@ public class UserDTO {
     private String lastName;
     private String email;
     private String mobilePhone;
+    private int companyId;
     private CompanyDTO company;
     private String country;
     private String position;

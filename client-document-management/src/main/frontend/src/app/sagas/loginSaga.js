@@ -1,7 +1,6 @@
 import ApiLogin from "../api/LoginApi";
 import {call, put} from "redux-saga/effects";
 import {LOGIN_USER, USER_LOGGED_SESSION} from "../utils/Constants";
-import {FETCH_COMPANIES} from "../utils/actionTypes";
 import {showWaitingDialog} from "../actions/actions";
 
 export function* loginUser(action) {
@@ -27,7 +26,6 @@ export function* loginUser(action) {
             });
 
             localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));
-            yield call((promise) => promise, yield put({type: FETCH_COMPANIES}));
             window.location = "/";
         }
         yield put(showWaitingDialog(false));

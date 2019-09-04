@@ -8,7 +8,7 @@ const GET_COMPANIES = "companyWS/getCompanies";
 class CompanyApi {
     static createCompany(company) {
         let defaultrestparamspost = DEFAULT_REST_PARAMS_POST;
-        let user = localStorage.getItem(USER_LOGGED_SESSION);
+        let user = JSON.parse(localStorage.getItem(USER_LOGGED_SESSION));
 
         defaultrestparamspost.headers = {
             'Content-Type': 'application/json',

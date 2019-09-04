@@ -31,7 +31,7 @@ export class CreateCompanyTask extends Component {
 
 }
 
-const selector = getFormValues("CompanyForm");
+const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {
@@ -41,6 +41,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)
 (reduxForm({
-    form: "CompanyForm",
+    form: "AppForm",
     destroyOnUnmount: true,
 })(CreateCompanyTask));

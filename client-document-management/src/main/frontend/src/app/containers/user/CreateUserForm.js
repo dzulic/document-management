@@ -5,7 +5,8 @@ import {Field, getFormValues, reduxForm} from 'redux-form'
 import {connect} from "react-redux";
 import DropDownComponent from "../../components/integral/DropDownComponent";
 import {requiredProps} from "../../components/modals/AddNewItemModal";
-import {COMPANIES_SESSION, USER_LOGGED_SESSION} from "../../utils/Constants";
+import {COMPANIES, USER_LOGGED_SESSION} from "../../utils/Constants";
+import {getValueAppPropertyStore} from "../../utils/storeUtil";
 
 export const buttonOptions = {
     selectOptions: []
@@ -13,14 +14,17 @@ export const buttonOptions = {
 export const CompanyProps = {
     ...buttonOptions,
     ...requiredProps,
-    label: "company",
-    formName: "UserForm"
+    label: "companyId",
+    formName: "UserForm",
+    disableSingleElementReadOnly: true
 };
 export const UserRoleProps = {
     label: "userRole",
     ...requiredProps,
     selectOptions: [],
-    formName: "UserForm"
+    formName: "UserForm",
+    disableSingleElementReadOnly: true
+
 };
 
 
@@ -32,13 +36,14 @@ export class CreateUserForm extends Component {
     }
 
     render() {
-        let companies = JSON.parse(localStorage.getItem(COMPANIES_SESSION));
-        let logged = localStorage.getItem(USER_LOGGED_SESSION);
-
+        const {logged, companies} = this.props;
         if (logged.userRole === "ADMIN") {
-            UserRoleProps.selectOptions.push([
-                {label: "SUPER", value: "SUPER"},
-                {label: "SIMPLE", value: "SIMPLE"}])
+            UserRoleProps.selectOptions.push(
+                {label: "SUPER", value: "SUPER"});
+
+            UserRoleProps.selectOptions.push({
+                label: "SIMPLE", value: "SIMPLE"
+            })
         } else if (logged.userRole === "SUPER") {
             UserRoleProps.selectOptions.push({label: "SIMPLE", value: "SIMPLE"});
         }
@@ -58,6 +63,7 @@ export class CreateUserForm extends Component {
                     <Field name="password"
                            label="password"
                            component={TextInputComponent}
+                           type="password"
                            required/>
                 </div>
                 <div className="row">
@@ -74,14 +80,16 @@ export class CreateUserForm extends Component {
                 <div className="row">
                     <Field name="email"
                            label="email"
+                           type="email"
                            component={TextInputComponent}/>
                     <Field name="mobilePhone"
                            label="mobilePhone"
+                           type="phone"
                            component={TextInputComponent}/>
                 </div>
                 <div className="row">
-                    <Field name="company"
-                           label="company"
+                    <Field name="companyId"
+                           label="companyId"
                            baseComponentConfig={CompanyProps}
                            component={DropDownComponent}
                     />
@@ -108,17 +116,20 @@ export class CreateUserForm extends Component {
 
 }
 
-const selector = getFormValues("UserForm");
+const selector = getFormValues("AppForm");
 CreateUserForm.propTypes = {};
 
 function mapStateToProps(state) {
     return {
         formValues: selector(state),
+        logged: JSON.parse(localStorage.getItem(USER_LOGGED_SESSION)),
+        companies: getValueAppPropertyStore(state, COMPANIES)
+
     }
 }
 
 export default connect(mapStateToProps)(reduxForm({
-    form: 'UserForm',
+    form: 'AppForm',
     destroyOnUnmount: false,
     enableReinitialize: true,
 })(CreateUserForm));

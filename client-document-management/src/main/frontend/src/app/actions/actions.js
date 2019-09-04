@@ -5,6 +5,7 @@ import {
     CREATE_DOCUMENT,
     CREATE_TEMPLATE,
     CREATE_USER,
+    FETCH_COMPANIES,
     LOGIN,
     OPEN_ADD_ITEM_MODAL,
     SAVE_DOCUMENT,
@@ -23,6 +24,10 @@ export const saveDocument = (payload) => ({
 export const loginUser = (property) => ({
     type: LOGIN,
     property
+});
+
+export const fetchCompanies = () => ({
+    type: FETCH_COMPANIES,
 });
 
 export const createUser = (property) => ({

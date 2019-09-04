@@ -2,7 +2,9 @@ package com.doc.manager.service.impl;
 
 import com.doc.manager.converter.BeanConverter;
 import com.doc.manager.dao.AccountRepository;
+import com.doc.manager.dao.CompanyRepository;
 import com.doc.manager.domain.Account;
+import com.doc.manager.domain.Company;
 import com.doc.manager.responses.LoginRestResponse;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.security.AccountDetails;
@@ -33,12 +35,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Autowired
+    private CompanyRepository companyRepository;
+
     @Resource
     private AuthenticationManager authenticationManager;
 
     public RestResponse createUser(UserDTO userDTO) {
         try {
             Account account = beanConverter.convertUserDTOToUser(userDTO);
+            if (userDTO.getCompanyId() != 0) {
+                Company byCompanyId = companyRepository.findByCompanyId(userDTO.getCompanyId());
+                account.setCompany(byCompanyId);
+            }
             accountRepository.save(account);
             return new RestResponse(SUCCESS, null);
         } catch (Exception ex) {

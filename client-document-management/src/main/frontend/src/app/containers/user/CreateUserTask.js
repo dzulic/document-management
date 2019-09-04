@@ -3,6 +3,8 @@ import CreateUserForm from "./CreateUserForm";
 import {createUser} from "../../actions/actions"
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
+import {getValueAppPropertyStore} from "../../utils/storeUtil";
+import {COMPANIES} from "../../utils/Constants";
 
 export class CreateUserTask extends Component {
 
@@ -12,7 +14,7 @@ export class CreateUserTask extends Component {
     }
 
     onSubmit() {
-        const {formValues, formValid} = this.props;
+        const {formValues, companies} = this.props;
         this.props.dispatch(createUser(formValues));
     }
 
@@ -29,16 +31,17 @@ export class CreateUserTask extends Component {
 }
 
 CreateUserTask.propTypes = {}
-const selector = getFormValues("UserForm");
+const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {
-        formValues: selector(state)
+        formValues: selector(state),
+        companies: getValueAppPropertyStore(state, COMPANIES)
     }
 }
 
 export default connect(mapStateToProps)(reduxForm({
-    form: 'UserForm',
+    form: 'AppForm',
     destroyOnUnmount: false,
     enableReinitialize: true,
 })(CreateUserTask));

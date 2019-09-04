@@ -127,6 +127,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(reduxForm({
-    form: "ItemForm",
+    form: "AppForm",
     destroyOnUnmount: true,
 })(AddNewItemModal));

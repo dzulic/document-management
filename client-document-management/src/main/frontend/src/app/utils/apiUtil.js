@@ -70,6 +70,5 @@ const handleServerResponse =
             throw new Error("ERROR_CODE_GENERIC");
         }
         let c = response.json();
-        console.log("C", c)
         return c;
     };

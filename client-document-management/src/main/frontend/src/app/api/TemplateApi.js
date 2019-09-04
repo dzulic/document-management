@@ -17,7 +17,6 @@ class TemplateApi {
             ...defaultrestparamspost,
             body: JSON.stringify(document)
         };
-        console.log("REW", request)
         return handleApiFetchPOST(REST_ROOT_ENDPOINT + CREATE_DOCUMENT, request);
     }
 

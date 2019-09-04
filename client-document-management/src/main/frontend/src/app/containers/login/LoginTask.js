@@ -27,6 +27,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(reduxForm({
-    form: "LoginForm",
+    form: "AppForm",
     destroyOnUnmount: true,
 })(LoginTask));

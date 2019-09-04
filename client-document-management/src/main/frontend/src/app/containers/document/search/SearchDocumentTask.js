@@ -22,7 +22,7 @@ export class SearchDocumentTask extends Component {
 }
 
 SearchDocumentForm.propTypes = {}
-const selector = getFormValues("SearchDocumentForm");
+const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {
@@ -31,6 +31,6 @@ function mapStateToProps(state) {
 }
 export default connect(mapStateToProps)
 (reduxForm({
-    form: "SearchDocumentForm",
+    form: "AppForm",
     destroyOnUnmount: true,
 })(SearchDocumentTask));

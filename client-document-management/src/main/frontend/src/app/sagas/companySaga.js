@@ -1,6 +1,6 @@
 import {call, put} from "redux-saga/effects";
 import CompanyApi from "../api/CompanyApi";
-import {COMPANIES, COMPANIES_SESSION} from "../utils/Constants";
+import {COMPANIES} from "../utils/Constants";
 import {ADD_EDIT_APP_PROP_STORE} from "../utils/actionTypes";
 
 export function* fetchCompanies() {
@@ -13,6 +13,7 @@ export function* fetchCompanies() {
             let companiesMap = response.data.map((company) => {
                 return {label: company.companyName, value: JSON.stringify(company.companyId)};
             });
+            console.log("RES", response)
             const companies = {
                 key: COMPANIES,
                 value: companiesMap
@@ -22,8 +23,6 @@ export function* fetchCompanies() {
                 type: ADD_EDIT_APP_PROP_STORE,
                 property: companies
             });
-
-            localStorage.setItem(COMPANIES_SESSION, JSON.stringify(companiesMap));
         }
     } catch (e) {
         yield put({

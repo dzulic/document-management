@@ -1,11 +1,12 @@
 import ApiUser from "../api/UserApi";
 import {call, put} from "redux-saga/effects";
-import ApiLogin from "../api/LoginApi";
+import {showWaitingDialog} from "../actions/actions";
 
 
 export function* createUser(action) {
-
+    yield put(showWaitingDialog(true));
     try {
+        console.log(action.property)
         const response = yield call(ApiUser.createUser, action.property);
 
 
@@ -13,25 +14,11 @@ export function* createUser(action) {
             throw new Error(response.message);
         }
 
-        if (response.loggedIn === true) {
-            //redirect to homepage
-            window.location = "/";
-        }
-
-
-        if (response) {
-            const loginProperty = {
-                key: 'LOGIN_USER',
-                value: response
-            };
-
-            yield put({
-                type: 'ADD_EDIT_APP_PROP_STORE',
-                property: loginProperty
-            });
-        }
+        yield put(showWaitingDialog(false));
 
     } catch (e) {
+        yield put(showWaitingDialog(false));
+
         yield put({
             type: 'SHOW_ERROR_MODAL',
             message: ""

@@ -5,7 +5,6 @@ import TemplateApi from "../api/TemplateApi";
 export function* createTemplate(action) {
 
     try {
-        console.log("CT", action)
         yield put(showWaitingDialog(true));
         const response = yield call(TemplateApi.createTemplate, action.payload);
 

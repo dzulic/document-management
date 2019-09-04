@@ -46,13 +46,16 @@ function getFromLocalStorage() {
     }
     return JSON.parse(state);
 }
+/*
 const persistentState = getFromLocalStorage();
+*/
 // create the store
 const store = createStore(reducers,
-    persistentState,
     middleware);
 
-store.subscribe(() => saveToLocalStorage(store.getState()))
+/*store.subscribe(() => {
+    saveToLocalStorage(store.getState())
+});*/
 const history = syncHistoryWithStore(createBrowserHistory(), store);
 sagaMiddleware.run(sagas);
 

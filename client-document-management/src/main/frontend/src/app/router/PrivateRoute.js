@@ -4,6 +4,7 @@ import {Redirect} from "react-router";
 import {USER_LOGGED_SESSION} from "../utils/Constants";
 
 export default function PrivateRoute({component: Component, path, params, ...rest}) {
+
     if (path === '/logout') {
         localStorage.removeItem(USER_LOGGED_SESSION);
         localStorage.clear();
