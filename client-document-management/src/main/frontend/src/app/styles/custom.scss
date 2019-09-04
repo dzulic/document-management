@@ -70,6 +70,11 @@ body {
     border: solid;
     float: right;
   }
+
+  .search {
+    float: none;
+    margin: 0 auto 50px;
+  }
 }
 
 .nav ul li:nth-child(2) > a:before {
