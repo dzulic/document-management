@@ -5,7 +5,7 @@ export default function modalDialog(state = {}, action) {
         case SHOW_WAITING_MODAL:
             return {showModal: action.showWaitingModal, showWaitingModal: action.showWaitingModal};
         case OPEN_ADD_ITEM_MODAL:
-            return {showModal: true, showAddModal: true, addItem: true};
+            return {showModal: action.value, showAddModal: action.value, addItem: action.value};
         case CLOSE_MODAL_DIALOG:
             return {showModal: false};
         default:

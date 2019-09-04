@@ -15,14 +15,14 @@ export const CompanyProps = {
     ...buttonOptions,
     ...requiredProps,
     label: "companyId",
-    formName: "UserForm",
+    formName: "AppForm",
     disableSingleElementReadOnly: true
 };
 export const UserRoleProps = {
     label: "userRole",
     ...requiredProps,
     selectOptions: [],
-    formName: "UserForm",
+    formName: "AppForm",
     disableSingleElementReadOnly: true
 
 };

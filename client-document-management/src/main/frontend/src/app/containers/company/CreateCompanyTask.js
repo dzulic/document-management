@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CreateCompanyForm from "./CreateCompanyForm";
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {searchDocument} from "../../actions/actions";
+import {getDocument} from "../../actions/actions";
 
 export class CreateCompanyTask extends Component {
 
@@ -13,7 +13,7 @@ export class CreateCompanyTask extends Component {
 
     handleSubmit() {
         const {dispatch, formValues} = this.props;
-        dispatch(searchDocument({
+        dispatch(getDocument({
             company: {
                 ...formValues
             }
@@ -42,5 +42,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
-    destroyOnUnmount: true,
+    destroyOnUnmount: false,
 })(CreateCompanyTask));

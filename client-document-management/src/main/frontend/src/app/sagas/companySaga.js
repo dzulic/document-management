@@ -24,6 +24,7 @@ export function* fetchCompanies() {
                 property: companies
             });
         }
+
     } catch (e) {
         yield put({
             type: 'SHOW_ERROR_MODAL',

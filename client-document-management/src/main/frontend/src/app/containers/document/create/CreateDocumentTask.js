@@ -3,7 +3,7 @@ import CreateDocumentForm from "../../document/create/CreateDocumentForm";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
-import {createTemplateDocument} from "../../../actions/actions";
+import {createTemplateDocument, openAddItemModal} from "../../../actions/actions";
 import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 
 export class CreateDocumentTask extends Component {
@@ -11,8 +11,12 @@ export class CreateDocumentTask extends Component {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+        this.addNewRow = this.addNewRow.bind(this);
     }
 
+    addNewRow() {
+        this.props.dispatch(openAddItemModal(true));
+    }
     onSubmit() {
         const {dispatch, user} = this.props;
 

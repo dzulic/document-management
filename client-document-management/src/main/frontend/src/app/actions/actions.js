@@ -52,8 +52,9 @@ export const createDocument = (property) => ({
     property
 });
 
-export const openAddItemModal = () => ({
+export const openAddItemModal = (value) => ({
     type: OPEN_ADD_ITEM_MODAL,
+    value
 });
 
 export const closeItemModal = () => ({

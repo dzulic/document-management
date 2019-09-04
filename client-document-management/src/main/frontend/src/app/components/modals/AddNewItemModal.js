@@ -116,7 +116,7 @@ class AddNewItemModal extends React.Component {
 AddNewItemModal.propTypes = {
     showModal: PropTypes.bool
 };
-const selectorItem = getFormValues("ItemForm");
+const selectorItem = getFormValues("AppForm");
 
 function mapStateToProps(state) {
     return {

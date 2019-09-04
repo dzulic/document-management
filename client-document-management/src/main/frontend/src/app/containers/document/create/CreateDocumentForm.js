@@ -3,7 +3,6 @@ import {DocumentForm} from "./DocumentForm";
 import {DocumentItemForm} from "./DocumentItemForm";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
-import {openAddItemModal} from "../../../actions/actions";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {DOCUMENT_ITEMS} from "../../../utils/Constants";
 import {I18n} from "react-redux-i18n";
@@ -12,11 +11,6 @@ export class CreateDocumentForm extends Component {
 
     constructor(props) {
         super(props);
-        this.addNewRow = this.addNewRow.bind(this);
-    }
-
-    addNewRow() {
-        this.props.dispatch(openAddItemModal());
     }
 
     render() {

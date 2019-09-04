@@ -22,6 +22,7 @@ class DocumentApi {
     }
 
     static searchDocument(document) {
+        console.log("DOCY", document);
         let defaultrestparamspost = DEFAULT_REST_PARAMS_POST;
         let user = JSON.parse(localStorage.getItem(USER_LOGGED_SESSION));
         defaultrestparamspost.headers = {

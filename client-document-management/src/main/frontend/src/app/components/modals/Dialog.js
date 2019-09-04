@@ -27,10 +27,12 @@ class Dialog extends React.Component {
                 showModal, addItem, showWaitingModal,
             }
         } = this.props;
+        console.log("SHOW", showModal, addItem)
         const content =
-            showModal && (
-            showWaitingModal && <WaitModalDialog showModal={showWaitingModal}/>
-            || addItem && <AddNewItemModal showModal={addItem}/>);
+            ((showModal &&
+                showWaitingModal) && <WaitModalDialog showModal={showWaitingModal}/>
+                || (showModal && addItem) && <AddNewItemModal showModal={addItem}/>)
+        ;
         return (
             <div>
                 {content}
