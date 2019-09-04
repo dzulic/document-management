@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CreateCompanyForm from "./CreateCompanyForm";
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {createCompany} from "../../actions/actions";
+import {searchDocument} from "../../actions/actions";
 
 export class CreateCompanyTask extends Component {
 
@@ -13,7 +13,7 @@ export class CreateCompanyTask extends Component {
 
     handleSubmit() {
         const {dispatch, formValues} = this.props;
-        dispatch(createCompany({
+        dispatch(searchDocument({
             company: {
                 ...formValues
             }

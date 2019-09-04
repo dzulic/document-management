@@ -9,8 +9,15 @@ import {
     LOGIN,
     OPEN_ADD_ITEM_MODAL,
     SAVE_DOCUMENT,
+    SEARCH_DOCUMENT,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
+
+export const searchDocument = (payload) => ({
+    type: SEARCH_DOCUMENT,
+    payload
+});
+
 
 export const createTemplateDocument = (payload) => ({
     type: CREATE_TEMPLATE,
