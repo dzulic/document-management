@@ -101,6 +101,7 @@ form {
     &-div {
       padding-top: 50px;
       width: 800px;
+      height: 80px;
     }
   }
 
@@ -119,6 +120,7 @@ form {
   &-form {
     width: 800px;
     margin: auto;
+    padding-bottom: 20px;
   }
 
   &-label {
@@ -126,17 +128,23 @@ form {
   }
 }
 
-.document-form {
-  box-shadow: 1px 0px 15px 5px rgba(0, 0, 0, 0.50);
-  min-height: 50px;
-  padding-bottom: 10px;
-  background-color: white;
-}
+.document {
+  &-form {
+    box-shadow: 1px 0px 15px 5px rgba(0, 0, 0, 0.50);
+    min-height: 50px;
+    padding-bottom: 10px;
+    background-color: white;
+  }
 
-.document-item {
-  margin: auto;
-}
+  &-item {
+    margin: auto;
+  }
 
+  &-img {
+    max-height: 200px;
+    width: 100%;
+  }
+}
 
 select {
   -webkit-appearance: none;

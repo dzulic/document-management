@@ -16,7 +16,7 @@ public class Document implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String name;
-    String content;
+    byte[] content;
     @CreationTimestamp
     @Column(name = "created")
     private LocalDateTime created;
@@ -31,4 +31,7 @@ public class Document implements Serializable {
     @ManyToOne
     @JoinColumn(name = "company_id")
     Company company;
+    @ManyToOne
+    @JoinColumn(name = "template_id")
+    TemplateDocument template;
 }

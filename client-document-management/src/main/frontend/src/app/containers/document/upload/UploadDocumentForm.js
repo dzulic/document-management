@@ -68,6 +68,8 @@ export class UploadDocumentForm extends Component {
                 }))
                 ;
             }, false);
+        } else {
+            this.setState({error: 'Format not supported'});
         }
     }
 
@@ -82,9 +84,7 @@ export class UploadDocumentForm extends Component {
         return (
             <div className="col-lg-12">
                 <div className="file-form">
-                    <input ref={(ref) => {
-                        this.uploadInput = ref
-                    }} type="file" className="file" onChange={e => this.onFileChange(e)}/>
+                    <input type="file" className="file" onChange={e => this.onFileChange(e)}/>
                     <label className="file-label">{I18n.t('application.message.chooseFile')}</label>
                     <Field component={TextInputComponent} name="nameOfDocument" label="nameOfDocument"
                            disabled={disabled}
@@ -104,11 +104,12 @@ export class UploadDocumentForm extends Component {
                         />
                     </div>
                 </div>
-                <h4 style={{color: 'red'}}>{this.state.error}</h4>
-                <h4 style={{color: 'green'}}>{this.state.msg}</h4>
+                <div className="file-form text-center">
+                    <div style={{color: 'red'}}>{this.state.error}</div>
+                    <div style={{color: 'green'}}>{this.state.msg}</div>
+                </div>
             </div>
         )
-            ;
     }
 
 }

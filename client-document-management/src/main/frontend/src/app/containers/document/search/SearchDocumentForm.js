@@ -25,7 +25,7 @@ const columns = [
     {
         Header: 'Document',
         accessor: 'document',
-        Cell: props => <img alt="image" src={props.value}/>
+        Cell: props => <img className="document-img" alt="image" src={props.value}/>
     },
 ];
 
@@ -61,13 +61,15 @@ export class SearchDocumentForm extends Component {
         }
         console.log("DOC", documents);
         let data = [];
-        if (documents != null) {
-            data.push({
-                name: documents.name,
-                company: documents.company,
-                user: documents.user,
-                document: documents.content
-            })
+        if (documents) {
+            documents.forEach((doc) => {
+                data.push({
+                    name: doc.name,
+                    company: doc.companyDTO.companyName,
+                    user: doc.createdBy.name,
+                    document: doc.content
+                })
+            });
         }
         return (
 

@@ -8,4 +8,6 @@ public class DocumentDTO {
     String name;
     UserDTO createdBy;
     String content;
+    CompanyDTO companyDTO;
+
 }

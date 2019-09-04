@@ -9,6 +9,9 @@ import com.doc.manager.transfer.DocumentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class DocumentServiceImpl implements DocumentService {
 
@@ -25,12 +28,12 @@ public class DocumentServiceImpl implements DocumentService {
 
 
     public RestResponse searchDocument(String name, int companyId) {
-        Document document = null;
+        List<Document> documents = null;
         if (name != null) {
-            document = documentRepository.findByName(name);
+            documents = documentRepository.findByNameContaining(name);
         } else if (companyId != 0) {
-            document = documentRepository.findByCompany(companyId);
+            documents = Collections.singletonList(documentRepository.findByCompany(companyId));
         }
-        return new RestResponse("success", beanConverter.convertDocumentToDocumentDTO(document));
+        return new RestResponse("success", beanConverter.convertDocumentListToDTOList(documents));
     }
 }

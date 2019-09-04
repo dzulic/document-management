@@ -8,8 +8,12 @@ import com.doc.manager.transfer.CompanyDTO;
 import com.doc.manager.transfer.DocumentDTO;
 import com.doc.manager.transfer.TemplateDTO;
 import com.doc.manager.transfer.UserDTO;
+import org.apache.tomcat.util.codec.binary.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class BeanConverter {
@@ -28,6 +32,7 @@ public class BeanConverter {
         if (account != null) {
             userDTO = new UserDTO();
             BeanUtils.copyProperties(userDTO, account);
+            userDTO.setName(account.getName());
         }
         return userDTO;
     }
@@ -41,13 +46,28 @@ public class BeanConverter {
         return company;
     }
 
+
+    public CompanyDTO convertCompanyDTOToCompany(Company company) {
+        CompanyDTO companyDTO = null;
+        if (company != null) {
+            companyDTO = new CompanyDTO();
+            BeanUtils.copyProperties(company, companyDTO);
+        }
+        return companyDTO;
+    }
+
     public Document convertDocumentDTOToDocument(DocumentDTO documentDTO) {
         Document document = null;
         if (documentDTO != null) {
             document = new Document();
             BeanUtils.copyProperties(documentDTO, document);
+            document.setContent(documentDTO.getContent().getBytes());
             document.setCreatedBy(convertUserDTOToUser(documentDTO.getCreatedBy()));
             document.setCompany(convertCompanyDTOToCompany(documentDTO.getCreatedBy().getCompany()));
+            //TODO REMOVe
+            TemplateDocument templateDocument = new TemplateDocument();
+            templateDocument.setId(123);
+            document.setTemplate(templateDocument);
         }
         return document;
     }
@@ -58,6 +78,9 @@ public class BeanConverter {
         if (document != null) {
             documentDTO = new DocumentDTO();
             BeanUtils.copyProperties(document, documentDTO);
+            documentDTO.setCreatedBy(convertUserToUserDTO(document.getCreatedBy()));
+            documentDTO.setCompanyDTO(convertCompanyDTOToCompany(document.getCompany()));
+            documentDTO.setContent(StringUtils.newStringUtf8(document.getContent()));
         }
         return documentDTO;
     }
@@ -70,5 +93,14 @@ public class BeanConverter {
             templateDocument.setCreatedBy(convertUserDTOToUser(templateDTO.getCreatedBy()));
         }
         return templateDocument;
+    }
+
+    public List<DocumentDTO> convertDocumentListToDTOList(List<Document> documents) {
+        List<DocumentDTO> documentDTOS = new ArrayList<>();
+        for (Document doc : documents) {
+            DocumentDTO documentDTO = convertDocumentToDocumentDTO(doc);
+            documentDTOS.add(documentDTO);
+        }
+        return documentDTOS;
     }
 }
