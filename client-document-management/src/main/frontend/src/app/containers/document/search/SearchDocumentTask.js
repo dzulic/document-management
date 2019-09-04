@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {SearchDocumentForm} from "./SearchDocumentForm";
+import SearchDocumentForm from "./SearchDocumentForm";
 import {I18n} from "react-redux-i18n";
 import {searchDocument} from "../../../actions/actions";
 
@@ -15,7 +15,6 @@ export class SearchDocumentTask extends Component {
 
     onSubmit() {
         const {dispatch, formValues} = this.props;
-        console.log("formValues", formValues)
         dispatch(searchDocument(formValues));
     }
 
@@ -32,7 +31,6 @@ export class SearchDocumentTask extends Component {
 
 }
 
-SearchDocumentForm.propTypes = {}
 const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {

@@ -73,10 +73,12 @@ export class UploadDocumentForm extends Component {
 
     render() {
         let disabled = this.state.file === undefined;
-        CompanyProps.selectOptions.push({
-            label: this.props.user.company.companyName,
-            value: this.props.user.company.companyId
-        });
+        if (CompanyProps.selectOptions.length === 0) {
+            CompanyProps.selectOptions.push({
+                label: this.props.user.company.companyName,
+                value: this.props.user.company.companyId
+            });
+        }
         return (
             <div className="col-lg-12">
                 <div className="file-form">
@@ -112,7 +114,7 @@ export class UploadDocumentForm extends Component {
 }
 
 UploadDocumentForm.propTypes = {}
-const selector = getFormValues("DocForm");
+const selector = getFormValues("AppForm");
 
 function
 mapStateToProps(state) {
@@ -125,6 +127,6 @@ export default connect(mapStateToProps)
 (
     reduxForm({
         form: "AppForm",
-        destroyOnUnmount: true,
+        destroyOnUnmount: false,
     })(UploadDocumentForm))
 ;

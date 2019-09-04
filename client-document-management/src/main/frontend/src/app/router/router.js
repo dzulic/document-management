@@ -11,8 +11,9 @@ import SearchDocumentTask from "../containers/document/search/SearchDocumentTask
 import CreateUserTask from "../containers/user/CreateUserTask";
 import PrivateRoute from "./PrivateRoute";
 
+const supportsHistory = 'pushState' in window.history;
 const router =
-    <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+    <BrowserRouter forceRefresh={!supportsHistory}>
         <App>
             <Switch>
                 <Route exact path="/" component={MainPanel}/>

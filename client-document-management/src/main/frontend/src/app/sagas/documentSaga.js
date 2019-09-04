@@ -2,7 +2,7 @@ import {call, put} from "redux-saga/effects";
 import {showWaitingDialog} from "../actions/actions";
 import DocumentApi from "../api/DocumentApi";
 
-export function* searchDocument() {
+export function* searchDocument(action) {
 
     try {
         yield put(showWaitingDialog(true));
@@ -13,7 +13,15 @@ export function* searchDocument() {
         }
 
         if (response) {
-            console.log("RE", response);
+            const searchedDocument = {
+                key: "SEARCHED_DOCUMENT",
+                value: response.data
+            };
+
+            yield put({
+                type: 'ADD_EDIT_APP_PROP_STORE',
+                property: searchedDocument
+            });
         }
         yield put(showWaitingDialog(false));
 

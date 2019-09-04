@@ -25,8 +25,7 @@ const columns = [
     {
         Header: 'Document',
         accessor: 'document',
-        Cell: props => <img alt="image" /*src={props.value}*/
-                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABcSURBVHgB7ZCxCcAgEEWPpLFNnTHSZIKU2SMTZiQHsLD1I4IWZ6FWyn/w4HjNcSdCCJmfXWkX/OANPbSdPbIpCx5o4AHfgV5dYIrZD/SI9iIHzzT/kk9u7YSQZQiu4RUpGUTO8QAAAABJRU5ErkJggg=="/>
+        Cell: props => <img alt="image" src={props.value}/>
     },
 ];
 
@@ -56,12 +55,20 @@ export class SearchDocumentForm extends Component {
             });
     }
     render() {
-        const {companies} = this.props;
+        const {companies, documents} = this.props;
         if (companies) {
             CompanyProps.selectOptions = companies;
         }
-
-
+        console.log("DOC", documents);
+        let data = [];
+        if (documents != null) {
+            data.push({
+                name: documents.name,
+                company: documents.company,
+                user: documents.user,
+                document: documents.content
+            })
+        }
         return (
 
             <div>
@@ -70,7 +77,7 @@ export class SearchDocumentForm extends Component {
                        baseComponentConfig={CompanyProps}
                 />
                 <ButtonComponent label="search" classBtn="search"/>
-                <ReactTable data={[{a: 1, b: 2}]}
+                <ReactTable data={data}
                             columns={columns}
                             pageSizeOptions={[5, 10]}
                             defaultPageSize={10}/>
@@ -83,12 +90,12 @@ export class SearchDocumentForm extends Component {
 }
 function mapStateToProps(state) {
     return {
-        companies: getValueAppPropertyStore(state, COMPANIES)
+        companies: getValueAppPropertyStore(state, COMPANIES),
+        documents: getValueAppPropertyStore(state, "SEARCHED_DOCUMENT")
     }
 }
-SearchDocumentForm.PropTypes = {}
 export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
-    destroyOnUnmount: true,
+    destroyOnUnmount: false,
 })(SearchDocumentForm));

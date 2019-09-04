@@ -77,5 +77,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
-    destroyOnUnmount: true,
+    destroyOnUnmount: false,
 })(CreateCompanyForm));
