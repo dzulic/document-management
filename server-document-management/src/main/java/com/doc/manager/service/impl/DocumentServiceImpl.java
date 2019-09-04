@@ -2,6 +2,7 @@ package com.doc.manager.service.impl;
 
 import com.doc.manager.converter.BeanConverter;
 import com.doc.manager.dao.DocumentRepository;
+import com.doc.manager.domain.Document;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.DocumentService;
 import com.doc.manager.transfer.DocumentDTO;
@@ -22,11 +23,14 @@ public class DocumentServiceImpl implements DocumentService {
         return new RestResponse("Success", "");
     }
 
-    public RestResponse uploadDocument(DocumentDTO documentDTO) {
-        return null;
-    }
 
-    public RestResponse searchDocument(DocumentDTO documentDTO) {
-        return null;
+    public RestResponse searchDocument(String name, int companyId) {
+        Document document = null;
+        if (name != null) {
+            document = documentRepository.findByName(name);
+        } else if (companyId != 0) {
+            document = documentRepository.findByCompany(companyId);
+        }
+        return new RestResponse("success", beanConverter.convertDocumentToDocumentDTO(document));
     }
 }

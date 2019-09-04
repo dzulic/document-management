@@ -52,6 +52,16 @@ public class BeanConverter {
         return document;
     }
 
+
+    public DocumentDTO convertDocumentToDocumentDTO(Document document) {
+        DocumentDTO documentDTO = null;
+        if (document != null) {
+            documentDTO = new DocumentDTO();
+            BeanUtils.copyProperties(document, documentDTO);
+        }
+        return documentDTO;
+    }
+
     public TemplateDocument convertTemplateDTOToTemplate(TemplateDTO templateDTO) {
         TemplateDocument templateDocument = null;
         if (templateDTO != null) {

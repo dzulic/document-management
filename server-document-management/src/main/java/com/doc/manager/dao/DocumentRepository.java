@@ -9,4 +9,7 @@ public interface DocumentRepository extends JpaRepository<Document, Integer> {
     Document findById(int id);
 
     Document findByCompany(int company);
+
+    Document findByName(String name);
+
 }

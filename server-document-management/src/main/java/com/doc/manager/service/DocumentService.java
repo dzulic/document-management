@@ -6,7 +6,5 @@ import com.doc.manager.transfer.DocumentDTO;
 public interface DocumentService {
     RestResponse createDocument(DocumentDTO documentDTO);
 
-    RestResponse uploadDocument(DocumentDTO documentDTO);
-
-    RestResponse searchDocument(DocumentDTO documentDTO);
+    RestResponse searchDocument(String name, int companyId);
 }
