@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {TextInputComponent} from "../../../components/integral/TextInputComponent";
 import {Field} from "redux-form";
 
-export class DocumentForm extends Component {
+export class TemplateForm extends Component {
 
     constructor(props) {
         super(props);
@@ -28,5 +28,5 @@ export class DocumentForm extends Component {
 
 }
 
-DocumentForm.propTypes = {}
-export default (DocumentForm);
+TemplateForm.propTypes = {}
+export default (TemplateForm);

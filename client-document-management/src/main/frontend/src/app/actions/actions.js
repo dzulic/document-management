@@ -8,16 +8,31 @@ import {
     FETCH_COMPANIES,
     LOGIN,
     OPEN_ADD_ITEM_MODAL,
+    OPEN_DOCUMENT,
+    OPEN_FILL_DOCUMENT_MODAL,
+    OPEN_TEMPLATE,
     SAVE_DOCUMENT,
     SEARCH_DOCUMENT,
+    SEARCH_TEMPLATE,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
+export const searchTemplate = (payload) => ({
+    type: SEARCH_TEMPLATE,
+    payload
+});
 export const searchDocument = (payload) => ({
     type: SEARCH_DOCUMENT,
     payload
 });
-
+export const openDocument = (payload) => ({
+    type: OPEN_DOCUMENT,
+    payload
+});
+export const openTemplate = (payload) => ({
+    type: OPEN_TEMPLATE,
+    payload
+});
 
 export const createTemplateDocument = (payload) => ({
     type: CREATE_TEMPLATE,
@@ -28,28 +43,28 @@ export const saveDocument = (payload) => ({
     payload
 });
 
-export const loginUser = (property) => ({
+export const loginUser = (payload) => ({
     type: LOGIN,
-    property
+    payload
 });
 
 export const fetchCompanies = () => ({
     type: FETCH_COMPANIES,
 });
 
-export const createUser = (property) => ({
+export const createUser = (payload) => ({
     type: CREATE_USER,
-    property
+    payload
 });
 
-export const createCompany = (property) => ({
+export const createCompany = (payload) => ({
     type: CREATE_COMPANY,
-    property
+    payload
 });
 
-export const createDocument = (property) => ({
+export const createDocument = (payload) => ({
     type: CREATE_DOCUMENT,
-    property
+    payload
 });
 
 export const openAddItemModal = (value) => ({
@@ -57,16 +72,21 @@ export const openAddItemModal = (value) => ({
     value
 });
 
+export const openFillTemplateModal = (payload) => ({
+    type: OPEN_FILL_DOCUMENT_MODAL,
+    doc: payload
+});
+
 export const closeItemModal = () => ({
     type: CLOSE_MODAL_DIALOG,
 });
 
-export const addEditAppProperty = (property) => ({
-    type: ADD_EDIT_APP_PROP_STORE,
-    property
+export const showWaitingDialog = (payload) => ({
+    type: SHOW_WAITING_MODAL,
+    showWaitingModal: payload
 });
 
-export const showWaitingDialog = (property) => ({
-    type: SHOW_WAITING_MODAL,
-    showWaitingModal: property
+export const addEditAppProperty = (payload) => ({
+    type: ADD_EDIT_APP_PROP_STORE,
+    payload
 });

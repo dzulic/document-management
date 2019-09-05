@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {DocumentForm} from "./DocumentForm";
-import {DocumentItemForm} from "./DocumentItemForm";
+import {TemplateForm} from "./TemplateForm";
+import {TemplateItemForm} from "./TemplateItemForm";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {DOCUMENT_ITEMS} from "../../../utils/Constants";
 import {I18n} from "react-redux-i18n";
 
-export class CreateDocumentForm extends Component {
+export class CreateTemplateForm extends Component {
 
     constructor(props) {
         super(props);
@@ -19,14 +19,14 @@ export class CreateDocumentForm extends Component {
             <div className="col-lg-12 template">
                 <h1>{I18n.t("application.message.createDocument")}</h1>
                 <div className="col-lg-8 offset-lg-2">
-                    <DocumentForm>
+                    <TemplateForm>
                         {
                             items != null && items.map((item) => (
-                                <DocumentItemForm key={item.id} label={item.label} type={item.type}
+                                <TemplateItemForm key={item.id} label={item.label} type={item.type}
                                                   options={item.options != undefined ? item.options.split(',') : undefined}/>
                             ))
                         }
-                    </DocumentForm>
+                    </TemplateForm>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ export class CreateDocumentForm extends Component {
 
 }
 
-CreateDocumentForm.propTypes = {}
+CreateTemplateForm.propTypes = {}
 const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {
@@ -49,4 +49,4 @@ export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
     destroyOnUnmount: false,
-})(CreateDocumentForm));
+})(CreateTemplateForm));

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import CreateDocumentForm from "../../document/create/CreateDocumentForm";
+import CreateTemplateForm from "./CreateTemplateForm";
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {createTemplateDocument, openAddItemModal} from "../../../actions/actions";
 import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 
-export class CreateDocumentTask extends Component {
+export class CreateTemplateTask extends Component {
 
     constructor(props) {
         super(props);
@@ -32,7 +32,7 @@ export class CreateDocumentTask extends Component {
         const {handleSubmit} = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit)}>
-                <CreateDocumentForm/>
+                <CreateTemplateForm/>
                 <div className="col-lg-2">
                     <ButtonComponent label="addNewItem" buttonType="button" click={this.addNewRow}/>
                     <ButtonComponent label="createDocument" buttonType="submit"/>
@@ -56,4 +56,4 @@ export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
     destroyOnUnmount: false,
-})(CreateDocumentTask));
+})(CreateTemplateTask));

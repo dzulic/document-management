@@ -200,13 +200,11 @@ select::-ms-expand {
 }
 
 .modal {
+  margin: auto;
+
   &-dialog {
-    width: 40%;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    padding: 20px 0 0 50px;
+    position: relative;
+    margin: 0 auto;
   }
 
   &-title {
@@ -238,13 +236,17 @@ select::-ms-expand {
 // Spinner ================================================================ */
 .sweet-loading {
   height: 150px;
+  margin: auto;
 }
 
 .loading {
   top: 40px;
   height: 100%;
-  margin: auto;
-  width: fit-content;
+  width: 500px;
+}
+
+.css-0 {
+  text-align: center;
 }
 
 .waiting-dialog-text {
@@ -276,4 +278,21 @@ hr {
   font-size: 22px;
   font-weight: 700;
   margin: 50px 0;
+}
+
+.fill {
+  &-modal {
+    margin: auto;
+  }
+
+  &-form {
+    min-width: 1000px;
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: fit-content;
+  }
 }

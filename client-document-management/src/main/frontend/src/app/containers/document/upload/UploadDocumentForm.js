@@ -17,7 +17,7 @@ export const CompanyProps = {
     formName: "DocForm",
     disableSingleElementReadOnly: false
 };
-export class UploadDocumentForm extends Component {
+export class UploadTemplateForm extends Component {
 
     constructor(props) {
         super(props);
@@ -88,7 +88,9 @@ export class UploadDocumentForm extends Component {
                     <label className="file-label">{I18n.t('application.message.chooseFile')}</label>
                     <Field component={TextInputComponent} name="nameOfDocument" label="nameOfDocument"
                            disabled={disabled}
-                           classBtn="upload-btn"
+                           required/>
+                    <Field component={TextInputComponent} name="templateID" label="templateID"
+                           disabled={disabled}
                            required/>
                     <Field component={DropDownComponent} name="companies" label="companies"
                            value={CompanyProps.selectOptions[0]}
@@ -114,7 +116,7 @@ export class UploadDocumentForm extends Component {
 
 }
 
-UploadDocumentForm.propTypes = {}
+UploadTemplateForm.propTypes = {}
 const selector = getFormValues("AppForm");
 
 function
@@ -129,5 +131,5 @@ export default connect(mapStateToProps)
     reduxForm({
         form: "AppForm",
         destroyOnUnmount: false,
-    })(UploadDocumentForm))
+    })(UploadTemplateForm))
 ;

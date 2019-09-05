@@ -6,8 +6,7 @@ import {showWaitingDialog} from "../actions/actions";
 export function* createUser(action) {
     yield put(showWaitingDialog(true));
     try {
-        console.log(action.property)
-        const response = yield call(ApiUser.createUser, action.property);
+        const response = yield call(ApiUser.createUser, action.payload);
 
 
         if (response.success === false) {

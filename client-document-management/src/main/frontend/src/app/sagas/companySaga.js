@@ -13,7 +13,6 @@ export function* fetchCompanies() {
             let companiesMap = response.data.map((company) => {
                 return {label: company.companyName, value: JSON.stringify(company.companyId)};
             });
-            console.log("RES", response)
             const companies = {
                 key: COMPANIES,
                 value: companiesMap
@@ -21,7 +20,7 @@ export function* fetchCompanies() {
 
             yield put({
                 type: ADD_EDIT_APP_PROP_STORE,
-                property: companies
+                payload: companies
             });
         }
 
@@ -38,7 +37,7 @@ export function* fetchCompanies() {
 export function* createCompany(action) {
 
     try {
-        const response = yield call(CompanyApi.createCompany, action.property.company);
+        const response = yield call(CompanyApi.createCompany, action.payload.company);
 
         if (response.success === false) {
             throw new Error(response.message);
@@ -52,7 +51,7 @@ export function* createCompany(action) {
 
             yield put({
                 type: ADD_EDIT_APP_PROP_STORE,
-                property: company
+                payload: company
             });
         }
 

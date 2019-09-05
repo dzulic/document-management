@@ -7,7 +7,7 @@ export function* loginUser(action) {
 
     try {
         yield put(showWaitingDialog(true));
-        const response = yield call(ApiLogin.login, action.property.user);
+        const response = yield call(ApiLogin.login, action.payload.user);
 
         if (response.success === false) {
             throw new Error(response.message);
@@ -22,7 +22,7 @@ export function* loginUser(action) {
 
             yield put({
                 type: 'ADD_EDIT_APP_PROP_STORE',
-                property: loginProperty
+                payload: loginProperty
             });
 
             localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));

@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class DocumentServiceImpl implements DocumentService {
+class DocumentServiceImpl implements DocumentService {
 
     @Autowired
     private BeanConverter beanConverter;
@@ -32,8 +32,19 @@ public class DocumentServiceImpl implements DocumentService {
         if (name != null) {
             documents = documentRepository.findByNameContaining(name);
         } else if (companyId != 0) {
-            documents = Collections.singletonList(documentRepository.findByCompany(companyId));
+            documents = Collections.singletonList(documentRepository.findByCompany_CompanyId(companyId));
         }
         return new RestResponse("success", beanConverter.convertDocumentListToDTOList(documents));
+    }
+
+    @Override
+    public RestResponse getDocument(String searchByName, int id) {
+        Document document = null;
+        if (searchByName != null) {
+            document = documentRepository.findByName(searchByName);
+        } else {
+            document = documentRepository.findById(Long.parseLong(id + ""));
+        }
+        return new RestResponse("success", document);
     }
 }

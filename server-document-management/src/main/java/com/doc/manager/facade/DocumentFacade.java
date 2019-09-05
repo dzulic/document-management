@@ -31,4 +31,13 @@ public class DocumentFacade {
             return new RestResponse("error", null);
         }
     }
+
+    @RequestMapping(value = "/getDocument", method = RequestMethod.POST)
+    public RestResponse getDocument(@RequestBody SearchDocumentDTO searchDocumentDTO) {
+        try {
+            return documentService.getDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getId());
+        } catch (Exception ex) {
+            return new RestResponse("error", null);
+        }
+    }
 }

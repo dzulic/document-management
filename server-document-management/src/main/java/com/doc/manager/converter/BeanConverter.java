@@ -80,7 +80,16 @@ public class BeanConverter {
             BeanUtils.copyProperties(document, documentDTO);
             documentDTO.setCreatedBy(convertUserToUserDTO(document.getCreatedBy()));
             documentDTO.setCompanyDTO(convertCompanyDTOToCompany(document.getCompany()));
+            documentDTO.setDocumentId(Integer.parseInt(String.valueOf(document.getId())));
             documentDTO.setContent(StringUtils.newStringUtf8(document.getContent()));
+            if (document.getTemplate() != null) {
+                documentDTO.setTemplateId(document.getTemplate().getId());
+            } else {
+                documentDTO.setTemplateId(123);
+
+            }
+            //TODO REMOVE
+
         }
         return documentDTO;
     }
@@ -95,10 +104,30 @@ public class BeanConverter {
         return templateDocument;
     }
 
+    public TemplateDTO convertTemplateToTemplateDTO(TemplateDocument template) {
+        TemplateDTO templateDTO = null;
+        if (template != null) {
+            templateDTO = new TemplateDTO();
+            BeanUtils.copyProperties(template, templateDTO);
+            templateDTO.setId(String.valueOf(template.getId()));
+            templateDTO.setData(template.getData());
+        }
+        return templateDTO;
+    }
+
     public List<DocumentDTO> convertDocumentListToDTOList(List<Document> documents) {
         List<DocumentDTO> documentDTOS = new ArrayList<>();
         for (Document doc : documents) {
             DocumentDTO documentDTO = convertDocumentToDocumentDTO(doc);
+            documentDTOS.add(documentDTO);
+        }
+        return documentDTOS;
+    }
+
+    public List<TemplateDTO> convertDTemplateListToDTOList(List<TemplateDocument> documents) {
+        List<TemplateDTO> documentDTOS = new ArrayList<>();
+        for (TemplateDocument doc : documents) {
+            TemplateDTO documentDTO = convertTemplateToTemplateDTO(doc);
             documentDTOS.add(documentDTO);
         }
         return documentDTOS;

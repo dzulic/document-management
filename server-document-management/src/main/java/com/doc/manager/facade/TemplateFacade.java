@@ -16,7 +16,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/templateWS")
 @CrossOrigin(value = {"*"})
-public class TemplateController {
+public class TemplateFacade {
 
     @Autowired
     TemplateService templateService;
@@ -31,4 +31,24 @@ public class TemplateController {
         return null;
     }
 
+
+    @RequestMapping("/getTemplate")
+    public RestResponse getTemplate(@RequestBody TemplateDTO templateDTO) throws IOException {
+        try {
+            return templateService.getTemplate(templateDTO);
+        } catch (Exception ex) {
+            log.error("ERROR");
+        }
+        return null;
+    }
+
+    @RequestMapping("/searchTemplate")
+    public RestResponse searchTemplate(@RequestBody TemplateDTO templateDTO) throws IOException {
+        try {
+            return templateService.searchTemplate(templateDTO.getFileName());
+        } catch (Exception ex) {
+            log.error("ERROR");
+        }
+        return null;
+    }
 }

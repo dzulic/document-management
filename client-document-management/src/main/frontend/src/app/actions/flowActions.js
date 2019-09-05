@@ -1,11 +1,11 @@
 import * as types from "../utils/actionTypes"
 
-export const addEditAppProperty = (property) => ({
+export const addEditAppProperty = (payload) => ({
     type: types.ADD_EDIT_APP_PROP_STORE,
-    property
+    payload
 });
 
-export const setRedirectUrl = (property) => ({
+export const setRedirectUrl = (payload) => ({
     type: types.SET_REDIRECT_URL,
-    property
+    payload
 })

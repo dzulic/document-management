@@ -53,7 +53,7 @@ class AddNewItemModal extends React.Component {
         });
         dispatch({
             type: 'ADD_EDIT_APP_PROP_STORE',
-            property: {
+            payload: {
                 key: DOCUMENT_ITEMS,
                 value: it
             },

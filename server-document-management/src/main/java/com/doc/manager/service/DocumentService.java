@@ -7,4 +7,6 @@ public interface DocumentService {
     RestResponse createDocument(DocumentDTO documentDTO);
 
     RestResponse searchDocument(String name, int companyId);
+
+    RestResponse getDocument(String searchByName, int id);
 }

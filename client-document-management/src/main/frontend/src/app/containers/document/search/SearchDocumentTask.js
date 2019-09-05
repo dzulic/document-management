@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import SearchDocumentForm from "./SearchDocumentForm";
 import {I18n} from "react-redux-i18n";
-import {searchDocument} from "../../../actions/actions";
+import {searchTemplate} from "../../../actions/actions";
+import SearchDocumentForm from "./SearchDocumentForm";
 
 export class SearchDocumentTask extends Component {
 
@@ -15,7 +15,10 @@ export class SearchDocumentTask extends Component {
 
     onSubmit() {
         const {dispatch, formValues} = this.props;
-        dispatch(searchDocument(formValues));
+        /*
+                dispatch(searchDocument(formValues));
+        */
+        dispatch(searchTemplate(formValues));
     }
 
     render() {

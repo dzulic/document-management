@@ -8,10 +8,13 @@ import java.util.List;
 
 @Repository
 public interface DocumentRepository extends JpaRepository<Document, Integer> {
-    Document findById(int id);
 
-    Document findByCompany(int company);
+    Document findByCompany_CompanyId(int id);
 
     List<Document> findByNameContaining(String name);
+
+    Document findByName(String name);
+
+    Document findById(Long id);
 
 }

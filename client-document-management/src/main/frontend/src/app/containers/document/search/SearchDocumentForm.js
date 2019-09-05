@@ -8,6 +8,7 @@ import {requiredProps} from "../../../components/modals/AddNewItemModal";
 import {COMPANIES} from "../../../utils/Constants";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {connect} from "react-redux";
+import {openTemplate} from "../../../actions/actions";
 
 const columns = [
     {
@@ -40,6 +41,7 @@ export class SearchDocumentForm extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {selected: null}
     }
     downloadRandomImage() {
         fetch('http://localhost:10700/api/files')
@@ -55,19 +57,29 @@ export class SearchDocumentForm extends Component {
             });
     }
     render() {
-        const {companies, documents} = this.props;
+        const {companies, documents, templates} = this.props;
         if (companies) {
             CompanyProps.selectOptions = companies;
         }
-        console.log("DOC", documents);
         let data = [];
+        if (templates) {
+            templates.forEach((doc) => {
+                data.push({
+                    name: doc.fileName,
+                    templateId: doc.id
+                })
+            })
+        }
+        ;
         if (documents) {
             documents.forEach((doc) => {
                 data.push({
                     name: doc.name,
                     company: doc.companyDTO.companyName,
                     user: doc.createdBy.name,
-                    document: doc.content
+                    document: doc.content,
+                    documentId: doc.documentId,
+                    templateId: doc.templateId
                 })
             });
         }
@@ -82,7 +94,25 @@ export class SearchDocumentForm extends Component {
                 <ReactTable data={data}
                             columns={columns}
                             pageSizeOptions={[5, 10]}
-                            defaultPageSize={10}/>
+                            defaultPageSize={10}
+                            getTrProps={(state, rowInfo) => {
+                                if (rowInfo && rowInfo.row) {
+                                    return {
+                                        onClick: (e) => {
+                                            this.setState({
+                                                selected: rowInfo.index
+                                            });
+                                            this.props.dispatch(openTemplate(rowInfo.original));
+                                        },
+                                        style: {
+                                            background: rowInfo.index === this.state.selected ? 'rgb(179, 230, 255)' : 'transparent',
+                                        }
+                                    }
+                                } else {
+                                    return {}
+                                }
+                            }
+                            }/>
                 {/*    <h3>Download a random file</h3>
                 <button onClick={this.downloadRandomImage} className="upload-btn">Download</button>*/}
             </div>
@@ -93,7 +123,8 @@ export class SearchDocumentForm extends Component {
 function mapStateToProps(state) {
     return {
         companies: getValueAppPropertyStore(state, COMPANIES),
-        documents: getValueAppPropertyStore(state, "SEARCHED_DOCUMENT")
+        documents: getValueAppPropertyStore(state, "SEARCHED_DOCUMENT"),
+        templates: getValueAppPropertyStore(state, "SEARCHED_TEMPLATES")
     }
 }
 export default connect(mapStateToProps)

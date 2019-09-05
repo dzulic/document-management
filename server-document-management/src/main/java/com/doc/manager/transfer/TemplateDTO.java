@@ -9,4 +9,5 @@ public class TemplateDTO {
     private String fileName;
     private String contentType;
     private String data;
+    private String id;
 }

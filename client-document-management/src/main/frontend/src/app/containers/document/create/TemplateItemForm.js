@@ -4,7 +4,7 @@ import {Field} from "redux-form";
 import {TextInputComponent} from "../../../components/integral/TextInputComponent";
 import DropDownComponent from "../../../components/integral/DropDownComponent";
 
-export class DocumentItemForm extends Component {
+export class TemplateItemForm extends Component {
 
     constructor(props) {
         super(props);
@@ -75,9 +75,9 @@ export class DocumentItemForm extends Component {
 
 }
 
-DocumentItemForm.propTypes = {
+TemplateItemForm.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
     options: PropTypes.object
 }
-export default (DocumentItemForm);
+export default (TemplateItemForm);

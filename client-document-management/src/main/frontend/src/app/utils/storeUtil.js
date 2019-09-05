@@ -1,9 +1,9 @@
 export function getValueAppPropertyStore(state, key) {
     if (state.application) {
-        const property = state.application.filter(function (property) {
-            return property.key == key;
+        const payload = state.application.filter(function (payload) {
+            return payload.key == key;
         });
-        return (property && property.length !== 0) ? property[0].value : null;
+        return (payload && payload.length !== 0) ? payload[0].value : null;
     }
     return null;
 }

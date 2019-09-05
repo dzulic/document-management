@@ -9,5 +9,7 @@ public class DocumentDTO {
     UserDTO createdBy;
     String content;
     CompanyDTO companyDTO;
+    int documentId;
+    int templateId;
 
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import WaitModalDialog from "./WaitModalDialog";
 import AddNewItemModal from "./AddNewItemModal";
+import FillTemplateModal from "./FillTemplateModal";
 import {SHOW_WAITING_MODAL} from "../../utils/actionTypes";
 
 class Dialog extends React.Component {
@@ -22,16 +23,17 @@ class Dialog extends React.Component {
     }
 
     render() {
+        console.log(this.props.modalDialog.fillDocument)
         const {
             modalDialog: {
-                showModal, addItem, showWaitingModal,
+                showModal, addItem, showWaitingModal, fillDocument
             }
         } = this.props;
-        console.log("SHOW", showModal, addItem)
         const content =
-            ((showModal &&
-                showWaitingModal) && <WaitModalDialog showModal={showWaitingModal}/>
-                || (showModal && addItem) && <AddNewItemModal showModal={addItem}/>)
+            ((showModal && showWaitingModal) && <WaitModalDialog showModal={showWaitingModal}/>
+                || (showModal && addItem) && <AddNewItemModal showModal={addItem}/>
+                || (showModal && fillDocument) && <FillTemplateModal showModal={showModal} fillDocument={fillDocument}/>
+            )
         ;
         return (
             <div>
