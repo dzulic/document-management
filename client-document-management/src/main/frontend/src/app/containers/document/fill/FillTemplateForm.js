@@ -17,21 +17,12 @@ export class FillTemplateForm extends Component {
         const {document} = this.props;
         return (
             <div className="col-lg-12 template">
-                <div className="printArea">
-                    <div className="print-header">
-                        <div className="print-header-title">
-                            <p className="print-header-title-one">Julija</p>
-                        </div>
-                        <div className="document-title">
-                            <p>Title</p>
-                        </div>
-                    </div>
+                <div id="printThis">
                     <div className="print-content">
                         <div dangerouslySetInnerHTML={this.createMarkup(document.data)}/>
                     </div>
                 </div>
             </div>
-
         );
     }
 
