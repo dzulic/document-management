@@ -9,6 +9,15 @@ import {COMPANIES} from "../../../utils/Constants";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {connect} from "react-redux";
 import {openTemplate} from "../../../actions/actions";
+import CheckboxComponent from "../../../components/integral/CheckboxComponent";
+
+const chkInputProps = {
+    data: [{value: true, name: 'Search Template', classname: 'checkbox'}],
+    props: {value: true, name: 'Select search'}
+};
+const chkInputProps1 = {
+    data: [{value: false, name: 'Search Documents', classname: 'checkbox'}]
+};
 
 const columns = [
     {
@@ -86,6 +95,11 @@ export class SearchDocumentForm extends Component {
         return (
 
             <div>
+                <Field name={name} component={CheckboxComponent}
+                       label={'check'}
+                       baseComponentConfig={chkInputProps1}/>;
+                <Field name={name} component={CheckboxComponent}
+                       baseComponentConfig={chkInputProps}/>
                 <Field name="searchByName" label="searchByName" component={TextInputComponent}/>
                 <Field name="searchByCompany" label="searchByCompany" component={DropDownComponent}
                        baseComponentConfig={CompanyProps}
