@@ -8,7 +8,7 @@ import {requiredProps} from "../../../components/modals/AddNewItemModal";
 import {COMPANIES} from "../../../utils/Constants";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {connect} from "react-redux";
-import {openTemplate} from "../../../actions/actions";
+import {openDocument, openTemplate} from "../../../actions/actions";
 import RadioButtonsComponent from "../../../components/integral/RadioButtonComponent";
 
 const chkInputProps = {
@@ -71,19 +71,7 @@ export class SearchDocumentForm extends Component {
         this.setState({checked: event.target.value})
 
     }
-    downloadRandomImage() {
-        fetch('http://localhost:10700/api/files')
-            .then(response => {
-                const filename = response.headers.get('Content-Disposition').split('filename=')[1];
-                response.blob().then(blob => {
-                    let url = window.URL.createObjectURL(blob);
-                    let a = document.createElement('a');
-                    a.href = url;
-                    a.download = filename;
-                    a.click();
-                });
-            });
-    }
+
     render() {
         chkInputProps.props.onChange = this.onChange;
         const {companies, documents, templates} = this.props;
@@ -99,7 +87,7 @@ export class SearchDocumentForm extends Component {
                 })
             })
         }
-        ;
+
         if (documents) {
             documents.forEach((doc) => {
                 data.push({
@@ -132,7 +120,13 @@ export class SearchDocumentForm extends Component {
                                             this.setState({
                                                 selected: rowInfo.index
                                             });
-                                            this.props.dispatch(openTemplate(rowInfo.original));
+                                            console.log(this.state.checked)
+                                            if (this.state.checked === 'searchByDocument') {
+                                                this.props.dispatch(openDocument(rowInfo.original));
+
+                                            } else {
+                                                this.props.dispatch(openTemplate(rowInfo.original));
+                                            }
                                         },
                                         style: {
                                             background: rowInfo.index === this.state.selected ? 'rgb(179, 230, 255)' : 'transparent',
@@ -143,8 +137,6 @@ export class SearchDocumentForm extends Component {
                                 }
                             }
                             }/>
-                {/*    <h3>Download a random file</h3>
-                <button onClick={this.downloadRandomImage} className="upload-btn">Download</button>*/}
             </div>
         );
     }

@@ -1,21 +1,10 @@
 import {call, put} from "redux-saga/effects";
-import {showWaitingDialog} from "../actions/actions";
+import {openFillTemplateModal, showWaitingDialog} from "../actions/actions";
 import DocumentApi from "../api/DocumentApi";
 
 export function* openDocument(action) {
-    /*
-        console.log("RE", action.payload);
 
-        yield put(openTemplateModel(action.payload));
-        const newAction = {
-            name: null,
-            id: action.payload.documentId
-        };
-        const response = yield call(DocumentApi.getDocument, newAction);
-        console.log("RESPONSE", response);
-    */
-
-
+    yield put(openFillTemplateModal(action.payload));
 }
 
 

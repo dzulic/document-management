@@ -5,6 +5,7 @@ import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 import PropTypes from "prop-types";
 import FillTemplateForm from "./FillTemplateForm";
+import FillImageForm from "./FillImageForm";
 
 export class FillTemplateTask extends Component {
 
@@ -37,9 +38,9 @@ export class FillTemplateTask extends Component {
     render() {
         const {handleSubmit, fillDocument} = this.props;
         let child;
-        if (typeof fillDocument === 'string') {
-            child = <FillImageForm document={fillDocument}/>
-
+        console.log("fill", fillDocument)
+        if (fillDocument.name !== undefined) {
+            child = <FillImageForm image={fillDocument}/>
         } else {
             child = <FillTemplateForm document={fillDocument}/>
 
