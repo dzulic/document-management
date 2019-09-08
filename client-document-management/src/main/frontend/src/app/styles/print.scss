@@ -4,17 +4,132 @@
   }
 }
 
+@page {
+  size: A4;
+}
+
 @media print {
   body * {
     visibility: hidden;
+    display: none;
   }
   #printSection, #printSection * {
     visibility: visible;
+    display: initial;
   }
   #printSection {
-    position: absolute;
-    left: 0;
-    top: 0;
+    margin: auto;
+    width: 250mm !important;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding: 40px;
+  }
+  .form-control {
+    margin: auto;
+  }
+  .printThis {
+    width: 250mm;
+    margin: auto;
+  }
+  .print-content {
+    width: 230mm;
+    margin: auto;
+  }
+  .docTitle {
+    margin: 50px 0;
+  }
+  .row {
+    width: 230mm;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .document-item {
+    margin: auto;
+  }
+  .form-control {
+    width: 230px;
+    display: block;
+    height: auto;
+    padding: 0 0;
+    border: 0;
+    border-radius: 0;
+    border-bottom: solid #394177;
+    background-color: transparent !important;
+  }
+  .text-input-component {
+    margin: auto;
+    max-width: 50mm;
+  }
+  .col-1 {
+    width: 8%;
+    float: left;
+  }
+  .col-2 {
+    width: 16%;
+    float: left;
+  }
+  .col-3 {
+    width: 25%;
+    float: left;
+  }
+  .col-4 {
+    width: 33%;
+    float: left;
+  }
+  .col-5 {
+    width: 42%;
+    float: left;
+  }
+  .col-6 {
+    width: 50%;
+    float: left;
+  }
+  .col-7 {
+    width: 58%;
+    float: left;
+  }
+  .col-8 {
+    width: 66%;
+    float: left;
+  }
+  .col-9 {
+    width: 75%;
+    float: left;
+  }
+  .col-10 {
+    width: 83%;
+    float: left;
+  }
+  .col-11 {
+    width: 92%;
+    float: left;
+  }
+  .col-12 {
+    flex: 0 0 100%;
+    width: 250mm !important;
+    margin: auto;
+  }
+  .col-lg-12 {
+    flex: 0 0 100%;
+    margin: auto;
+  }
+  .container {
+    display: flex;
+    margin: auto !important;
+    width: 250mm !important;
+  }
+  .fill-form {
+    margin: auto !important;
+    width: 250mm !important;
+    min-height: 500px;
+  }
+  .noPrint {
+    display: none !important;
   }
 }
 

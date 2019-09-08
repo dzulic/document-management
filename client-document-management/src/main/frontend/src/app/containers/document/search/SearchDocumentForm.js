@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Field, reduxForm} from "redux-form";
+import {change, Field, reduxForm} from "redux-form";
 import {TextInputComponent} from "../../../components/integral/TextInputComponent";
 import ReactTable from 'react-table'
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
@@ -9,14 +9,12 @@ import {COMPANIES} from "../../../utils/Constants";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {connect} from "react-redux";
 import {openTemplate} from "../../../actions/actions";
-import CheckboxComponent from "../../../components/integral/CheckboxComponent";
+import RadioButtonsComponent from "../../../components/integral/RadioButtonComponent";
 
 const chkInputProps = {
-    data: [{value: true, name: 'Search Template', classname: 'checkbox'}],
-    props: {value: true, name: 'Select search'}
-};
-const chkInputProps1 = {
-    data: [{value: false, name: 'Search Documents', classname: 'checkbox'}]
+    data: [{value: 'searchByTemplate', label: 'Search by Template', checked: undefined},
+        {value: 'searchByDocument', label: 'Search by Document', checked: undefined}],
+    props: {onChange: undefined}
 };
 
 const columns = [
@@ -50,7 +48,28 @@ export class SearchDocumentForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {selected: null}
+        this.state = {
+            selected: null, checked: undefined
+        };
+        this.onChange = this.onChange.bind(this);
+
+    }
+    onChange(event) {
+        if (event.target.value === this.state.checked) {
+            return;
+        } else {
+            let i;
+            for (i = 0; i < chkInputProps.data.length; i++) {
+                if (chkInputProps.data[i].value === event.target.value) {
+                    chkInputProps.data[i].checked = true;
+                } else {
+                    chkInputProps.data[i].checked = false;
+                }
+            }
+        }
+        this.props.dispatch(change('AppForm', 'searchBy', event.target.value));
+        this.setState({checked: event.target.value})
+
     }
     downloadRandomImage() {
         fetch('http://localhost:10700/api/files')
@@ -66,6 +85,7 @@ export class SearchDocumentForm extends Component {
             });
     }
     render() {
+        chkInputProps.props.onChange = this.onChange;
         const {companies, documents, templates} = this.props;
         if (companies) {
             CompanyProps.selectOptions = companies;
@@ -93,12 +113,8 @@ export class SearchDocumentForm extends Component {
             });
         }
         return (
-
             <div>
-                <Field name={name} component={CheckboxComponent}
-                       label={'check'}
-                       baseComponentConfig={chkInputProps1}/>;
-                <Field name={name} component={CheckboxComponent}
+                <Field name={'searchDocuments'} component={RadioButtonsComponent}
                        baseComponentConfig={chkInputProps}/>
                 <Field name="searchByName" label="searchByName" component={TextInputComponent}/>
                 <Field name="searchByCompany" label="searchByCompany" component={DropDownComponent}

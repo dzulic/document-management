@@ -31,9 +31,7 @@ class FillTemplateModal extends React.Component {
                     </Modal.Header>
                     <div className="modal-backdrop fade in"></div>
                     <Modal.Body>
-                        <div className="container">
-                            <FillTemplateTask fillDocument={fillDocument}/>
-                        </div>
+                        <FillTemplateTask fillDocument={fillDocument}/>
                     </Modal.Body>
                 </Modal>
             </div>

@@ -38,12 +38,18 @@ export class FillTemplateTask extends Component {
     render() {
         const {handleSubmit, fillDocument} = this.props;
         return (
-            <form onSubmit={handleSubmit(this.onSubmit)} className="fill-form">
-                <FillTemplateForm document={fillDocument}/>
-                <div className="col-lg-2">
-                    <ButtonComponent label="print" buttonType="submit"/>
+            <div id="printThis">
+                <div className="print-content">
+                    <div className="container">
+                        <form onSubmit={handleSubmit(this.onSubmit)} className="fill-form">
+                            <FillTemplateForm document={fillDocument}/>
+                            <div className="col-lg-2 noPrint">
+                                <ButtonComponent label="print" buttonType="submit"/>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
+            </div>
         );
     }
 

@@ -16,12 +16,8 @@ export class FillTemplateForm extends Component {
     render() {
         const {document} = this.props;
         return (
-            <div className="col-lg-12 template">
-                <div id="printThis">
-                    <div className="print-content">
-                        <div dangerouslySetInnerHTML={this.createMarkup(document.data)}/>
-                    </div>
-                </div>
+            <div className="col-12">
+                <div dangerouslySetInnerHTML={this.createMarkup(document.data)}/>
             </div>
         );
     }
