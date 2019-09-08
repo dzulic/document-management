@@ -91,7 +91,7 @@ export class UploadTemplateForm extends Component {
                            required/>
                     <Field component={TextInputComponent} name="templateID" label="templateID"
                            disabled={disabled}
-                           required/>
+                           required={true}/>
                     <Field component={DropDownComponent} name="companies" label="companies"
                            value={CompanyProps.selectOptions[0]}
                            baseComponentConfig={CompanyProps}/>

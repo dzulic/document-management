@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {TemplateForm} from "./TemplateForm";
 import {TemplateItemForm} from "./TemplateItemForm";
 import {connect} from "react-redux";
-import {getFormValues, reduxForm} from "redux-form";
+import {Field, getFormValues, reduxForm} from "redux-form";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {DOCUMENT_ITEMS} from "../../../utils/Constants";
 import {I18n} from "react-redux-i18n";
+import {TextInputComponent} from "../../../components/integral/TextInputComponent";
 
 export class CreateTemplateForm extends Component {
 
@@ -18,6 +19,7 @@ export class CreateTemplateForm extends Component {
         return (
             <div className="col-lg-12 template">
                 <h1>{I18n.t("application.message.createDocument")}</h1>
+                <Field component={TextInputComponent} label={"fileName"} name={"fileName"}/>
                 <div className="col-lg-8 offset-lg-2">
                     <TemplateForm>
                         {
