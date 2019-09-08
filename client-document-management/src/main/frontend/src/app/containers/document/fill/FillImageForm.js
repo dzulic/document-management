@@ -25,7 +25,7 @@ export class FillImageForm extends Component {
             <div className="col-12">
                 <img className="document-img" alt="image" src={image.document}/>
                 <Field component={ButtonComponent} click={this.downloadImage} label="download" name="download"
-                       buttonType={"button"}/>
+                       buttonType={"button"} classBtn={"noPrint"}/>
             </div>
         );
     }

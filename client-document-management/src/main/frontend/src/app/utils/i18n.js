@@ -49,7 +49,10 @@ export const i18n = {
             "submit": "Submit",
             "error": {
                 "pleaseSelectSearchBy": 'You need to select by which criteria you want to search',
-                "pleaseInputCriteria": "Please input parameters"
+                "pleaseInputCriteria": "Please input parameters",
+                "errorSearchingTemplates": "Error searching templates",
+                "errorCreatingTemplate": "Error creating template",
+                "errorOpeningTemplate": "Error opening template"
             },
             "date": {
                 "maskFormat": "99/99/9999",

@@ -27,7 +27,7 @@ class FillTemplateModal extends React.Component {
                        onHide={this.handleClose}
                        centered>
                     <Modal.Header closeButton={true}>
-                        <Modal.Title>Fill Document Template and Print</Modal.Title>
+                        <Modal.Title>View, fill, print or download!</Modal.Title>
                     </Modal.Header>
                     <div className="modal-backdrop fade in"></div>
                     <Modal.Body>

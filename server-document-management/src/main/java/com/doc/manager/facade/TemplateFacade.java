@@ -2,6 +2,7 @@ package com.doc.manager.facade;
 
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.TemplateService;
+import com.doc.manager.transfer.SearchDocumentDTO;
 import com.doc.manager.transfer.TemplateDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,9 @@ public class TemplateFacade {
     }
 
     @RequestMapping("/searchTemplate")
-    public RestResponse searchTemplate(@RequestBody TemplateDTO templateDTO) throws IOException {
+    public RestResponse searchTemplate(@RequestBody SearchDocumentDTO templateDTO) throws IOException {
         try {
-            return templateService.searchTemplate(templateDTO.getFileName());
+            return templateService.searchTemplate(templateDTO.getSearchByName(), templateDTO.getSearchByCompany());
         } catch (Exception ex) {
             log.error("ERROR");
         }

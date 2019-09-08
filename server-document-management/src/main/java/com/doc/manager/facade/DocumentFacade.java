@@ -26,7 +26,7 @@ public class DocumentFacade {
     @RequestMapping(value = "/searchDocument", method = RequestMethod.POST)
     public RestResponse searchDocument(@RequestBody SearchDocumentDTO searchDocumentDTO) {
         try {
-            return documentService.searchDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getId());
+            return documentService.searchDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getSearchByCompany());
         } catch (Exception ex) {
             return new RestResponse("error", null);
         }
@@ -35,7 +35,7 @@ public class DocumentFacade {
     @RequestMapping(value = "/getDocument", method = RequestMethod.POST)
     public RestResponse getDocument(@RequestBody SearchDocumentDTO searchDocumentDTO) {
         try {
-            return documentService.getDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getId());
+            return documentService.getDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getSearchByCompany());
         } catch (Exception ex) {
             return new RestResponse("error", null);
         }

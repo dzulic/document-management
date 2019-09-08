@@ -6,7 +6,7 @@ import com.doc.manager.transfer.TemplateDTO;
 public interface TemplateService {
     RestResponse createTemplate(TemplateDTO templateDTO);
 
-    RestResponse searchTemplate(String name);
+    RestResponse searchTemplate(String name, int companyId);
 
     RestResponse getTemplate(TemplateDTO templateDTO);
 }

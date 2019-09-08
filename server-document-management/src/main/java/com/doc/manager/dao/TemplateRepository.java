@@ -9,4 +9,9 @@ import java.util.List;
 @Repository
 public interface TemplateRepository extends JpaRepository<TemplateDocument, Integer> {
     List<TemplateDocument> findByFileNameContaining(String name);
+
+    List<TemplateDocument> findByCreatedBy_Company_CompanyId(int id);
+
+    List<TemplateDocument> findByFileNameContainingAndCreatedBy_Company_CompanyId(String name, int id);
+
 }

@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import DropDownComponent from "../../components/integral/DropDownComponent";
 import {requiredProps} from "../../components/modals/AddNewItemModal";
 import {COMPANIES, USER_LOGGED_SESSION} from "../../utils/Constants";
-import {getValueAppPropertyStore} from "../../utils/storeUtil";
 
 export const buttonOptions = {
     selectOptions: []
@@ -123,7 +122,7 @@ function mapStateToProps(state) {
     return {
         formValues: selector(state),
         logged: JSON.parse(localStorage.getItem(USER_LOGGED_SESSION)),
-        companies: getValueAppPropertyStore(state, COMPANIES)
+        companies: JSON.parse(localStorage.getItem(COMPANIES))
 
     }
 }

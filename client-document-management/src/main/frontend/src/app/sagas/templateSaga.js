@@ -1,6 +1,7 @@
 import {call, put} from "redux-saga/effects";
 import {openFillTemplateModal, openTemplateModel, showWaitingDialog} from "../actions/actions";
 import TemplateApi from "../api/TemplateApi";
+import {SHOW_ERROR_MODAL} from "../utils/actionTypes";
 
 export function* createTemplate(action) {
 
@@ -12,38 +13,46 @@ export function* createTemplate(action) {
             throw new Error(response.message);
         }
 
-        if (response) {
-            console.log("RE", response);
-        }
         yield put(showWaitingDialog(false));
 
     } catch (e) {
         yield put(showWaitingDialog(false));
 
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "errorCreatingTemplate"
         });
     }
 }
 export function* openTemplate(action) {
-    const newAction = {
-        name: null,
-        id: action.payload.templateId
-    };
-    const response = yield call(TemplateApi.getTemplate, newAction);
-    if (response) {
-        yield put(openFillTemplateModal(response.data));
+    try {
+        const newAction = {
+            name: null,
+            id: action.payload.templateId
+        };
+        const response = yield call(TemplateApi.getTemplate, newAction);
 
+        if (response.success === false) {
+            throw new Error(response.message);
+        }
+
+        if (response) {
+            yield put(openFillTemplateModal(response.data));
+        }
+    } catch (e) {
+        yield put(showWaitingDialog(false));
+
+        yield put({
+            type: SHOW_ERROR_MODAL,
+            message: "errorOpeningTemplate"
+        });
     }
-
 }
 
 export function* searchTemplate(action) {
-    console.log('AC', action)
     try {
         yield put(showWaitingDialog(true));
-        const response = yield call(TemplateApi.searchTemplate, {fileName: action.payload.searchByName});
+        const response = yield call(TemplateApi.searchTemplate, action.payload);
         if (response.success === false) {
             throw new Error(response.message);
         }
@@ -64,8 +73,8 @@ export function* searchTemplate(action) {
         yield put(showWaitingDialog(false));
 
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "errorSearchingTemplates"
         });
     }
 }

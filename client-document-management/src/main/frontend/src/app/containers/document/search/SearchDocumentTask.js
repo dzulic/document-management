@@ -25,14 +25,16 @@ export class SearchDocumentTask extends Component {
         const {dispatch, formValues} = this.props;
         dispatch(addEditAppProperty(searchedDocument));
         dispatch(addEditAppProperty(searchedTemplates));
-        if (formValues === undefined && formValues.searchBy === undefined) {
-            this.props.dispatch(showErrorDialog("pleaseSelectSearchBy"));
-        } else if (!formValues.searchByName && !formValues.searchByCompany) {
+        if (formValues && (formValues.searchByName || formValues.searchByCompany)) {
+            if (formValues.searchBy === undefined) {
+                this.props.dispatch(showErrorDialog("pleaseSelectSearchBy"));
+            } else if (formValues.searchBy === 'searchByTemplate') {
+                dispatch(searchTemplate(formValues));
+            } else if (formValues.searchBy === 'searchByDocument') {
+                dispatch(searchDocument(formValues));
+            }
+        } else {
             this.props.dispatch(showErrorDialog("pleaseInputCriteria"));
-        } else if (formValues.searchBy === 'searchByTemplate') {
-            dispatch(searchTemplate(formValues));
-        } else if (formValues.searchBy === 'searchByDocument') {
-            dispatch(searchDocument(formValues));
         }
     }
 
@@ -49,15 +51,22 @@ export class SearchDocumentTask extends Component {
 
 }
 
-const selector = getFormValues("AppForm");
+const
+    selector = getFormValues("AppForm");
 
-function mapStateToProps(state) {
+function
+mapStateToProps(state) {
     return {
         formValues: selector(state)
     }
 }
 export default connect(mapStateToProps)
-(reduxForm({
-    form: "AppForm",
-    destroyOnUnmount: false,
-})(SearchDocumentTask));
+(
+    reduxForm({
+        form: "AppForm",
+        destroyOnUnmount: false,
+    })
+    (
+        SearchDocumentTask
+    ))
+;

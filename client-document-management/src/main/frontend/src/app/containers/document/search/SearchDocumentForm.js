@@ -137,7 +137,7 @@ export class SearchDocumentForm extends Component {
 }
 function mapStateToProps(state) {
     return {
-        companies: getValueAppPropertyStore(state, COMPANIES),
+        companies: JSON.parse(localStorage.getItem(COMPANIES)),
         documents: getValueAppPropertyStore(state, "SEARCHED_DOCUMENT"),
         templates: getValueAppPropertyStore(state, "SEARCHED_TEMPLATES")
     }

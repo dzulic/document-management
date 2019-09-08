@@ -12,6 +12,7 @@ export function* searchDocument(action) {
 
     try {
         yield put(showWaitingDialog(true));
+        console.log(action.payload)
         const response = yield call(DocumentApi.searchDocument, action.payload);
         if (response.success === false) {
             throw new Error(response.message);

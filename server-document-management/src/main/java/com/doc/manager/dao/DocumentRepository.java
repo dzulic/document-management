@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface DocumentRepository extends JpaRepository<Document, Integer> {
 
-    Document findByCompany_CompanyId(int id);
+    List<Document> findByCompany_CompanyId(int id);
 
     List<Document> findByNameContaining(String name);
 

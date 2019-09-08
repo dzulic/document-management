@@ -13,15 +13,8 @@ export function* fetchCompanies() {
             let companiesMap = response.data.map((company) => {
                 return {label: company.companyName, value: JSON.stringify(company.companyId)};
             });
-            const companies = {
-                key: COMPANIES,
-                value: companiesMap
-            };
 
-            yield put({
-                type: ADD_EDIT_APP_PROP_STORE,
-                payload: companies
-            });
+            localStorage.setItem(COMPANIES, JSON.stringify(companiesMap));
         }
 
     } catch (e) {

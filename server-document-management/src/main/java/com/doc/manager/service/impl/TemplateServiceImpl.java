@@ -6,6 +6,7 @@ import com.doc.manager.domain.TemplateDocument;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.TemplateService;
 import com.doc.manager.transfer.TemplateDTO;
+import com.doc.manager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,22 +23,38 @@ public class TemplateServiceImpl implements TemplateService {
 
     @Override
     public RestResponse createTemplate(TemplateDTO templateDTO) {
-        templateRepository.save(beanConverter.convertTemplateDTOToTemplate(templateDTO));
-        return new RestResponse("SUCCESS", null);
+        try {
+            templateRepository.save(beanConverter.convertTemplateDTOToTemplate(templateDTO));
+            return new RestResponse(Constants.SUCCESS, null);
+        } catch (Exception ex) {
+            return new RestResponse(Constants.FAILURE, null);
+        }
     }
 
     @Override
-    public RestResponse searchTemplate(String name) {
-        List<TemplateDocument> templateDocuments = null;
-        if (name != null) {
-            templateDocuments = templateRepository.findByFileNameContaining(name);
+    public RestResponse searchTemplate(String name, int id) {
+        try {
+            List<TemplateDocument> templateDocuments = null;
+            if (name != null && id != 0) {
+                templateDocuments = templateRepository.findByFileNameContainingAndCreatedBy_Company_CompanyId(name, id);
+            } else if (name != null) {
+                templateDocuments = templateRepository.findByFileNameContaining(name);
+            } else if (id != 0) {
+                templateDocuments = templateRepository.findByCreatedBy_Company_CompanyId(id);
+            }
+            return new RestResponse(Constants.SUCCESS, beanConverter.convertDTemplateListToDTOList(templateDocuments));
+        } catch (Exception ex) {
+            return new RestResponse(Constants.FAILURE, null);
         }
-        return new RestResponse("success", beanConverter.convertDTemplateListToDTOList(templateDocuments));
     }
 
     @Override
     public RestResponse getTemplate(TemplateDTO templateDTO) {
-        TemplateDocument template = templateRepository.getOne(Integer.parseInt(templateDTO.getId()));
-        return new RestResponse("SUCCESS", beanConverter.convertTemplateToTemplateDTO(template));
+        try {
+            TemplateDocument template = templateRepository.getOne(Integer.parseInt(templateDTO.getId()));
+            return new RestResponse(Constants.SUCCESS, beanConverter.convertTemplateToTemplateDTO(template));
+        } catch (Exception ex) {
+            return new RestResponse(Constants.FAILURE, null);
+        }
     }
 }
