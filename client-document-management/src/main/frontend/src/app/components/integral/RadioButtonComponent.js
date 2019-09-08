@@ -38,7 +38,8 @@ export default class RadioButtonsComponent extends React.Component {
                     <input key={i} type="radio"
                            checked={this.isChecked(data[i])}
                            value={data[i].value}
-                           name={name}/>
+                           name={name}
+                    />
                     {data[i].label}
                 </div>
             );

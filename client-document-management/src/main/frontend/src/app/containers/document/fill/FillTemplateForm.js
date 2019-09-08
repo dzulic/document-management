@@ -21,11 +21,10 @@ export class FillTemplateForm extends Component {
             </div>
         );
     }
-
 }
 
 FillTemplateForm.propTypes = {
-    document: PropTypes.string
+    document: PropTypes.object
 };
 const selector = getFormValues("AppForm");
 

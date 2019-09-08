@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {USER_LOGGED_SESSION} from "../../../utils/Constants";
-import FillTemplateForm from "./FillTemplateForm";
 import PropTypes from "prop-types";
+import FillTemplateForm from "./FillTemplateForm";
 
 export class FillTemplateTask extends Component {
 
@@ -34,15 +34,22 @@ export class FillTemplateTask extends Component {
         window.print();
     }
 
-
     render() {
         const {handleSubmit, fillDocument} = this.props;
+        let child;
+        if (typeof fillDocument === 'string') {
+            child = <FillImageForm document={fillDocument}/>
+
+        } else {
+            child = <FillTemplateForm document={fillDocument}/>
+
+        }
         return (
             <div id="printThis">
                 <div className="print-content">
                     <div className="container">
                         <form onSubmit={handleSubmit(this.onSubmit)} className="fill-form">
-                            <FillTemplateForm document={fillDocument}/>
+                            {child}
                             <div className="col-lg-2 noPrint">
                                 <ButtonComponent label="print" buttonType="submit"/>
                             </div>
@@ -64,7 +71,9 @@ function mapStateToProps(state) {
 }
 
 FillTemplateTask.propTypes = {
-    fillDocument: PropTypes.string
+    fillDocument: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object])
 };
 export default connect(mapStateToProps)
 (reduxForm({
