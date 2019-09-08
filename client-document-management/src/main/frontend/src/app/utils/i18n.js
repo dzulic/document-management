@@ -47,7 +47,10 @@ export const i18n = {
 
             },
             "submit": "Submit",
-            "err": {},
+            "error": {
+                "pleaseSelectSearchBy": 'You need to select by which criteria you want to search',
+                "pleaseInputCriteria": "Please input parameters"
+            },
             "date": {
                 "maskFormat": "99/99/9999",
                 "stringFormat": "dd/MM/yyyy"

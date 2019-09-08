@@ -14,6 +14,7 @@ import {
     SAVE_DOCUMENT,
     SEARCH_DOCUMENT,
     SEARCH_TEMPLATE,
+    SHOW_ERROR_MODAL,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
@@ -89,4 +90,10 @@ export const showWaitingDialog = (payload) => ({
 export const addEditAppProperty = (payload) => ({
     type: ADD_EDIT_APP_PROP_STORE,
     payload
+});
+
+export const showErrorDialog = (message, messageBody) => ({
+    type: SHOW_ERROR_MODAL,
+    message,
+    messageBody
 });

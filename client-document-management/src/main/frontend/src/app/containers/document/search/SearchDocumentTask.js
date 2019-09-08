@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {getFormValues, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {I18n} from "react-redux-i18n";
-import {addEditAppProperty, searchDocument, searchTemplate} from "../../../actions/actions";
+import {addEditAppProperty, searchDocument, searchTemplate, showErrorDialog} from "../../../actions/actions";
 import SearchDocumentForm from "./SearchDocumentForm";
 
 export class SearchDocumentTask extends Component {
@@ -25,12 +25,14 @@ export class SearchDocumentTask extends Component {
         const {dispatch, formValues} = this.props;
         dispatch(addEditAppProperty(searchedDocument));
         dispatch(addEditAppProperty(searchedTemplates));
-        if (formValues.searchBy === 'searchByTemplate') {
+        if (formValues === undefined && formValues.searchBy === undefined) {
+            this.props.dispatch(showErrorDialog("pleaseSelectSearchBy"));
+        } else if (!formValues.searchByName && !formValues.searchByCompany) {
+            this.props.dispatch(showErrorDialog("pleaseInputCriteria"));
+        } else if (formValues.searchBy === 'searchByTemplate') {
             dispatch(searchTemplate(formValues));
-
         } else if (formValues.searchBy === 'searchByDocument') {
             dispatch(searchDocument(formValues));
-
         }
     }
 

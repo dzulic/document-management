@@ -12,8 +12,8 @@ import {openDocument, openTemplate} from "../../../actions/actions";
 import RadioButtonsComponent from "../../../components/integral/RadioButtonComponent";
 
 const chkInputProps = {
-    data: [{value: 'searchByTemplate', label: 'Search by Template', checked: undefined},
-        {value: 'searchByDocument', label: 'Search by Document', checked: undefined}],
+    data: [{value: 'searchByTemplate', label: 'Search by Template'},
+        {value: 'searchByDocument', label: 'Search by Document'}],
     props: {onChange: undefined}
 };
 
@@ -60,11 +60,7 @@ export class SearchDocumentForm extends Component {
         } else {
             let i;
             for (i = 0; i < chkInputProps.data.length; i++) {
-                if (chkInputProps.data[i].value === event.target.value) {
-                    chkInputProps.data[i].checked = true;
-                } else {
-                    chkInputProps.data[i].checked = false;
-                }
+                chkInputProps.data[i].checked = chkInputProps.data[i].value === event.target.value;
             }
         }
         this.props.dispatch(change('AppForm', 'searchBy', event.target.value));
@@ -106,8 +102,7 @@ export class SearchDocumentForm extends Component {
                        baseComponentConfig={chkInputProps}/>
                 <Field name="searchByName" label="searchByName" component={TextInputComponent}/>
                 <Field name="searchByCompany" label="searchByCompany" component={DropDownComponent}
-                       baseComponentConfig={CompanyProps}
-                />
+                       baseComponentConfig={CompanyProps}/>
                 <ButtonComponent label="search" classBtn="search"/>
                 <ReactTable data={data}
                             columns={columns}
@@ -120,7 +115,6 @@ export class SearchDocumentForm extends Component {
                                             this.setState({
                                                 selected: rowInfo.index
                                             });
-                                            console.log(this.state.checked)
                                             if (this.state.checked === 'searchByDocument') {
                                                 this.props.dispatch(openDocument(rowInfo.original));
 
@@ -135,8 +129,7 @@ export class SearchDocumentForm extends Component {
                                 } else {
                                     return {}
                                 }
-                            }
-                            }/>
+                            }}/>
             </div>
         );
     }
