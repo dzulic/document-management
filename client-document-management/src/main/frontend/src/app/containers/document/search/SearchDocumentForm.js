@@ -66,11 +66,26 @@ export class SearchDocumentForm extends Component {
         this.props.dispatch(change('AppForm', 'searchBy', event.target.value));
         this.setState({checked: event.target.value})
 
+        if (event.target.value === 'searchByTemplate') {
+            if (columns.length === 4) {
+                columns.pop();
+            }
+        } else {
+            if (columns.length < 4) {
+                columns.push({
+                    Header: 'Document',
+                    accessor: 'document',
+                    Cell: props => <img className="document-img" alt="image" src={props.value}/>
+                },)
+            }
+        }
+
     }
 
     render() {
         chkInputProps.props.onChange = this.onChange;
         const {companies, documents, templates} = this.props;
+        console.log("D", documents, templates)
         if (companies) {
             CompanyProps.selectOptions = companies;
         }
@@ -79,12 +94,14 @@ export class SearchDocumentForm extends Component {
             templates.forEach((doc) => {
                 data.push({
                     name: doc.fileName,
-                    templateId: doc.id
+                    templateId: doc.id,
+                    user: doc.createdBy.name
                 })
             })
         }
 
         if (documents) {
+
             documents.forEach((doc) => {
                 data.push({
                     name: doc.name,

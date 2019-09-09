@@ -4,6 +4,7 @@ import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.TemplateService;
 import com.doc.manager.transfer.SearchDocumentDTO;
 import com.doc.manager.transfer.TemplateDTO;
+import com.doc.manager.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,11 +26,10 @@ public class TemplateFacade {
     @RequestMapping("/createTemplate")
     public RestResponse uploadNewFile(@RequestBody TemplateDTO templateDTO) throws IOException {
         try {
-            templateService.createTemplate(templateDTO);
+            return templateService.createTemplate(templateDTO);
         } catch (Exception ex) {
-            log.error("ERROR");
+            return new RestResponse(Constants.FAILURE, "");
         }
-        return null;
     }
 
 
@@ -38,9 +38,8 @@ public class TemplateFacade {
         try {
             return templateService.getTemplate(templateDTO);
         } catch (Exception ex) {
-            log.error("ERROR");
+            return new RestResponse(Constants.FAILURE, "");
         }
-        return null;
     }
 
     @RequestMapping("/searchTemplate")
@@ -48,8 +47,7 @@ public class TemplateFacade {
         try {
             return templateService.searchTemplate(templateDTO.getSearchByName(), templateDTO.getSearchByCompany());
         } catch (Exception ex) {
-            log.error("ERROR");
+            return new RestResponse(Constants.FAILURE, "");
         }
-        return null;
     }
 }

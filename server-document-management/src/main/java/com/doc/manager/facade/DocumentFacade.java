@@ -4,6 +4,7 @@ import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.DocumentService;
 import com.doc.manager.transfer.DocumentDTO;
 import com.doc.manager.transfer.SearchDocumentDTO;
+import com.doc.manager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class DocumentFacade {
         try {
             return documentService.searchDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getSearchByCompany());
         } catch (Exception ex) {
-            return new RestResponse("error", null);
+            return new RestResponse(Constants.FAILURE, "");
         }
     }
 
@@ -37,7 +38,7 @@ public class DocumentFacade {
         try {
             return documentService.getDocument(searchDocumentDTO.getSearchByName(), searchDocumentDTO.getSearchByCompany());
         } catch (Exception ex) {
-            return new RestResponse("error", null);
+            return new RestResponse(Constants.FAILURE, "");
         }
     }
 }

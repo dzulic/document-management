@@ -18,12 +18,12 @@ export class CreateTemplateTask extends Component {
         this.props.dispatch(openAddItemModal(true));
     }
     onSubmit() {
-        const {dispatch, user} = this.props;
+        const {dispatch, user, formValues} = this.props;
 
         dispatch(createTemplateDocument({
             data: document.getElementsByClassName("document-form")[0].innerHTML,
             createdBy: user,
-            fileName: "",
+            fileName: formValues.fileName,
             contentType: "docx",
         }))
     }

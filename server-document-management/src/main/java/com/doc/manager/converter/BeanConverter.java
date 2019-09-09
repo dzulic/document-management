@@ -111,6 +111,7 @@ public class BeanConverter {
             BeanUtils.copyProperties(template, templateDTO);
             templateDTO.setId(String.valueOf(template.getId()));
             templateDTO.setData(template.getData());
+            templateDTO.setCreatedBy(convertUserToUserDTO(template.getCreatedBy()));
         }
         return templateDTO;
     }

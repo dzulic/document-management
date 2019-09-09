@@ -1,7 +1,9 @@
 package com.doc.manager.service.impl;
 
 import com.doc.manager.converter.BeanConverter;
+import com.doc.manager.dao.AccountRepository;
 import com.doc.manager.dao.TemplateRepository;
+import com.doc.manager.domain.Account;
 import com.doc.manager.domain.TemplateDocument;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.TemplateService;
@@ -21,11 +23,17 @@ public class TemplateServiceImpl implements TemplateService {
     @Autowired
     private TemplateRepository templateRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     @Override
     public RestResponse createTemplate(TemplateDTO templateDTO) {
         try {
-            templateRepository.save(beanConverter.convertTemplateDTOToTemplate(templateDTO));
-            return new RestResponse(Constants.SUCCESS, null);
+            TemplateDocument templateDocument = beanConverter.convertTemplateDTOToTemplate(templateDTO);
+            Account employee = accountRepository.findByEmployeeID(templateDocument.getCreatedBy().getEmployeeID());
+            templateDocument.setCreatedBy(employee);
+            templateRepository.save(templateDocument);
+            return new RestResponse(Constants.SUCCESS, "Successfully");
         } catch (Exception ex) {
             return new RestResponse(Constants.FAILURE, null);
         }
