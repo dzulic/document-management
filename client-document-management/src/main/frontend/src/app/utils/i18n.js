@@ -52,7 +52,8 @@ export const i18n = {
                 "pleaseInputCriteria": "Please input parameters",
                 "errorSearchingTemplates": "Error searching templates",
                 "errorCreatingTemplate": "Error creating template",
-                "errorOpeningTemplate": "Error opening template"
+                "errorOpeningTemplate": "Error opening template",
+                "pleaseInputTemplateID": "Please fill templateID"
             },
             "date": {
                 "maskFormat": "99/99/9999",

@@ -6,7 +6,7 @@ import {TextInputComponent} from "../../../components/integral/TextInputComponen
 import DropDownComponent from "../../../components/integral/DropDownComponent";
 import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 import {requiredProps} from "../../../components/modals/AddNewItemModal";
-import {saveDocument} from "../../../actions/actions";
+import {saveDocument, showErrorDialog} from "../../../actions/actions";
 import {connect} from "react-redux";
 
 
@@ -35,6 +35,10 @@ export class UploadTemplateForm extends Component {
     }
 
     uploadFile(event) {
+        if (formValues.templateID === undefined) {
+            this.props.dispatch(showErrorDialog("pleaseInputTemplateID"));
+            return;
+        }
         event.preventDefault();
         this.setState({error: '', msg: ''});
         if (!this.state.file) {
