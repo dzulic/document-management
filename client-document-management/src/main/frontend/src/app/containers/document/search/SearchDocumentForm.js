@@ -27,10 +27,6 @@ const columns = [
         accessor: 'company'
     },
     {
-        Header: 'Created by',
-        accessor: 'user'
-    },
-    {
         Header: 'Document',
         accessor: 'document',
         Cell: props => <img className="document-img" alt="image" src={props.value}/>
@@ -67,11 +63,11 @@ export class SearchDocumentForm extends Component {
         this.setState({checked: event.target.value})
 
         if (event.target.value === 'searchByTemplate') {
-            if (columns.length === 4) {
+            if (columns.length === 3) {
                 columns.pop();
             }
         } else {
-            if (columns.length < 4) {
+            if (columns.length < 3) {
                 columns.push({
                     Header: 'Document',
                     accessor: 'document',
@@ -85,7 +81,6 @@ export class SearchDocumentForm extends Component {
     render() {
         chkInputProps.props.onChange = this.onChange;
         const {companies, documents, templates} = this.props;
-        console.log("D", documents, templates)
         if (companies) {
             CompanyProps.selectOptions = companies;
         }
