@@ -2,7 +2,9 @@ package com.doc.manager.service.impl;
 
 import com.doc.manager.converter.BeanConverter;
 import com.doc.manager.dao.DocumentRepository;
+import com.doc.manager.dao.TemplateRepository;
 import com.doc.manager.domain.Document;
+import com.doc.manager.domain.TemplateDocument;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.DocumentService;
 import com.doc.manager.transfer.DocumentDTO;
@@ -21,9 +23,17 @@ class DocumentServiceImpl implements DocumentService {
     @Autowired
     private DocumentRepository documentRepository;
 
+    @Autowired
+    private TemplateRepository templateRepository;
+
     public RestResponse createDocument(DocumentDTO documentDTO) {
         try {
-            documentRepository.save(beanConverter.convertDocumentDTOToDocument(documentDTO));
+            TemplateDocument templateDocument = templateRepository.getOne(documentDTO.getTemplateId());
+            if (templateDocument != null) {
+                documentRepository.save(beanConverter.convertDocumentDTOToDocument(documentDTO));
+            } else {
+                return new RestResponse(Constants.FAILURE, null);
+            }
             return new RestResponse(Constants.SUCCESS, null);
         } catch (Exception ex) {
             return new RestResponse(Constants.FAILURE, null);

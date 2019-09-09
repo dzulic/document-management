@@ -35,7 +35,7 @@ export class UploadTemplateForm extends Component {
     }
 
     uploadFile(event) {
-        if (formValues.templateID === undefined) {
+        if (this.props.formValues.templateId === undefined) {
             this.props.dispatch(showErrorDialog("pleaseInputTemplateID"));
             return;
         }
@@ -68,7 +68,8 @@ export class UploadTemplateForm extends Component {
                 dispatch(saveDocument({
                     content: this.result,
                     createdBy: user,
-                    name: formValues.nameOfDocument
+                    name: formValues.nameOfDocument,
+                    templateId: formValues.templateId
                 }))
                 ;
             }, false);
@@ -93,7 +94,7 @@ export class UploadTemplateForm extends Component {
                     <Field component={TextInputComponent} name="nameOfDocument" label="nameOfDocument"
                            disabled={disabled}
                            required/>
-                    <Field component={TextInputComponent} name="templateID" label="templateID"
+                    <Field component={TextInputComponent} name="templateId" label="templateId"
                            disabled={disabled}
                            required={true}/>
                     <Field component={DropDownComponent} name="companies" label="companies"
