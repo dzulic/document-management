@@ -38,14 +38,14 @@ public class BeanConverterTest {
     public void convertCompanyToCompanyDTO() {
         CompanyDTO companyDTODummy = TestUtils.getCompanyDTODummy();
         Company company = beanConverter.convertCompanyDTOToCompany(companyDTODummy);
-        CompanyDTO companyDTO = beanConverter.convertCompanyDTOToCompany(company);
+        CompanyDTO companyDTO = beanConverter.convertCompanyToCompanyDTO(company);
         assertEquals("Converting userDTO into Account and back", companyDTODummy, companyDTO);
     }
 
     @Test
     public void convertCompanyDTOtoCompany() {
         Company companyDummy = TestUtils.getCompanyDummy();
-        CompanyDTO companyDTO = beanConverter.convertCompanyDTOToCompany(companyDummy);
+        CompanyDTO companyDTO = beanConverter.convertCompanyToCompanyDTO(companyDummy);
         Company company = beanConverter.convertCompanyDTOToCompany(companyDTO);
         assertEquals("Converting userDTO into Account and back", companyDummy, company);
     }

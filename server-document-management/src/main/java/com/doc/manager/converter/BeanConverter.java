@@ -23,6 +23,7 @@ public class BeanConverter {
         if (userDTO != null) {
             account = new Account();
             BeanUtils.copyProperties(userDTO, account);
+            account.setCompany(convertCompanyDTOToCompany(userDTO.getCompany()));
         }
         return account;
     }
@@ -31,8 +32,9 @@ public class BeanConverter {
         UserDTO userDTO = null;
         if (account != null) {
             userDTO = new UserDTO();
-            BeanUtils.copyProperties(userDTO, account);
-            userDTO.setName(account.getName());
+            BeanUtils.copyProperties(account, userDTO);
+            userDTO.setCompanyId(account.getCompany().getCompanyId());
+            userDTO.setCompany(convertCompanyToCompanyDTO(account.getCompany()));
         }
         return userDTO;
     }
@@ -47,7 +49,7 @@ public class BeanConverter {
     }
 
 
-    public CompanyDTO convertCompanyDTOToCompany(Company company) {
+    public CompanyDTO convertCompanyToCompanyDTO(Company company) {
         CompanyDTO companyDTO = null;
         if (company != null) {
             companyDTO = new CompanyDTO();
@@ -79,7 +81,7 @@ public class BeanConverter {
             documentDTO = new DocumentDTO();
             BeanUtils.copyProperties(document, documentDTO);
             documentDTO.setCreatedBy(convertUserToUserDTO(document.getCreatedBy()));
-            documentDTO.setCompanyDTO(convertCompanyDTOToCompany(document.getCompany()));
+            documentDTO.setCompanyDTO(convertCompanyToCompanyDTO(document.getCompany()));
             documentDTO.setDocumentId(Integer.parseInt(String.valueOf(document.getId())));
             documentDTO.setContent(StringUtils.newStringUtf8(document.getContent()));
             if (document.getTemplate() != null) {

@@ -22,7 +22,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public RestResponse createCompany(CompanyDTO companyDTO) {
-        Company savedCompany = companyRepository.save(beanConverter.convertCompanyDTOToCompany(companyDTO));
+        Company company = beanConverter.convertCompanyDTOToCompany(companyDTO);
+        Company savedCompany = companyRepository.save(company);
         return new RestResponse(Constants.SUCCESS, savedCompany);
     }
 
