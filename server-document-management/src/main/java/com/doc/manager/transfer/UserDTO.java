@@ -2,8 +2,10 @@ package com.doc.manager.transfer;
 
 import com.doc.manager.domain.EUserRole;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode
 public class UserDTO {
     private int employeeID;
     private EUserRole userRole;
@@ -15,8 +17,5 @@ public class UserDTO {
     private String mobilePhone;
     private int companyId;
     private CompanyDTO company;
-    private String country;
     private String position;
-    private String profession;
-
 }

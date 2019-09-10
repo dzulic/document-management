@@ -6,6 +6,7 @@ import com.doc.manager.domain.Company;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.CompanyService;
 import com.doc.manager.transfer.CompanyDTO;
+import com.doc.manager.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +20,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     CompanyRepository companyRepository;
 
+    @Override
     public RestResponse createCompany(CompanyDTO companyDTO) {
-        companyRepository.save(beanConverter.convertCompanyDTOToCompany(companyDTO));
-        return new RestResponse("success", null);
+        Company savedCompany = companyRepository.save(beanConverter.convertCompanyDTOToCompany(companyDTO));
+        return new RestResponse(Constants.SUCCESS, savedCompany);
     }
 
     @Override
     public RestResponse getCompanies() {
         List<Company> allCompanies = companyRepository.findAll();
-        return new RestResponse("success", allCompanies);
+        return new RestResponse(Constants.SUCCESS, allCompanies);
     }
 }

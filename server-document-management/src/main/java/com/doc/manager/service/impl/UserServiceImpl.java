@@ -23,7 +23,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import static com.doc.manager.util.Constants.FAILURE;
 import static com.doc.manager.util.Constants.SUCCESS;
 
 @Service
@@ -42,17 +41,13 @@ public class UserServiceImpl implements UserService {
     private AuthenticationManager authenticationManager;
 
     public RestResponse createUser(UserDTO userDTO) {
-        try {
-            Account account = beanConverter.convertUserDTOToUser(userDTO);
-            if (userDTO.getCompanyId() != 0) {
-                Company byCompanyId = companyRepository.findByCompanyId(userDTO.getCompanyId());
-                account.setCompany(byCompanyId);
-            }
-            accountRepository.save(account);
-            return new RestResponse(SUCCESS, null);
-        } catch (Exception ex) {
-            return new RestResponse(FAILURE, null);
+        Account account = beanConverter.convertUserDTOToUser(userDTO);
+        if (userDTO.getCompanyId() != 0) {
+            Company byCompanyId = companyRepository.findByCompanyId(userDTO.getCompanyId());
+            account.setCompany(byCompanyId);
         }
+        Account savedAccount = accountRepository.save(account);
+        return new RestResponse(SUCCESS, savedAccount);
     }
 
     public RestResponse logoutUser() {
