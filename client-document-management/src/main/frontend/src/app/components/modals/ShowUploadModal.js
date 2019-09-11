@@ -18,10 +18,10 @@ class ShowUploadModal extends React.Component {
     }
 
     render() {
-        const {templateId, showModal} = this.props;
+        const {templateId} = this.props;
         return (
             <div className="col-4 offset-4">
-                <Modal show={showModal}
+                <Modal show={true}
                        className="fill-modal"
                        aria-labelledby="contained-modal-title-center"
                        onHide={this.handleClose}
@@ -41,7 +41,7 @@ class ShowUploadModal extends React.Component {
 }
 
 ShowUploadModal.propTypes = {
-    templateId: PropTypes.object
+    templateId: PropTypes.string
 };
 const selectorItem = getFormValues("AppForm");
 

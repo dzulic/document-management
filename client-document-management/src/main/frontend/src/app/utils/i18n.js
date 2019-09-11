@@ -43,7 +43,8 @@ export const i18n = {
                 "chooseFile": "If you want to upload file first you need to choose file",
                 "nameOfDocument": "Name of document",
                 "uploadFileText": "Please click upload to finish",
-                "fileName": "Name of the template"
+                "fileName": "Name of the template",
+                "templateId": "Template id"
 
             },
             "submit": "Submit",

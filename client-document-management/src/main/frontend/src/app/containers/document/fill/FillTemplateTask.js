@@ -17,9 +17,8 @@ export class FillTemplateTask extends Component {
     }
 
     goToUpload() {
-        const {dispatch} = this.props;
-        dispatch(showUploadDialog());
-
+        const {dispatch, fillDocument} = this.props;
+        dispatch(showUploadDialog(fillDocument.id));
     }
 
     onSubmit() {
@@ -47,7 +46,7 @@ export class FillTemplateTask extends Component {
             $printSection.innerHTML = "";
         }
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         var $printSection = document.getElementById("printSection");
         if ($printSection != null) {
             $printSection.innerHTML = "";
@@ -70,7 +69,8 @@ export class FillTemplateTask extends Component {
                             {child}
                             <div className="col-lg-2 noPrint">
                                 <ButtonComponent label="print" buttonType="submit"/>
-                                <ButtonComponent label="goToUpload" buttonType="button" click={this.goToUpload}/>
+                                {fillDocument.name === undefined &&
+                                <ButtonComponent label="goToUpload" buttonType="button" click={this.goToUpload}/>}
                             </div>
                         </form>
                     </div>

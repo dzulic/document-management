@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Field, getFormValues, reduxForm} from "redux-form";
+import {change, Field, getFormValues, reduxForm} from "redux-form";
 import {I18n} from 'react-redux-i18n';
 import {ButtonComponent} from "../../../components/integral/ButtonComponent";
 import {TextInputComponent} from "../../../components/integral/TextInputComponent";
@@ -80,7 +80,9 @@ export class UploadTemplateForm extends Component {
 
     render() {
         const {templateId} = this.props;
-
+        if (templateId !== undefined) {
+            this.props.dispatch(change('AppForm', 'templateId', templateId));
+        }
         let disabled = this.state.file === undefined;
         if (CompanyProps.selectOptions.length === 0) {
             CompanyProps.selectOptions.push({
@@ -97,7 +99,6 @@ export class UploadTemplateForm extends Component {
                            disabled={disabled}
                            required/>
                     <Field component={TextInputComponent} name="templateId" label="templateId"
-                           value={templateId}
                            disabled={disabled}
                            required={true}/>
                     <Field component={DropDownComponent} name="companies" label="companies"

@@ -38,7 +38,6 @@ class TemplateApi {
     }
 
     static searchTemplate(template) {
-        console.log(template);
         let defaultrestparamspost = DEFAULT_REST_PARAMS_POST;
         let user = JSON.parse(localStorage.getItem(USER_LOGGED_SESSION));
         defaultrestparamspost.headers = {

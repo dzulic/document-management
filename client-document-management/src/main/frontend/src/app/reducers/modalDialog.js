@@ -18,12 +18,12 @@ export default function modalDialog(state = {}, action) {
             return {showModal: action.value, showAddModal: action.value, addItem: action.value};
         case OPEN_DOCUMENT_MODAL:
             return {showModal: action.value};
-        case CLOSE_MODAL_DIALOG:
-            return {showModal: false};
+        case SHOW_UPLOAD_DIALOG:
+            return {showModal: true, templateId: action.templateId};
         case SHOW_ERROR_MODAL:
             return {showModal: true, error: {message: action.message, messageBody: action.messageBody}};
-        case SHOW_UPLOAD_DIALOG:
-            return {showModal: action.templateId, templateId: action.templateId};
+        case CLOSE_MODAL_DIALOG:
+            return {showModal: false};
         default:
             return state;
     }

@@ -48,6 +48,14 @@ export const CompanyProps = {
     formName: "AppForm",
     disableSingleElementReadOnly: true
 };
+const searchedDocument = {
+    key: "SEARCHED_TEMPLATES",
+    value: null
+};
+const searchedTemplates = {
+    key: 'SEARCHED_DOCUMENT',
+    value: null
+};
 export class SearchDocumentForm extends Component {
 
     constructor(props) {
@@ -56,9 +64,16 @@ export class SearchDocumentForm extends Component {
             selected: null, checked: undefined
         };
         this.onChange = this.onChange.bind(this);
-
+        this.clear = this.clear.bind(this);
+    }
+    clear() {
+        const {dispatch} = this.props;
+        dispatch(addEditAppProperty(searchedDocument));
+        dispatch(addEditAppProperty(searchedTemplates));
     }
     onChange(event) {
+        const {dispatch} = this.props;
+
         if (event.target.value === this.state.checked) {
             return;
         } else {
@@ -67,17 +82,7 @@ export class SearchDocumentForm extends Component {
                 chkInputProps.data[i].checked = chkInputProps.data[i].value === event.target.value;
             }
         }
-        const searchedDocument = {
-            key: "SEARCHED_TEMPLATES",
-            value: null
-        };
-        const searchedTemplates = {
-            key: 'SEARCHED_DOCUMENT',
-            value: null
-        };
-        const {dispatch} = this.props;
-        dispatch(addEditAppProperty(searchedDocument));
-        dispatch(addEditAppProperty(searchedTemplates));
+        this.clear();
         dispatch(change('AppForm', 'searchBy', event.target.value));
         this.setState({checked: event.target.value})
 
@@ -101,7 +106,9 @@ export class SearchDocumentForm extends Component {
         }
 
     }
-
+    componentWillUnmount() {
+        this.clear();
+    }
     render() {
         chkInputProps.props.onChange = this.onChange;
         const {companies, documents, templates} = this.props;

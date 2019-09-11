@@ -98,7 +98,7 @@ export const showErrorDialog = (message, messageBody) => ({
     message,
     messageBody
 });
-export const showUploadDialog = (message, templateId) => ({
+export const showUploadDialog = (templateId) => ({
     type: SHOW_UPLOAD_DIALOG,
     templateId
 });

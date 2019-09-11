@@ -12,7 +12,7 @@ export class ButtonComponent extends Component {
         const {label, click, buttonType, classBtn, disabled} = this.props;
         return (
             <div className={"button-component" + (classBtn !== undefined ? " " + classBtn : '')}>
-                <button className={"btn btn-submit " + (classBtn !== undefined ? classBtn : '')} type={buttonType}
+                <button className={"btn " + (classBtn !== undefined ? classBtn : '')} type={buttonType}
                         disabled={disabled}
                         onClick={click}>{I18n.t("application.message." + label)}</button>
             </div>

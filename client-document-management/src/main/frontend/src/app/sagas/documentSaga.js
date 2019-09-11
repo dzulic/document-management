@@ -12,7 +12,6 @@ export function* searchDocument(action) {
 
     try {
         yield put(showWaitingDialog(true));
-        console.log(action.payload)
         const response = yield call(DocumentApi.searchDocument, action.payload);
         if (response.success === false) {
             throw new Error(response.message);
@@ -51,9 +50,6 @@ export function* saveDocuments(action) {
             throw new Error(response.message);
         }
 
-        if (response) {
-            console.log("RE", response);
-        }
         yield put(showWaitingDialog(false));
 
     } catch (e) {
