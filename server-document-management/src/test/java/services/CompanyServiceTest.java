@@ -6,7 +6,6 @@ import com.doc.manager.domain.Company;
 import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.impl.CompanyServiceImpl;
 import com.doc.manager.util.Constants;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -17,6 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CompanyServiceTest {
@@ -30,10 +30,6 @@ public class CompanyServiceTest {
     @Mock
     private BeanConverter beanConverter;
 
-    @Before
-    public void init() {
-    }
-
     @Test
     public void createCompanyTest() {
         RestResponse response = companyService.createCompany(any());
@@ -46,5 +42,11 @@ public class CompanyServiceTest {
         RestResponse companies = companyService.getCompanies();
         assertEquals("Response message for getCompanies", companies.getMessage(), Constants.SUCCESS);
         assertEquals("Response for get all companies", all, companies.getData());
+    }
+
+    @Test(expected = Exception.class)
+    public void getCompaniesTestException() {
+        when(companyRepository.findAll()).thenThrow(Exception.class);
+        RestResponse companies = companyService.getCompanies();
     }
 }
