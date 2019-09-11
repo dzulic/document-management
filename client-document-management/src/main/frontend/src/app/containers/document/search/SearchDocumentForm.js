@@ -8,7 +8,7 @@ import {requiredProps} from "../../../components/modals/AddNewItemModal";
 import {COMPANIES} from "../../../utils/Constants";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {connect} from "react-redux";
-import {openDocument, openTemplate} from "../../../actions/actions";
+import {addEditAppProperty, openDocument, openTemplate} from "../../../actions/actions";
 import RadioButtonsComponent from "../../../components/integral/RadioButtonComponent";
 
 const chkInputProps = {
@@ -18,6 +18,14 @@ const chkInputProps = {
 };
 
 const columns = [
+    {
+        Header: 'Document Id',
+        accessor: 'documentId'
+    },
+    {
+        Header: 'Template Id',
+        accessor: 'templateId'
+    },
     {
         Header: 'Document Name',
         accessor: 'name'
@@ -59,15 +67,31 @@ export class SearchDocumentForm extends Component {
                 chkInputProps.data[i].checked = chkInputProps.data[i].value === event.target.value;
             }
         }
-        this.props.dispatch(change('AppForm', 'searchBy', event.target.value));
+        const searchedDocument = {
+            key: "SEARCHED_TEMPLATES",
+            value: null
+        };
+        const searchedTemplates = {
+            key: 'SEARCHED_DOCUMENT',
+            value: null
+        };
+        const {dispatch} = this.props;
+        dispatch(addEditAppProperty(searchedDocument));
+        dispatch(addEditAppProperty(searchedTemplates));
+        dispatch(change('AppForm', 'searchBy', event.target.value));
         this.setState({checked: event.target.value})
 
         if (event.target.value === 'searchByTemplate') {
-            if (columns.length === 3) {
+            if (columns.length === 5) {
+                columns.shift();
                 columns.pop();
             }
         } else {
-            if (columns.length < 3) {
+            if (columns.length < 5) {
+                columns.unshift({
+                    Header: 'Document Id',
+                    accessor: 'documentId'
+                });
                 columns.push({
                     Header: 'Document',
                     accessor: 'document',
@@ -90,7 +114,8 @@ export class SearchDocumentForm extends Component {
                 data.push({
                     name: doc.fileName,
                     templateId: doc.id,
-                    user: doc.createdBy.name
+                    user: doc.createdBy.name,
+                    company: doc.createdBy.companyId
                 })
             })
         }
@@ -100,7 +125,7 @@ export class SearchDocumentForm extends Component {
             documents.forEach((doc) => {
                 data.push({
                     name: doc.name,
-                    company: doc.companyDTO.companyName,
+                    company: doc.companyDTO.companyId,
                     user: doc.createdBy.name,
                     document: doc.content,
                     documentId: doc.documentId,
@@ -157,5 +182,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
-    destroyOnUnmount: false,
+    destroyOnUnmount: true,
 })(SearchDocumentForm));

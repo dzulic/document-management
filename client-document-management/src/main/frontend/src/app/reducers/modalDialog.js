@@ -4,6 +4,7 @@ import {
     OPEN_DOCUMENT_MODAL,
     OPEN_FILL_DOCUMENT_MODAL,
     SHOW_ERROR_MODAL,
+    SHOW_UPLOAD_DIALOG,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
@@ -21,6 +22,8 @@ export default function modalDialog(state = {}, action) {
             return {showModal: false};
         case SHOW_ERROR_MODAL:
             return {showModal: true, error: {message: action.message, messageBody: action.messageBody}};
+        case SHOW_UPLOAD_DIALOG:
+            return {showModal: action.templateId, templateId: action.templateId};
         default:
             return state;
     }

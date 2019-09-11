@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {getFormValues, reduxForm} from "redux-form";
 import UploadDocumentForm from "./UploadDocumentForm";
+import PropTypes from "prop-types";
 
 export class UploadDocumentTask extends Component {
 
@@ -10,17 +11,21 @@ export class UploadDocumentTask extends Component {
     }
 
     render() {
+        const {templateId} = this.props;
         return (
             <form>
                 <h1>Upload a file</h1>
-                <UploadDocumentForm/>
+                <UploadDocumentForm templateId={templateId}/>
             </form>
         );
     }
 
 }
 
-UploadDocumentTask.propTypes = {}
+UploadDocumentTask.propTypes = {
+    templateId: PropTypes.string
+};
+
 const selector = getFormValues("AppForm");
 
 function mapStateToProps(state) {

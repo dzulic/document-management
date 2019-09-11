@@ -8,7 +8,7 @@ import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 import {requiredProps} from "../../../components/modals/AddNewItemModal";
 import {saveDocument, showErrorDialog} from "../../../actions/actions";
 import {connect} from "react-redux";
-
+import PropTypes from 'prop-types';
 
 export const CompanyProps = {
     selectOptions: [],
@@ -79,6 +79,8 @@ export class UploadTemplateForm extends Component {
     }
 
     render() {
+        const {templateId} = this.props;
+
         let disabled = this.state.file === undefined;
         if (CompanyProps.selectOptions.length === 0) {
             CompanyProps.selectOptions.push({
@@ -95,6 +97,7 @@ export class UploadTemplateForm extends Component {
                            disabled={disabled}
                            required/>
                     <Field component={TextInputComponent} name="templateId" label="templateId"
+                           value={templateId}
                            disabled={disabled}
                            required={true}/>
                     <Field component={DropDownComponent} name="companies" label="companies"
@@ -121,7 +124,9 @@ export class UploadTemplateForm extends Component {
 
 }
 
-UploadTemplateForm.propTypes = {}
+UploadTemplateForm.propTypes = {
+    templateId: PropTypes.string
+};
 const selector = getFormValues("AppForm");
 
 function

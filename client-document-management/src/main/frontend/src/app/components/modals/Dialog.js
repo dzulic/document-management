@@ -5,6 +5,7 @@ import AddNewItemModal from "./AddNewItemModal";
 import FillTemplateModal from "./FillTemplateModal";
 import {SHOW_WAITING_MODAL} from "../../utils/actionTypes";
 import ErrorModalDialog from "./ErrortModalDialog";
+import ShowUploadModal from "./ShowUploadModal";
 
 class Dialog extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class Dialog extends React.Component {
     render() {
         const {
             modalDialog: {
-                showModal, addItem, showWaitingModal, fillDocument, error
+                showModal, addItem, showWaitingModal, fillDocument, error, templateId
             }
         } = this.props;
         const content =
@@ -35,7 +36,7 @@ class Dialog extends React.Component {
                 || (showModal && fillDocument) && <FillTemplateModal showModal={showModal} fillDocument={fillDocument}/>
                 || (showModal && error) &&
                 <ErrorModalDialog message={error.message} messageBody={error.messageBody}/>
-
+                || (showModal && templateId) && <ShowUploadModal templateId={templateId}/>
             )
         ;
         return (

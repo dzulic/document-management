@@ -15,6 +15,7 @@ import {
     SEARCH_DOCUMENT,
     SEARCH_TEMPLATE,
     SHOW_ERROR_MODAL,
+    SHOW_UPLOAD_DIALOG,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
 
@@ -96,4 +97,8 @@ export const showErrorDialog = (message, messageBody) => ({
     type: SHOW_ERROR_MODAL,
     message,
     messageBody
+});
+export const showUploadDialog = (message, templateId) => ({
+    type: SHOW_UPLOAD_DIALOG,
+    templateId
 });

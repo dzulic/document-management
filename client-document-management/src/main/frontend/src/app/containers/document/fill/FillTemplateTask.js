@@ -6,14 +6,21 @@ import {USER_LOGGED_SESSION} from "../../../utils/Constants";
 import PropTypes from "prop-types";
 import FillTemplateForm from "./FillTemplateForm";
 import FillImageForm from "./FillImageForm";
+import {showUploadDialog} from "../../../actions/actions";
 
 export class FillTemplateTask extends Component {
 
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
+        this.goToUpload = this.goToUpload.bind(this);
     }
 
+    goToUpload() {
+        const {dispatch} = this.props;
+        dispatch(showUploadDialog());
+
+    }
 
     onSubmit() {
         this.printElement(document.getElementById("printThis"));
@@ -34,11 +41,21 @@ export class FillTemplateTask extends Component {
         $printSection.appendChild(domClone);
         window.print();
     }
-
+    componentWillUnmount() {
+        var $printSection = document.getElementById("printSection");
+        if ($printSection != null) {
+            $printSection.innerHTML = "";
+        }
+    }
+    componentWillMount() {
+        var $printSection = document.getElementById("printSection");
+        if ($printSection != null) {
+            $printSection.innerHTML = "";
+        }
+    }
     render() {
         const {handleSubmit, fillDocument} = this.props;
         let child;
-        console.log("fill", fillDocument)
         if (fillDocument.name !== undefined) {
             child = <FillImageForm image={fillDocument}/>
         } else {
@@ -53,6 +70,7 @@ export class FillTemplateTask extends Component {
                             {child}
                             <div className="col-lg-2 noPrint">
                                 <ButtonComponent label="print" buttonType="submit"/>
+                                <ButtonComponent label="goToUpload" buttonType="button" click={this.goToUpload}/>
                             </div>
                         </form>
                     </div>
