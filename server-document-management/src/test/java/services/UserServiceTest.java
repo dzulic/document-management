@@ -14,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,8 +40,9 @@ public class UserServiceTest {
 
     @Test
     public void createUserTest() {
-        when(accountRepository.save(any(Account.class))).thenReturn(any());
-        when(beanConverter.convertUserDTOToUser(any())).thenReturn(any());
+        Account account = mock(Account.class);
+        when(accountRepository.save(any(Account.class))).thenReturn(account);
+        when(beanConverter.convertUserDTOToUser(any())).thenReturn(account);
         userService.createUser(userDTO);
     }
 

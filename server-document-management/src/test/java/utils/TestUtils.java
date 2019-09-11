@@ -1,4 +1,4 @@
-package converters;
+package utils;
 
 import com.doc.manager.domain.Account;
 import com.doc.manager.domain.Company;

@@ -8,12 +8,12 @@ import com.doc.manager.responses.RestResponse;
 import com.doc.manager.service.impl.DocumentServiceImpl;
 import com.doc.manager.transfer.DocumentDTO;
 import com.doc.manager.util.Constants;
-import converters.TestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import utils.TestUtils;
 
 import java.util.ArrayList;
 import java.util.List;
