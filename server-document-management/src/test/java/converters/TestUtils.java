@@ -3,16 +3,18 @@ package converters;
 import com.doc.manager.domain.Account;
 import com.doc.manager.domain.Company;
 import com.doc.manager.domain.EUserRole;
+import com.doc.manager.domain.TemplateDocument;
 import com.doc.manager.transfer.CompanyDTO;
+import com.doc.manager.transfer.DocumentDTO;
 import com.doc.manager.transfer.UserDTO;
 import lombok.Data;
 
 @Data
 public class TestUtils {
 
-    private static String dummyString = "test";
-    private static int dummyint = 1111;
-    private static EUserRole dummyUserRole = EUserRole.ADMIN;
+    public static String dummyString = "test";
+    public static int dummyint = 1111;
+    public static EUserRole dummyUserRole = EUserRole.ADMIN;
 
     public static Account getAccountDummy() {
         Account account = new Account();
@@ -58,4 +60,24 @@ public class TestUtils {
         return companyDTO;
     }
 
+    public static DocumentDTO getDocumentDTODummy() {
+        DocumentDTO documentDTO = new DocumentDTO();
+        documentDTO.setTemplateId(dummyint);
+        documentDTO.setDocumentId(dummyint);
+        documentDTO.setCompanyDTO(getCompanyDTODummy());
+        documentDTO.setCreatedBy(getUserDTODummy());
+        documentDTO.setContent(dummyString);
+        documentDTO.setName(dummyString);
+        return documentDTO;
+    }
+
+    public static TemplateDocument getTemplateDummy() {
+        TemplateDocument templateDocument = new TemplateDocument();
+        templateDocument.setCreatedBy(getAccountDummy());
+        templateDocument.setId(dummyint);
+        templateDocument.setContentType(dummyString);
+        templateDocument.setData(dummyString);
+        templateDocument.setFileName(dummyString);
+        return templateDocument;
+    }
 }

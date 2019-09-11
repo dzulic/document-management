@@ -13,9 +13,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CompanyServiceTest {
@@ -28,8 +29,6 @@ public class CompanyServiceTest {
 
     @Mock
     private BeanConverter beanConverter;
-    @Mock
-    private Company company;
 
     @Before
     public void init() {
@@ -37,13 +36,15 @@ public class CompanyServiceTest {
 
     @Test
     public void createCompanyTest() {
-        when(companyRepository.save(company)).thenReturn(company);
         RestResponse response = companyService.createCompany(any());
         assertEquals("Response for create company", response.getMessage(), Constants.SUCCESS);
     }
 
     @Test
     public void getCompaniesTest() {
-        companyService.getCompanies();
+        List<Company> all = companyRepository.findAll();
+        RestResponse companies = companyService.getCompanies();
+        assertEquals("Response message for getCompanies", companies.getMessage(), Constants.SUCCESS);
+        assertEquals("Response for get all companies", all, companies.getData());
     }
 }

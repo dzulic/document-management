@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-class DocumentServiceImpl implements DocumentService {
+public class DocumentServiceImpl implements DocumentService {
 
     @Autowired
     private BeanConverter beanConverter;
