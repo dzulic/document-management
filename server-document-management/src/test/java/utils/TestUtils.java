@@ -6,6 +6,7 @@ import com.doc.manager.domain.EUserRole;
 import com.doc.manager.domain.TemplateDocument;
 import com.doc.manager.transfer.CompanyDTO;
 import com.doc.manager.transfer.DocumentDTO;
+import com.doc.manager.transfer.TemplateDTO;
 import com.doc.manager.transfer.UserDTO;
 import lombok.Data;
 
@@ -79,5 +80,15 @@ public class TestUtils {
         templateDocument.setData(dummyString);
         templateDocument.setFileName(dummyString);
         return templateDocument;
+    }
+
+    public static TemplateDTO getTemplateDTODummy() {
+        TemplateDTO templateDTO = new TemplateDTO();
+        templateDTO.setCreatedBy(getUserDTODummy());
+        templateDTO.setId(String.valueOf(dummyint));
+        templateDTO.setContentType(dummyString);
+        templateDTO.setData(dummyString);
+        templateDTO.setFileName(dummyString);
+        return templateDTO;
     }
 }

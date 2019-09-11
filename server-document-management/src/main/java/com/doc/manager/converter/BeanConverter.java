@@ -100,6 +100,7 @@ public class BeanConverter {
         TemplateDocument templateDocument = null;
         if (templateDTO != null) {
             templateDocument = new TemplateDocument();
+            templateDocument.setId(Integer.parseInt(templateDTO.getId()));
             BeanUtils.copyProperties(templateDTO, templateDocument);
             templateDocument.setCreatedBy(convertUserDTOToUser(templateDTO.getCreatedBy()));
         }
