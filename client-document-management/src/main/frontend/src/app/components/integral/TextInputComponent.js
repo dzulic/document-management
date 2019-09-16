@@ -35,7 +35,6 @@ export class TextInputComponent extends Component {
         if (!type) {
             t = "text";
         }
-
         return (
             <div className="text-input-component">
                 <div className="form-group">

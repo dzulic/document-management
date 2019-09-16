@@ -20,7 +20,6 @@ const buttonOptions = {
         {label: 'Text Input', value: 'INPUT'},
         {label: 'Title', value: 'TITLE'},
         {label: 'Drop Down', value: 'DROP_DOWN'},
-        {label: 'Date', value: 'DATE'},
         {label: 'Break', value: 'BREAK'},
 
     ]
@@ -42,24 +41,27 @@ class AddNewItemModal extends React.Component {
 
     handleSubmit() {
         const {items, formValuesItem, dispatch} = this.props;
-        let it = items == null ? [] : JSON.parse(
-            JSON.stringify(items)
-        );
-        it.push({
-            id: it.length,
-            type: formValuesItem.componentType,
-            label: formValuesItem.label,
-            options: formValuesItem.options
-        });
-        dispatch({
-            type: 'ADD_EDIT_APP_PROP_STORE',
-            payload: {
-                key: DOCUMENT_ITEMS,
-                value: it
-            },
-        })
-        ;
-        this.props.dispatch(closeItemModal());
+        let name = 'label' + (items == null ? 1 : items.length + 1);
+        if (formValuesItem[name] !== undefined) {
+            let it = items == null ? [] : JSON.parse(
+                JSON.stringify(items)
+            );
+            it.push({
+                id: it.length,
+                type: formValuesItem.componentType,
+                label: formValuesItem[name],
+                options: formValuesItem.options
+            });
+            dispatch({
+                type: 'ADD_EDIT_APP_PROP_STORE',
+                payload: {
+                    key: DOCUMENT_ITEMS,
+                    value: it
+                },
+            })
+            ;
+            this.props.dispatch(closeItemModal());
+        }
     }
 
     handleClose() {
@@ -67,7 +69,8 @@ class AddNewItemModal extends React.Component {
     }
 
     render() {
-        const {formValuesItem} = this.props;
+        const {formValuesItem, items} = this.props;
+        let length = items == null ? 1 : items.length + 1;
         return (
             <div className="col-4 offset-4">
                 <Modal show={this.props.showModal}
@@ -84,7 +87,8 @@ class AddNewItemModal extends React.Component {
                                 <Field name="componentType"
                                        label="componentType"
                                        baseComponentConfig={BtnTypeInputProps}
-                                       component={DropDownComponent}/>
+                                       component={DropDownComponent}
+                                       required={true}/>
                                 {formValuesItem != undefined && formValuesItem.componentType == 'DROP_DOWN' &&
                                 <p>Insert options, separated by ','</p>
                                 }
@@ -94,9 +98,10 @@ class AddNewItemModal extends React.Component {
                                        component={TextInputComponent}/>
                                 }
                                 {formValuesItem != undefined && formValuesItem.componentType !== 'BREAK' &&
-                                <Field name="label"
-                                       label="label"
-                                       component={TextInputComponent}/>
+                                <Field name={'label' + length}
+                                       label={'label'}
+                                       component={TextInputComponent}
+                                       required={true}/>
                                 }
                             </div>
                         </div>
@@ -122,11 +127,10 @@ function mapStateToProps(state) {
     return {
         formValuesItem: selectorItem(state),
         items: getValueAppPropertyStore(state, DOCUMENT_ITEMS),
-
     }
 }
 
 export default connect(mapStateToProps)(reduxForm({
     form: "AppForm",
-    destroyOnUnmount: false,
+    destroyOnUnmount: true,
 })(AddNewItemModal));

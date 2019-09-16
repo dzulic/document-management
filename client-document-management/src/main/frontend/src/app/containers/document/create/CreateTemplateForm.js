@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {TemplateForm} from "./TemplateForm";
-import {TemplateItemForm} from "./TemplateItemForm";
 import {connect} from "react-redux";
 import {Field, getFormValues, reduxForm} from "redux-form";
 import {getValueAppPropertyStore} from "../../../utils/storeUtil";
 import {DOCUMENT_ITEMS} from "../../../utils/Constants";
 import {I18n} from "react-redux-i18n";
 import {TextInputComponent} from "../../../components/integral/TextInputComponent";
+import TemplateItemForm from "./TemplateItemForm";
 
 export class CreateTemplateForm extends Component {
 
@@ -23,10 +23,15 @@ export class CreateTemplateForm extends Component {
                 <div className="col-lg-8 offset-lg-2">
                     <TemplateForm>
                         {
-                            items != null && items.map((item) => (
-                                <TemplateItemForm key={item.id} label={item.label} type={item.type}
-                                                  options={item.options != undefined ? item.options.split(',') : undefined}/>
-                            ))
+                            items != null && items.map((item) => {
+                                return <TemplateItemForm
+                                    key={item.id}
+                                    label={item.label}
+                                    type={item.type}
+                                    options={item.options != undefined ? item.options.split(',') : undefined}
+                                />
+                            })
+
                         }
                     </TemplateForm>
                 </div>
@@ -50,5 +55,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)
 (reduxForm({
     form: "AppForm",
-    destroyOnUnmount: false,
+    destroyOnUnmount: true,
 })(CreateTemplateForm));

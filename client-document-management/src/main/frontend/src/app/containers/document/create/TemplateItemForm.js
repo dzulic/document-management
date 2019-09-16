@@ -79,5 +79,5 @@ TemplateItemForm.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
     options: PropTypes.object
-}
+};
 export default (TemplateItemForm);

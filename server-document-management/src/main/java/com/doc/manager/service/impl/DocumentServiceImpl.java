@@ -45,7 +45,7 @@ public class DocumentServiceImpl implements DocumentService {
         try {
             List<Document> documents = null;
             if (name != null) {
-                documents = documentRepository.findByNameContaining(name);
+                documents = documentRepository.findByNameContainingIgnoreCase(name);
             } else if (companyId != 0) {
                 documents = documentRepository.findByCompany_CompanyId(companyId);
             }
@@ -62,7 +62,7 @@ public class DocumentServiceImpl implements DocumentService {
         Document document = null;
         try {
             if (searchByName != null) {
-                document = documentRepository.findByName(searchByName);
+                document = documentRepository.findByNameIgnoreCase(searchByName);
             } else {
                 document = documentRepository.findById(Long.parseLong(id + ""));
             }

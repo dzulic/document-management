@@ -17,7 +17,6 @@ class ShowSuccessModal extends React.Component {
 
     render() {
         const {msg} = this.props;
-        console.log("msg", msg);
         return (
             <Modal show={msg !== undefined}
                    centered>

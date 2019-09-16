@@ -11,9 +11,9 @@ public interface DocumentRepository extends JpaRepository<Document, Integer> {
 
     List<Document> findByCompany_CompanyId(int id);
 
-    List<Document> findByNameContaining(String name);
+    List<Document> findByNameContainingIgnoreCase(String name);
 
-    Document findByName(String name);
+    Document findByNameIgnoreCase(String name);
 
     Document findById(Long id);
 

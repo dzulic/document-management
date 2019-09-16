@@ -46,7 +46,7 @@ public class TemplateServiceImpl implements TemplateService {
             if (name != null && id != 0) {
                 templateDocuments = templateRepository.findByFileNameContainingAndCreatedBy_Company_CompanyId(name, id);
             } else if (name != null) {
-                templateDocuments = templateRepository.findByFileNameContaining(name);
+                templateDocuments = templateRepository.findByFileNameContainingIgnoreCase(name);
             } else if (id != 0) {
                 templateDocuments = templateRepository.findByCreatedBy_Company_CompanyId(id);
             }

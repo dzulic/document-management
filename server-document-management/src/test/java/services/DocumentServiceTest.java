@@ -53,7 +53,7 @@ public class DocumentServiceTest {
         mockList.add(mockDoc);
 
         when(documentRepository.findByCompany_CompanyId(anyInt())).thenReturn(mockList);
-        when(documentRepository.findByNameContaining(anyString())).thenReturn(mockList);
+        when(documentRepository.findByNameContainingIgnoreCase(anyString())).thenReturn(mockList);
         RestResponse responseByUser = documentService.searchDocument(TestUtils.dummyString, 0);
         RestResponse responseByCompany = documentService.searchDocument(null, TestUtils.dummyint);
         assertEquals("Get document test", Constants.SUCCESS, responseByUser.getMessage());
