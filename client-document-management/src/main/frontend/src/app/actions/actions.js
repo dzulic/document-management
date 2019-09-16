@@ -15,6 +15,7 @@ import {
     SEARCH_DOCUMENT,
     SEARCH_TEMPLATE,
     SHOW_ERROR_MODAL,
+    SHOW_SUCCESS_DIALOG,
     SHOW_UPLOAD_DIALOG,
     SHOW_WAITING_MODAL
 } from "../utils/actionTypes";
@@ -83,11 +84,6 @@ export const closeItemModal = () => ({
     type: CLOSE_MODAL_DIALOG,
 });
 
-export const showWaitingDialog = (payload) => ({
-    type: SHOW_WAITING_MODAL,
-    showWaitingModal: payload
-});
-
 export const addEditAppProperty = (payload) => ({
     type: ADD_EDIT_APP_PROP_STORE,
     payload
@@ -101,4 +97,15 @@ export const showErrorDialog = (message, messageBody) => ({
 export const showUploadDialog = (templateId) => ({
     type: SHOW_UPLOAD_DIALOG,
     templateId
+});
+
+export const showWaitingDialog = (payload) => ({
+    type: SHOW_WAITING_MODAL,
+    showWaitingModal: payload
+});
+
+export const showSuccessDialog = (payload) => ({
+    type: SHOW_SUCCESS_DIALOG,
+    showSuccessModal: payload.show,
+    msg: payload.message
 });

@@ -1,7 +1,7 @@
 import {call, put} from "redux-saga/effects";
 import {openFillTemplateModal, openTemplateModel, showWaitingDialog} from "../actions/actions";
 import TemplateApi from "../api/TemplateApi";
-import {SHOW_ERROR_MODAL} from "../utils/actionTypes";
+import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
 
 export function* createTemplate(action) {
 
@@ -14,7 +14,11 @@ export function* createTemplate(action) {
         }
 
         yield put(showWaitingDialog(false));
-
+        yield put({
+            type: SHOW_SUCCESS_DIALOG,
+            showSuccessModal: true,
+            msg: "Template created successfully"
+        });
     } catch (e) {
         yield put(showWaitingDialog(false));
 

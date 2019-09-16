@@ -1,7 +1,7 @@
 import {call, put} from "redux-saga/effects";
 import CompanyApi from "../api/CompanyApi";
 import {COMPANIES} from "../utils/Constants";
-import {ADD_EDIT_APP_PROP_STORE} from "../utils/actionTypes";
+import {ADD_EDIT_APP_PROP_STORE, SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
 
 export function* fetchCompanies() {
     try {
@@ -16,11 +16,10 @@ export function* fetchCompanies() {
 
             localStorage.setItem(COMPANIES, JSON.stringify(companiesMap));
         }
-
     } catch (e) {
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "Error fetching companies"
         });
     }
 
@@ -47,11 +46,15 @@ export function* createCompany(action) {
                 payload: company
             });
         }
-
+        yield put({
+            type: SHOW_SUCCESS_DIALOG,
+            showSuccessModal: true,
+            msg: "Company created"
+        });
     } catch (e) {
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "Error creating company"
         });
     }
 }

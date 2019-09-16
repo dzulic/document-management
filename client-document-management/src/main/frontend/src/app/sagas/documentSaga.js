@@ -1,6 +1,7 @@
 import {call, put} from "redux-saga/effects";
 import {openFillTemplateModal, showWaitingDialog} from "../actions/actions";
 import DocumentApi from "../api/DocumentApi";
+import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
 
 export function* openDocument(action) {
 
@@ -28,13 +29,12 @@ export function* searchDocument(action) {
             });
         }
         yield put(showWaitingDialog(false));
-
     } catch (e) {
         yield put(showWaitingDialog(false));
 
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "Error searching documents"
         });
     }
 }
@@ -51,13 +51,17 @@ export function* saveDocuments(action) {
         }
 
         yield put(showWaitingDialog(false));
-
+        yield put({
+            type: SHOW_SUCCESS_DIALOG,
+            showSuccessModal: true,
+            msg: "Successfully saved documents"
+        });
     } catch (e) {
         yield put(showWaitingDialog(false));
 
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "Document haven't been saved"
         });
     }
 }

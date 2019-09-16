@@ -1,16 +1,10 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import {Modal} from "react-bootstrap";
-import {Translate} from 'react-redux-i18n';
 import {closeItemModal} from "../../actions/actions";
+import {Modal} from "react-bootstrap";
+import React from "react";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-
-const closeBtnBaseComponentConfig = {
-    props: {bsClass: "close"}
-};
-
-export class ErrorModalDialog extends React.Component {
+export class ShowSuccessModal extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +16,7 @@ export class ErrorModalDialog extends React.Component {
     }
 
     render() {
-        const {message, messageBody} = this.props;
+        const {msg} = this.props;
 
         return (
             <div className="col-4 offset-4">
@@ -30,7 +24,6 @@ export class ErrorModalDialog extends React.Component {
                        aria-labelledby="contained-modal-title-center"
                        centered>
                     <Modal.Header className="modal-header-red">
-                        <Modal.Title><Translate value="application.label.error"/></Modal.Title>
                         <button onClick={this.handleClose}
                                 type={"button"}
                                 style={{
@@ -43,13 +36,7 @@ export class ErrorModalDialog extends React.Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <h4><Translate value={"application.error." + message}/></h4>
-                        {messageBody &&
-                        <div>
-                            <div className={'panel-message'}>
-                                <Translate value={"application.error." + messageBody}/>
-                            </div>
-                        </div>}
+                        {msg}
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -64,9 +51,8 @@ export class ErrorModalDialog extends React.Component {
 
 }
 
-ErrorModalDialog.propTypes = {
-    message: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-    messageBody: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+ShowSuccessModal.propTypes = {
+    msg: PropTypes.string,
 };
 
-export default connect()(ErrorModalDialog);
+export default connect()(ShowSuccessModal);

@@ -1,6 +1,7 @@
 import ApiUser from "../api/UserApi";
 import {call, put} from "redux-saga/effects";
 import {showWaitingDialog} from "../actions/actions";
+import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
 
 
 export function* createUser(action) {
@@ -15,12 +16,17 @@ export function* createUser(action) {
 
         yield put(showWaitingDialog(false));
 
+        yield put({
+            type: SHOW_SUCCESS_DIALOG,
+            showSuccessModal: true,
+            msg: "User created successfully"
+        });
     } catch (e) {
         yield put(showWaitingDialog(false));
 
         yield put({
-            type: 'SHOW_ERROR_MODAL',
-            message: ""
+            type: SHOW_ERROR_MODAL,
+            message: "Error creating user"
         });
     }
 }
