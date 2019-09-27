@@ -1,6 +1,6 @@
 import ApiLogin from "../api/LoginApi";
 import {call, put} from "redux-saga/effects";
-import {LOGIN_USER, USER_LOGGED_SESSION} from "../utils/Constants";
+import {LOGIN_USER, SUCCESS, USER_LOGGED_SESSION} from "../utils/Constants";
 import {showWaitingDialog} from "../actions/actions";
 import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
 
@@ -10,7 +10,7 @@ export function* loginUser(action) {
         yield put(showWaitingDialog(true));
         const response = yield call(ApiLogin.login, action.payload.user);
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
 
@@ -47,7 +47,7 @@ export function* logoutUser(action) {
     try {
         const response = yield call(ApiLogin.logout);
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
         localStorage.setItem(USER_LOGGED_SESSION, JSON.stringify(response.data));

@@ -141,6 +141,6 @@ export default connect(mapStateToProps)
 (
     reduxForm({
         form: "AppForm",
-        destroyOnUnmount: false,
+        destroyOnUnmount: true,
     })(UploadTemplateForm))
 ;

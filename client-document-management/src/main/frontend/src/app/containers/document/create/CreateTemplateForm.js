@@ -19,7 +19,6 @@ export class CreateTemplateForm extends Component {
         return (
             <div className="col-lg-12 template">
                 <h1>{I18n.t("application.message.createDocument")}</h1>
-                <Field component={TextInputComponent} label={"fileName"} name={"fileName"}/>
                 <div className="col-lg-8 offset-lg-2">
                     <TemplateForm>
                         {
@@ -34,6 +33,7 @@ export class CreateTemplateForm extends Component {
 
                         }
                     </TemplateForm>
+                    <Field component={TextInputComponent} label={"fileName"} name={"fileName"}/>
                 </div>
             </div>
 

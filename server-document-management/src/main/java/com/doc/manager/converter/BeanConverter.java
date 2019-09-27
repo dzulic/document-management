@@ -68,7 +68,7 @@ public class BeanConverter {
             document.setCompany(convertCompanyDTOToCompany(documentDTO.getCreatedBy().getCompany()));
             //TODO REMOVe
             TemplateDocument templateDocument = new TemplateDocument();
-            templateDocument.setId(123);
+            templateDocument.setId(documentDTO.getTemplateId());
             document.setTemplate(templateDocument);
         }
         return document;
@@ -100,7 +100,9 @@ public class BeanConverter {
         TemplateDocument templateDocument = null;
         if (templateDTO != null) {
             templateDocument = new TemplateDocument();
-            templateDocument.setId(Integer.parseInt(templateDTO.getId()));
+            if(templateDTO.getId()!=null) {
+                templateDocument.setId(Integer.parseInt(templateDTO.getId()));
+            }
             BeanUtils.copyProperties(templateDTO, templateDocument);
             templateDocument.setCreatedBy(convertUserDTOToUser(templateDTO.getCreatedBy()));
         }
@@ -112,7 +114,9 @@ public class BeanConverter {
         if (template != null) {
             templateDTO = new TemplateDTO();
             BeanUtils.copyProperties(template, templateDTO);
-            templateDTO.setId(String.valueOf(template.getId()));
+            if(template.getId()!=0) {
+                templateDTO.setId(String.valueOf(template.getId()));
+            }
             templateDTO.setData(template.getData());
             templateDTO.setCreatedBy(convertUserToUserDTO(template.getCreatedBy()));
         }

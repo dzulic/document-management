@@ -2,6 +2,7 @@ import ApiUser from "../api/UserApi";
 import {call, put} from "redux-saga/effects";
 import {showWaitingDialog} from "../actions/actions";
 import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
+import {SUCCESS} from "../utils/Constants";
 
 
 export function* createUser(action) {
@@ -10,7 +11,7 @@ export function* createUser(action) {
         const response = yield call(ApiUser.createUser, action.payload);
 
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
 

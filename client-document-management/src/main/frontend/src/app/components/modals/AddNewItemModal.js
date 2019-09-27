@@ -41,8 +41,13 @@ class AddNewItemModal extends React.Component {
 
     handleSubmit() {
         const {items, formValuesItem, dispatch} = this.props;
-        let name = 'label' + (items == null ? 1 : items.length + 1);
-        if (formValuesItem[name] !== undefined) {
+        let name;
+        if (formValuesItem && formValuesItem.componentType == 'BREAK') {
+            name = 'break';
+        } else {
+            name = 'label' + (items == null ? 1 : items.length + 1);
+        }
+        if (formValuesItem[name] !== undefined || name == 'break') {
             let it = items == null ? [] : JSON.parse(
                 JSON.stringify(items)
             );

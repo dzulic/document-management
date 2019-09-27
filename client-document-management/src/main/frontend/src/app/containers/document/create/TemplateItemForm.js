@@ -64,7 +64,7 @@ export class TemplateItemForm extends Component {
                            customClass="text-center type-title"/>
 
                     }
-                    {typeTitle && <div className="type-break-div">
+                    {typeBreak && <div className="type-break-div">
                         <hr/>
                     </div>}
                 </div>
@@ -78,6 +78,6 @@ export class TemplateItemForm extends Component {
 TemplateItemForm.propTypes = {
     type: PropTypes.string,
     label: PropTypes.string,
-    options: PropTypes.object
+    options: PropTypes.array
 };
 export default (TemplateItemForm);

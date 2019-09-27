@@ -1,12 +1,12 @@
 import {call, put} from "redux-saga/effects";
 import CompanyApi from "../api/CompanyApi";
-import {COMPANIES} from "../utils/Constants";
+import {COMPANIES, SUCCESS} from "../utils/Constants";
 import {ADD_EDIT_APP_PROP_STORE, SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
 
 export function* fetchCompanies() {
     try {
         const response = yield call(CompanyApi.getCompanies);
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
         if (response) {
@@ -31,7 +31,7 @@ export function* createCompany(action) {
     try {
         const response = yield call(CompanyApi.createCompany, action.payload.company);
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
 

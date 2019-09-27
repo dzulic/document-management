@@ -44,8 +44,8 @@ export const i18n = {
                 "nameOfDocument": "Name of document",
                 "uploadFileText": "Please click upload to finish",
                 "fileName": "Name of the template",
-                "templateId": "Template id"
-
+                "templateId": "Template id",
+                "createTemplate": "Create Template"
             },
             "submit": "Submit",
             "error": {
@@ -54,7 +54,8 @@ export const i18n = {
                 "errorSearchingTemplates": "Error searching templates",
                 "errorCreatingTemplate": "Error creating template",
                 "errorOpeningTemplate": "Error opening template",
-                "pleaseInputTemplateID": "Please fill templateID"
+                "pleaseInputTemplateID": "Please fill templateID",
+                "pleaseFillInTemplateName": "Please fill in Template Name",
             },
             "date": {
                 "maskFormat": "99/99/9999",

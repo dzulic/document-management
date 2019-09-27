@@ -17,7 +17,7 @@ const router =
     <BrowserRouter forceRefresh={!supportsHistory}>
         <App>
             <Switch>
-                <Route exact path="/" component={MainPanel}/>
+                <PrivateRoute exact path="/" component={MainPanel}/>
                 <Route path='/login' component={LoginTask}/>
                 <Route path='/fillDocument' component={FillTemplateTask}/>
                 <PrivateRoute path='/logout' component={LoginTask}/>

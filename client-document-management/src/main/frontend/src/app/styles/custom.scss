@@ -134,6 +134,7 @@ form {
     min-height: 50px;
     padding-bottom: 10px;
     background-color: white;
+    margin-bottom: 30px;
   }
 
   &-item {
@@ -205,6 +206,7 @@ select::-ms-expand {
   &-dialog {
     position: relative;
     margin: 0 auto;
+    max-width: inherit;
   }
 
   &-title {
@@ -228,6 +230,10 @@ select::-ms-expand {
       margin: 0;
       z-index: 1099;
     }
+  }
+  &-content{
+    margin: auto;
+    width: auto;
   }
 }
 
@@ -298,8 +304,6 @@ hr {
   }
 }
 
-@media (min-width: 576px) {
   .modal-dialog {
     max-width: fit-content;
-  }
 }

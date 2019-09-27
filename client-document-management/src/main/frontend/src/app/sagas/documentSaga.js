@@ -2,6 +2,7 @@ import {call, put} from "redux-saga/effects";
 import {openFillTemplateModal, showWaitingDialog} from "../actions/actions";
 import DocumentApi from "../api/DocumentApi";
 import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
+import {SUCCESS} from "../utils/Constants";
 
 export function* openDocument(action) {
 
@@ -14,7 +15,7 @@ export function* searchDocument(action) {
     try {
         yield put(showWaitingDialog(true));
         const response = yield call(DocumentApi.searchDocument, action.payload);
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
         if (response) {
@@ -46,7 +47,7 @@ export function* saveDocuments(action) {
         yield put(showWaitingDialog(true));
         const response = yield call(DocumentApi.saveDocuments, action.payload);
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
 
@@ -58,7 +59,6 @@ export function* saveDocuments(action) {
         });
     } catch (e) {
         yield put(showWaitingDialog(false));
-
         yield put({
             type: SHOW_ERROR_MODAL,
             message: "Document haven't been saved"

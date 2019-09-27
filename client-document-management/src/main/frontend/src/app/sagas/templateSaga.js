@@ -2,6 +2,7 @@ import {call, put} from "redux-saga/effects";
 import {openFillTemplateModal, openTemplateModel, showWaitingDialog} from "../actions/actions";
 import TemplateApi from "../api/TemplateApi";
 import {SHOW_ERROR_MODAL, SHOW_SUCCESS_DIALOG} from "../utils/actionTypes";
+import {SUCCESS} from "../utils/Constants";
 
 export function* createTemplate(action) {
 
@@ -9,7 +10,7 @@ export function* createTemplate(action) {
         yield put(showWaitingDialog(true));
         const response = yield call(TemplateApi.createTemplate, action.payload);
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
 
@@ -36,7 +37,7 @@ export function* openTemplate(action) {
         };
         const response = yield call(TemplateApi.getTemplate, newAction);
 
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
 
@@ -57,7 +58,7 @@ export function* searchTemplate(action) {
     try {
         yield put(showWaitingDialog(true));
         const response = yield call(TemplateApi.searchTemplate, action.payload);
-        if (response.success === false) {
+        if (response.message!=SUCCESS) {
             throw new Error(response.message);
         }
         if (response) {
